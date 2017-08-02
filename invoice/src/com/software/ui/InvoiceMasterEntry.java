@@ -10,6 +10,17 @@
  */
 package com.software.ui;
 
+import com.software.utility.ConnDB;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author SAPTARSHI
@@ -19,6 +30,8 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
     /** Creates new form InvoiceMasterEntry */
     public InvoiceMasterEntry() {
         initComponents();
+        loadCompanyCode();
+        getDate();
     }
 
     /** This method is called from within the constructor to
@@ -37,7 +50,6 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
@@ -59,6 +71,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -105,12 +118,15 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         jLabel3.setName("jLabel3"); // NOI18N
 
         jTextField2.setName("jTextField2"); // NOI18N
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(resourceMap.getFont("jLabel4.font")); // NOI18N
         jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
         jLabel4.setName("jLabel4"); // NOI18N
-
-        jTextField3.setName("jTextField3"); // NOI18N
 
         jLabel5.setFont(resourceMap.getFont("jLabel5.font")); // NOI18N
         jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
@@ -121,21 +137,41 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         jLabel6.setName("jLabel6"); // NOI18N
 
         jTextField4.setName("jTextField4"); // NOI18N
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
 
         jLabel7.setFont(resourceMap.getFont("jLabel7.font")); // NOI18N
         jLabel7.setText(resourceMap.getString("jLabel7.text")); // NOI18N
         jLabel7.setName("jLabel7"); // NOI18N
 
         jTextField5.setName("jTextField5"); // NOI18N
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
+            }
+        });
 
         jLabel8.setFont(resourceMap.getFont("jLabel8.font")); // NOI18N
         jLabel8.setText(resourceMap.getString("jLabel8.text")); // NOI18N
         jLabel8.setName("jLabel8"); // NOI18N
 
         jTextField6.setName("jTextField6"); // NOI18N
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField6KeyTyped(evt);
+            }
+        });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.setName("jComboBox2"); // NOI18N
+        jComboBox2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jComboBox2KeyTyped(evt);
+            }
+        });
 
         jLabel9.setFont(resourceMap.getFont("jLabel9.font")); // NOI18N
         jLabel9.setText(resourceMap.getString("jLabel9.text")); // NOI18N
@@ -167,6 +203,11 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         jFormattedTextField1.setName("jFormattedTextField1"); // NOI18N
+        jFormattedTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFormattedTextField1KeyTyped(evt);
+            }
+        });
 
         try {
             jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
@@ -174,6 +215,11 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         jFormattedTextField2.setName("jFormattedTextField2"); // NOI18N
+        jFormattedTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFormattedTextField2KeyTyped(evt);
+            }
+        });
 
         try {
             jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
@@ -181,18 +227,51 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         jFormattedTextField3.setName("jFormattedTextField3"); // NOI18N
+        jFormattedTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFormattedTextField3KeyTyped(evt);
+            }
+        });
 
         jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
         jTextField1.setName("jTextField1"); // NOI18N
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
         jTextField7.setText(resourceMap.getString("jTextField7.text")); // NOI18N
         jTextField7.setName("jTextField7"); // NOI18N
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField7KeyTyped(evt);
+            }
+        });
 
         jTextField8.setText(resourceMap.getString("jTextField8.text")); // NOI18N
         jTextField8.setName("jTextField8"); // NOI18N
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField8KeyTyped(evt);
+            }
+        });
 
         jTextField9.setText(resourceMap.getString("jTextField9.text")); // NOI18N
         jTextField9.setName("jTextField9"); // NOI18N
+        jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField9KeyTyped(evt);
+            }
+        });
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "N", "Y" }));
+        jComboBox1.setName("jComboBox1"); // NOI18N
+        jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jComboBox1KeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -216,20 +295,21 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                    .addComponent(jTextField6)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField7)
-                    .addComponent(jTextField8)
-                    .addComponent(jTextField9)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                        .addComponent(jTextField6)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jTextField4)
+                        .addComponent(jTextField1)
+                        .addComponent(jTextField7)
+                        .addComponent(jTextField8)
+                        .addComponent(jTextField9)
+                        .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -243,10 +323,10 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -292,6 +372,16 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
 
         jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
         jButton3.setName("jButton3"); // NOI18N
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+        jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton3KeyPressed(evt);
+            }
+        });
 
         jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
         jButton2.setName("jButton2"); // NOI18N
@@ -331,11 +421,142 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox2KeyTyped
+
+        
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField2.requestFocus();
+             }
+    }//GEN-LAST:event_jComboBox2KeyTyped
+
+    private void jFormattedTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField2KeyTyped
+        
+         char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField4.requestFocus();
+             }
+       
+       
+    }//GEN-LAST:event_jFormattedTextField2KeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+        
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField6.requestFocus();
+             }
+    }//GEN-LAST:event_jTextField5KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField5.requestFocus();
+             }
+    }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
+        
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jFormattedTextField1.requestFocus();
+             }
+       
+    }//GEN-LAST:event_jTextField6KeyTyped
+
+    private void jFormattedTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField1KeyTyped
+        
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField1.requestFocus();
+             }
+    }//GEN-LAST:event_jFormattedTextField1KeyTyped
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField7.requestFocus();
+             }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyTyped
+        
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jFormattedTextField3.requestFocus();
+             }
+    }//GEN-LAST:event_jTextField7KeyTyped
+
+    private void jFormattedTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField3KeyTyped
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField8.requestFocus();
+             }
+    }//GEN-LAST:event_jFormattedTextField3KeyTyped
+
+    private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
+
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField9.requestFocus();
+             }
+        
+    }//GEN-LAST:event_jTextField8KeyTyped
+
+    private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
+        
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jButton3.requestFocus();
+             }
+    }//GEN-LAST:event_jTextField9KeyTyped
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jComboBox1.requestFocus();
+             }
+        
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+
+        saveInvoiceMaster();
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jComboBox1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyTyped
+        
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jFormattedTextField2.requestFocus();
+             }
+        
+    }//GEN-LAST:event_jComboBox1KeyTyped
+
+    private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
+        saveInvoiceMaster();
+    }//GEN-LAST:event_jButton3KeyPressed
 
     /**
      * @param args the command line arguments
@@ -352,6 +573,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
@@ -374,7 +596,6 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
@@ -382,4 +603,120 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
+
+    
+    
+    public void loadCompanyCode(){
+
+    
+    String query="select concat(com_id,'(',com_name,')') from company_master";
+    ArrayList<String> tax=new ArrayList<String>();
+    try{
+        Connection conn=new ConnDB().make_connection();
+        Statement stmt=conn.createStatement();
+        ResultSet rs=stmt.executeQuery(query);
+        while(rs.next()){
+            tax.add(rs.getString(1));
+        }
+        jComboBox2.removeAllItems();
+        for(String taxCode:tax){
+        jComboBox2.addItem(taxCode);
+        }
+        
+  }catch(SQLException ex){
+        
+        JOptionPane.showMessageDialog(this, "Error loading Company Code! ");
+        ex.printStackTrace();
+    }
+
+    
+    
+}
+    
+    public void getDate(){
+        
+        String pattern="dd-MM-yyyy";
+        SimpleDateFormat sdf=new SimpleDateFormat();
+        sdf.applyPattern(pattern);
+        String date=sdf.format(Calendar.getInstance().getTime());
+        jFormattedTextField2.setText(date);
+    }
+    
+    public void saveInvoiceMaster(){
+        
+        String parentCode=jComboBox2.getSelectedItem().toString().substring(0,jComboBox2.getSelectedItem().toString().indexOf("("));
+        String buyerCode=jTextField2.getText();
+        String invoiceDate=jFormattedTextField2.getText().trim();
+        String deliveryNote=jTextField4.getText();
+        String supplierRefNo=jTextField5.getText().trim();
+        String buyerOrderNo=jTextField6.getText().trim();
+        String buyerOrderDate=jFormattedTextField1.getText().trim();
+        String otherReference=jTextField1.getText().trim();
+        String despatchDocNo=jTextField7.getText().trim();
+        String deliveryNoteDate=jFormattedTextField3.getText();
+        String despatchThrough=jTextField8.getText().trim().toUpperCase();
+        String destination=jTextField9.getText().trim().toUpperCase();
+        
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
+        String fromDate=null,toDate=null;
+        
+        if (month < 4) {
+
+            fromDate="01-04-" + (year - 1);
+            toDate="31-03-"+ year;
+
+
+        } else {
+
+            fromDate="01-04-" + (year);
+            toDate="31-03-"+ (year+1);
+
+        }
+        
+        String fromYear=fromDate.substring(fromDate.lastIndexOf("-")+3,fromDate.length());
+        String toYear=toDate.substring(toDate.lastIndexOf("-")+3,toDate.length());
+        
+         try{
+        Connection conn=new ConnDB().make_connection();
+        Statement stmt=conn.createStatement();
+        Statement stmt1=conn.createStatement();
+        String querySerial="select count(*) from bill_master where invoice_date between str_to_date('"+fromDate+"','%d-%m-%Y') and str_to_date('"+toDate+"','%d-%m-%Y')";   
+        ResultSet rs=stmt.executeQuery(querySerial);
+        int sr=0;
+        while(rs.next()){
+            sr=rs.getInt(1);
+                       
+        }
+        sr++;
+        String invoiceNo="PROV/"+fromYear+"-"+toYear+"/"+sr;
+        System.out.println(invoiceNo);
+        String igst=jComboBox1.getSelectedItem().toString();
+        
+        
+        
+        String query="insert into bill_master(parent_company_code,buyer_code,Invoice_no,invoice_date,delivery_note,"
+                + "supplier_ref_no,buyer_order_no,buyer_order_date,other_reference,despatch_document_no,delivery_note_date,"
+                + "despatch_through,destination,igst_flag) "
+                + "values('"+parentCode+"','"+buyerCode+"','"+invoiceNo+"',str_to_date('"+invoiceDate+"','%d-%m-%Y'),'"+deliveryNote+"',"
+                + "'"+supplierRefNo+"','"+buyerOrderNo+"',str_to_date('"+buyerOrderDate+"','%d-%m-%Y'),'"+otherReference+"',"
+                + "'"+despatchDocNo+"',str_to_date('"+deliveryNoteDate+"','%d-%m-%Y'),'"+despatchThrough+"','"+destination+"','"+igst+"')";
+        stmt1.executeUpdate(query);
+        JOptionPane.showMessageDialog(this, "Basic details Added, please fillup the invoice details in next screen ");
+        new InvoiceDetailsEntry(invoiceNo,igst).setVisible(true);
+        
+        this.dispose();
+        
+        
+        
+    }catch(SQLException ex){
+        
+        JOptionPane.showMessageDialog(this, "Error in updating Database! ");
+        ex.printStackTrace();
+    }
+        
+        
+        
+    }
+    
 }

@@ -10,6 +10,15 @@
  */
 package com.software.ui;
 
+import com.software.utility.ConnDB;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Locale;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 
@@ -19,6 +28,7 @@ public class ItemMasterEntry extends javax.swing.JFrame {
     /** Creates new form ItemMasterAdd */
     public ItemMasterEntry() {
         initComponents();
+        loadTax();
     }
 
     /** This method is called from within the constructor to
@@ -51,7 +61,7 @@ public class ItemMasterEntry extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setName("Form"); // NOI18N
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(invoice.InvoiceApp.class).getContext().getResourceMap(ItemMasterEntry.class);
@@ -65,6 +75,16 @@ public class ItemMasterEntry extends javax.swing.JFrame {
 
         jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
         jTextField1.setName("jTextField1"); // NOI18N
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
         jLabel3.setFont(resourceMap.getFont("jLabel3.font")); // NOI18N
         jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
@@ -77,6 +97,11 @@ public class ItemMasterEntry extends javax.swing.JFrame {
         jLabel4.setName("jLabel4"); // NOI18N
 
         jTextField3.setName("jTextField3"); // NOI18N
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(resourceMap.getFont("jLabel7.font")); // NOI18N
         jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
@@ -84,24 +109,44 @@ public class ItemMasterEntry extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.setName("jComboBox1"); // NOI18N
+        jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jComboBox1KeyTyped(evt);
+            }
+        });
 
         jLabel6.setFont(resourceMap.getFont("jLabel7.font")); // NOI18N
         jLabel6.setText(resourceMap.getString("jLabel6.text")); // NOI18N
         jLabel6.setName("jLabel6"); // NOI18N
 
         jTextField4.setName("jTextField4"); // NOI18N
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
 
         jLabel7.setFont(resourceMap.getFont("jLabel7.font")); // NOI18N
         jLabel7.setText(resourceMap.getString("jLabel7.text")); // NOI18N
         jLabel7.setName("jLabel7"); // NOI18N
 
         jTextField5.setName("jTextField5"); // NOI18N
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
+            }
+        });
 
         jLabel8.setFont(resourceMap.getFont("jLabel7.font")); // NOI18N
         jLabel8.setText(resourceMap.getString("jLabel8.text")); // NOI18N
         jLabel8.setName("jLabel8"); // NOI18N
 
         jTextField6.setName("jTextField6"); // NOI18N
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField6KeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -191,12 +236,27 @@ public class ItemMasterEntry extends javax.swing.JFrame {
 
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
         jButton1.setName("jButton1"); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
         jButton2.setName("jButton2"); // NOI18N
 
         jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
         jButton3.setName("jButton3"); // NOI18N
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+        jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton3KeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -211,9 +271,9 @@ public class ItemMasterEntry extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton3)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
@@ -237,6 +297,85 @@ public class ItemMasterEntry extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+
+        jTextField2.setText(populateItemCode());
+        
+    }//GEN-LAST:event_jTextField1FocusLost
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField3.requestFocus();
+             }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jComboBox1.requestFocus();
+             }
+        
+        
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        
+      char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField5.requestFocus();
+             }
+        
+    }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField6.requestFocus();
+             }
+        
+    }//GEN-LAST:event_jTextField5KeyTyped
+
+    private void jComboBox1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyTyped
+        
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField4.requestFocus();
+             }
+        
+        
+    }//GEN-LAST:event_jComboBox1KeyTyped
+
+    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jButton3.requestFocus();
+             }
+        
+    }//GEN-LAST:event_jTextField6KeyTyped
+
+    private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
+        saveItem();
+        
+    }//GEN-LAST:event_jButton3KeyPressed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        saveItem();
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        
+        this.dispose();
+        
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -271,4 +410,105 @@ public class ItemMasterEntry extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
+ 
+    
+public void saveItem(){
+    
+    String description=jTextField1.getText().trim().toUpperCase();
+    String itemCode=jTextField2.getText().trim().toUpperCase();
+    String hsn=jTextField3.getText().trim().toUpperCase();
+    String taxCode=jComboBox1.getSelectedItem().toString();
+    String unit=jTextField4.getText().trim().toUpperCase();
+    double unitPrice=0;
+    double purchasePrice=0;
+    
+    try{
+        unitPrice=Double.parseDouble(jTextField5.getText().trim());
+        purchasePrice=Double.parseDouble(jTextField6.getText().trim());
+    }catch(NumberFormatException ex){
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Erronous value in Price fields, must be numeric! ");
+    }
+    
+    
+    try{
+        Connection conn=new ConnDB().make_connection();
+        Statement stmt=conn.createStatement();
+        String query="insert into item_master(item_code,item_description,hsn_code,tax_code,unit,unit_price,purchase_price) values('"+itemCode+"','"+description+"','"+hsn+"','"+taxCode+"','"+unit+"','"+unitPrice+"','"+purchasePrice+"')";
+        stmt.executeUpdate(query);
+        JOptionPane.showMessageDialog(this, "item Added ");
+        this.dispose();
+        new ItemMasterEntry().setVisible(true);
+        
+        
+    }catch(SQLException ex){
+        
+        JOptionPane.showMessageDialog(this, "Error in updating Database! ");
+        ex.printStackTrace();
+    }
+    
+    
+}
+
+public String populateItemCode(){
+    
+    String description=jTextField1.getText().trim().toUpperCase();
+    String firstLetter=description.substring(0,1)+"%";
+    int counter=0;
+    String query="select count(*) from item_master where item_description like '"+firstLetter+"'";
+    try{
+        Connection conn=new ConnDB().make_connection();
+        Statement stmt=conn.createStatement();
+        ResultSet rs=stmt.executeQuery(query);
+        while(rs.next()){
+            counter=rs.getInt(1);
+        }
+        
+        counter++;
+        
+  }catch(SQLException ex){
+        
+        JOptionPane.showMessageDialog(this, "Error loading Item Code! ");
+        ex.printStackTrace();
+    }
+    
+      
+    return firstLetter.substring(0,1)+String.format("%04d", counter);
+}
+
+
+
+
+
+public void loadTax(){
+
+    
+    String query="select tax_code from tax_master";
+    ArrayList<String> tax=new ArrayList<String>();
+    try{
+        Connection conn=new ConnDB().make_connection();
+        Statement stmt=conn.createStatement();
+        ResultSet rs=stmt.executeQuery(query);
+        while(rs.next()){
+            tax.add(rs.getString(1));
+        }
+        jComboBox1.removeAllItems();
+        for(String taxCode:tax){
+        jComboBox1.addItem(taxCode);
+        }
+        
+  }catch(SQLException ex){
+        
+        JOptionPane.showMessageDialog(this, "Error loading Tax Code! ");
+        ex.printStackTrace();
+    }
+
+    
+    
+}
+
+
+
+
+
 }

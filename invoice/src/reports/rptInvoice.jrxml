@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptInvoice" language="groovy" pageWidth="633" pageHeight="864" columnWidth="619" leftMargin="7" rightMargin="7" topMargin="7" bottomMargin="7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="357"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="192" splitType="Stretch">
+			<staticText>
+				<reportElement x="247" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<text><![CDATA[TAX INVOICE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="187" width="572" height="1"/>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="359" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="-32" width="274" height="1"/>
+			</line>
+			<line>
+				<reportElement x="275" y="-171" width="1" height="166"/>
+			</line>
+			<line>
+				<reportElement x="275" y="-32" width="301" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="-172" width="576" height="1"/>
+			</line>
+			<line>
+				<reportElement x="2" y="22" width="573" height="3"/>
+			</line>
+			<line>
+				<reportElement x="417" y="-171" width="1" height="166"/>
+			</line>
+			<line>
+				<reportElement x="-1" y="-171" width="2" height="166"/>
+			</line>
+			<line>
+				<reportElement x="0" y="2" width="274" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="334" width="574" height="1"/>
+			</line>
+			<line>
+				<reportElement x="275" y="2" width="300" height="1"/>
+			</line>
+			<line>
+				<reportElement x="575" y="-171" width="1" height="166"/>
+			</line>
+			<line>
+				<reportElement x="275" y="-56" width="301" height="1"/>
+			</line>
+			<line>
+				<reportElement x="275" y="-80" width="301" height="1"/>
+			</line>
+			<line>
+				<reportElement x="2" y="-104" width="574" height="1"/>
+			</line>
+			<line>
+				<reportElement x="275" y="-125" width="301" height="1"/>
+			</line>
+			<line>
+				<reportElement x="276" y="-147" width="300" height="1"/>
+			</line>
+			<line>
+				<reportElement x="1" y="3" width="1" height="331"/>
+			</line>
+			<line>
+				<reportElement x="26" y="3" width="1" height="331"/>
+			</line>
+			<line>
+				<reportElement x="575" y="4" width="1" height="331"/>
+			</line>
+			<line>
+				<reportElement x="495" y="1" width="1" height="331"/>
+			</line>
+			<line>
+				<reportElement x="456" y="4" width="1" height="331"/>
+			</line>
+			<line>
+				<reportElement x="422" y="2" width="1" height="331"/>
+			</line>
+			<line>
+				<reportElement x="354" y="1" width="1" height="331"/>
+			</line>
+			<line>
+				<reportElement x="282" y="5" width="1" height="331"/>
+			</line>
+			<line>
+				<reportElement x="248" y="2" width="1" height="331"/>
+			</line>
+		</band>
+		<band height="164"/>
+	</detail>
+	<pageFooter>
+		<band height="137" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="247" y="0" width="170" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subject to Durgapur Jurisdiction]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

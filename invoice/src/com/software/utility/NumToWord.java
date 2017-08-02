@@ -8,7 +8,7 @@ import java.util.Scanner;
  
 public class NumToWord
     {
-    public static void main (String args[])
+    /*public static void main (String args[])
         {
          
         if (args.length!=1)
@@ -19,16 +19,18 @@ public class NumToWord
          
         String number_str = args[0];
          
-        String inWords= NumberToWord(number_str) ;
+       // String inWords= NumberToWord(number_str) ;
         if (inWords.trim().length()==0) {inWords="Zero";}
         inWords=inWords + " Only.";
          
         System.out.println("Given Number : " + number_str);
         System.out.println("InWords :" + inWords);
-    }
+    }*/
      
-    private static String NumberToWord (String number)
-            {
+    public String NumberToWord (String number)
+            
+    {
+            System.out.println(number);
             String twodigitword="";
             String word="";
             String[] HTLC = {"", "Hundred", "Thousand", "Lakh", "Crore","Hundred"}; //H-hundread , T-Thousand, ..
@@ -64,7 +66,7 @@ public class NumToWord
                return (word);
             }
      
-    private static String ConvertOnesTwos(String t)
+    private  String ConvertOnesTwos(String t)
     {
         final String[] ones ={"", "One", "Two", "Three", "Four", "Five","Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve","Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
         final String[] tens = {"", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty","Ninety"};
