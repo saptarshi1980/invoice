@@ -697,10 +697,10 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         
         String query="insert into bill_master(parent_company_code,buyer_code,Invoice_no,invoice_date,delivery_note,"
                 + "supplier_ref_no,buyer_order_no,buyer_order_date,other_reference,despatch_document_no,delivery_note_date,"
-                + "despatch_through,destination,igst_flag) "
+                + "despatch_through,destination,igst_flag,ts) "
                 + "values('"+parentCode+"','"+buyerCode+"','"+invoiceNo+"',str_to_date('"+invoiceDate+"','%d-%m-%Y'),'"+deliveryNote+"',"
                 + "'"+supplierRefNo+"','"+buyerOrderNo+"',str_to_date('"+buyerOrderDate+"','%d-%m-%Y'),'"+otherReference+"',"
-                + "'"+despatchDocNo+"',str_to_date('"+deliveryNoteDate+"','%d-%m-%Y'),'"+despatchThrough+"','"+destination+"','"+igst+"')";
+                + "'"+despatchDocNo+"',str_to_date('"+deliveryNoteDate+"','%d-%m-%Y'),'"+despatchThrough+"','"+destination+"','"+igst+"',now())";
         stmt1.executeUpdate(query);
         JOptionPane.showMessageDialog(this, "Basic details Added, please fillup the invoice details in next screen ");
         new InvoiceDetailsEntry(invoiceNo,igst).setVisible(true);

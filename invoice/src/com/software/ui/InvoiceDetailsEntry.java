@@ -27,6 +27,7 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
 
     String igst=null;
     String invoiceID=null;
+    double balance=0;
     
     /** Creates new form InvoiceDetailsEntry */
     public InvoiceDetailsEntry() {
@@ -148,6 +149,11 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
         jLabel6.setName("jLabel6"); // NOI18N
 
         jTextField4.setName("jTextField4"); // NOI18N
+        jTextField4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField4FocusLost(evt);
+            }
+        });
         jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField4KeyTyped(evt);
@@ -555,6 +561,21 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
+        if(!checkQuantity()){
+            int selectedOption = JOptionPane.showConfirmDialog(null, 
+                                  "Present Stock is less than given quantity, Want to proceed?", 
+                                  "Choose", 
+                                  JOptionPane.YES_NO_OPTION); 
+                    if (selectedOption == JOptionPane.YES_OPTION) {
+                        jTextField5.requestFocus();
+                    }
+                    else{
+                        jTextField4.requestFocus();
+                    }
+          }
+    }//GEN-LAST:event_jTextField4FocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -657,14 +678,22 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
         }
         
         String insert="insert into bill_details(invoice_id,item_code,hsn_sac,gst_rate,quantity,rate,per,discount,"
-                + "amount,tax_amt_central,tax_amt_state,tax_percent_central,tax_percent_state)"
+                + "amount,tax_amt_central,tax_amt_state,tax_percent_central,tax_percent_state,ts)"
                 + "values('"+invoiceid+"','"+itemCode+"','"+hsnCode+"','"+gst+"','"+quantity+"','"+rate+"','"+per+"',"
-                + "'"+discount+"','"+amount+"','"+centralGstAmt+"','"+stateGstAmt+"','"+centralGstRate+"','"+stateGstRate+"')";
-        
+                + "'"+discount+"','"+amount+"','"+centralGstAmt+"','"+stateGstAmt+"','"+centralGstRate+"','"+stateGstRate+"',now())";
+        String updateItem="update item_master SET stock=stock-'"+quantity+"' where item_code='"+itemCode+"' ";
+        balance=balance-quantity;
+        String insertTransaction="insert into item_master_transaction(item_code,quantity,dc,item_balance,reference,ts_transaction) values('"+itemCode+"','"+quantity+"','D','"+balance+"','"+invoiceid+"',now())";
          try{
         Connection conn=new ConnDB().make_connection();
         Statement stmt=conn.createStatement();
+        Statement stmt1=conn.createStatement();
+        Statement stmt2=conn.createStatement();
         stmt.executeUpdate(insert);
+        stmt1.executeUpdate(updateItem);
+        stmt2.executeUpdate(insertTransaction);
+
+        
          }catch(SQLException ex){
              ex.printStackTrace();
          }
@@ -689,6 +718,7 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
             description.setText("Item Name-"+rs.getString(1));
             jTextField5.setText(rs.getString(2));
             stcok.setText("Stock-"+rs.getString(4));
+            this.balance=Double.parseDouble(rs.getString(4));
             purchase.setText("Purchase Price-"+rs.getString(3));
             counter++;
         }
@@ -805,5 +835,14 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
              ex.printStackTrace();
          }
         
+    }
+    
+    public boolean checkQuantity(){
+        
+        double quantity=Double.parseDouble(jTextField4.getText());
+        if(quantity<balance){
+            return true;
+        }
+        else return false;
     }
 }
