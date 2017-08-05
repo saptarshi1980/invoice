@@ -11,6 +11,9 @@
 package com.software.ui;
 
 import com.software.utility.ConnDB;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,8 +21,14 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -32,6 +41,8 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         initComponents();
         loadCompanyCode();
         getDate();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
 
     /** This method is called from within the constructor to
@@ -76,7 +87,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setName("Form"); // NOI18N
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(invoice.InvoiceApp.class).getContext().getResourceMap(InvoiceMasterEntry.class);
@@ -119,6 +130,9 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
 
         jTextField2.setName("jTextField2"); // NOI18N
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField2KeyTyped(evt);
             }
@@ -532,10 +546,16 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
         
         char c = evt.getKeyChar();
+        System.out.println(c);
+        System.out.println(evt.getKeyChar());
+        
 
        if ((c == evt.VK_ENTER)) {
                jComboBox1.requestFocus();
              }
+       else if(c==KeyEvent.VK_F1){
+           System.out.println("F1 Pressed");
+       }
         
     }//GEN-LAST:event_jTextField2KeyTyped
 
@@ -557,6 +577,15 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
     private void jButton3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyPressed
         saveInvoiceMaster();
     }//GEN-LAST:event_jButton3KeyPressed
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+                
+
+      if(evt.getKeyCode()==KeyEvent.VK_F1){
+          viewReport();
+           
+       }
+    }//GEN-LAST:event_jTextField2KeyPressed
 
     /**
      * @param args the command line arguments
@@ -718,5 +747,37 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         
         
     }
+    
+    
+    
+        
+        private void viewReport() {
+        
+           String invoiceNo=jComboBox1.getSelectedItem().toString();
+           //String reportSource = "rptInvoice1.jasper";
+            String reportSource = "c://reports//buyer.jasper";
+            Map<String, Object> params = new HashMap<String, Object>();
+            
+   try
+        {
+           try{
+                
+                Connection conn = new ConnDB().make_connection(); 
+                JasperPrint jasperPrint =
+                JasperFillManager.fillReport(
+                reportSource,params,conn);
+                JasperViewer.viewReport(jasperPrint,false);
+              }catch(JRException ex){
+                     ex.printStackTrace();
+                    }
+        }catch (Exception ex)
+        {
+           ex.printStackTrace();
+
+
+        }
+    }
+        
+    
     
 }

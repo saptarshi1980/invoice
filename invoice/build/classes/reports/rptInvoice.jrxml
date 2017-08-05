@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptInvoice" language="groovy" pageWidth="633" pageHeight="864" columnWidth="619" leftMargin="7" rightMargin="7" topMargin="7" bottomMargin="7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="32"/>
+	<queryString>
+		<![CDATA[SELECT a.*,b.*,c.*,d.*,e.item_description FROM company_master a,client_master b,bill_master c,bill_details d,item_master e WHERE TRIM(c.Invoice_no)='PROV/17-18/5' AND c.Invoice_no=d.invoice_id AND c.buyer_code=b.client_code AND c.parent_company_code=a.com_id and d.item_code=e.item_code]]>
+	</queryString>
+	<field name="com_id" class="java.lang.String"/>
+	<field name="com_name" class="java.lang.String"/>
+	<field name="com_address" class="java.lang.String"/>
+	<field name="GST" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="phone" class="java.lang.String"/>
+	<field name="mobile" class="java.lang.String"/>
+	<field name="client_code" class="java.lang.String"/>
+	<field name="client_name" class="java.lang.String"/>
+	<field name="address1" class="java.lang.String"/>
+	<field name="address2" class="java.lang.String"/>
+	<field name="pin" class="java.lang.String"/>
+	<field name="state" class="java.lang.String"/>
+	<field name="gst_no" class="java.lang.String"/>
+	<field name="uin" class="java.lang.String"/>
+	<field name="parent_company_code" class="java.lang.String"/>
+	<field name="buyer_code" class="java.lang.Object"/>
+	<field name="Invoice_no" class="java.lang.String"/>
+	<field name="invoice_date" class="java.sql.Date"/>
+	<field name="delivery_note" class="java.lang.String"/>
+	<field name="supplier_ref_no" class="java.lang.String"/>
+	<field name="buyer_order_no" class="java.lang.String"/>
+	<field name="buyer_order_date" class="java.sql.Date"/>
+	<field name="other_reference" class="java.lang.String"/>
+	<field name="despatch_document_no" class="java.lang.String"/>
+	<field name="delivery_note_date" class="java.sql.Date"/>
+	<field name="despatch_through" class="java.lang.String"/>
+	<field name="destination" class="java.lang.String"/>
+	<field name="tot_amt" class="java.lang.Double"/>
+	<field name="tot_amt_word" class="java.lang.String"/>
+	<field name="igst_flag" class="java.lang.String"/>
+	<field name="s_gst" class="java.lang.Double"/>
+	<field name="c_gst" class="java.lang.Double"/>
+	<field name="tot_tax" class="java.lang.Double"/>
+	<field name="ts" class="java.sql.Timestamp"/>
+	<field name="invoice_id" class="java.lang.String"/>
+	<field name="item_code" class="java.lang.String"/>
+	<field name="hsn_sac" class="java.lang.String"/>
+	<field name="gst_rate" class="java.lang.Double"/>
+	<field name="quantity" class="java.lang.Double"/>
+	<field name="rate" class="java.lang.Double"/>
+	<field name="per" class="java.lang.String"/>
+	<field name="discount" class="java.lang.Double"/>
+	<field name="amount" class="java.lang.Double"/>
+	<field name="tax_amt_central" class="java.lang.Double"/>
+	<field name="tax_amt_state" class="java.lang.Double"/>
+	<field name="tax_percent_central" class="java.lang.Double"/>
+	<field name="tax_percent_state" class="java.lang.Double"/>
+	<field name="item_description" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="190" splitType="Stretch">
+			<staticText>
+				<reportElement x="247" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<text><![CDATA[TAX INVOICE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="187" width="572" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="9" y="88" width="242" height="22"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{client_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="102" width="245" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{address1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="8" y="116" width="102" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{address2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="117" width="66" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="177" y="119" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="9" y="133" width="132" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{gst_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-1" y="22" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{com_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="37" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{com_address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="54" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="70" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="281" y="27" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Invoice_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="27" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{invoice_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="281" y="48" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{delivery_note}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="277" y="70" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{supplier_ref_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="70" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{other_reference}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="91" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{buyer_order_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="421" y="89" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{buyer_order_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="116" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{despatch_document_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="423" y="122" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{delivery_note_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="139" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{despatch_through}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="422" y="141" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{destination}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="38"/>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="-32" width="274" height="1"/>
+			</line>
+			<line>
+				<reportElement x="275" y="-171" width="1" height="166"/>
+			</line>
+			<line>
+				<reportElement x="275" y="-32" width="301" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="-172" width="576" height="1"/>
+			</line>
+			<line>
+				<reportElement x="2" y="22" width="573" height="3"/>
+			</line>
+			<line>
+				<reportElement x="417" y="-171" width="1" height="166"/>
+			</line>
+			<line>
+				<reportElement x="-1" y="-171" width="2" height="166"/>
+			</line>
+			<line>
+				<reportElement x="0" y="2" width="274" height="1"/>
+			</line>
+			<line>
+				<reportElement x="275" y="2" width="300" height="1"/>
+			</line>
+			<line>
+				<reportElement x="575" y="-171" width="1" height="166"/>
+			</line>
+			<line>
+				<reportElement x="275" y="-56" width="301" height="1"/>
+			</line>
+			<line>
+				<reportElement x="275" y="-80" width="301" height="1"/>
+			</line>
+			<line>
+				<reportElement x="2" y="-104" width="574" height="1"/>
+			</line>
+			<line>
+				<reportElement x="275" y="-125" width="301" height="1"/>
+			</line>
+			<line>
+				<reportElement x="276" y="-147" width="300" height="1"/>
+			</line>
+			<line>
+				<reportElement x="1" y="3" width="1" height="19"/>
+			</line>
+			<line>
+				<reportElement x="29" y="3" width="1" height="19"/>
+			</line>
+			<line>
+				<reportElement x="492" y="3" width="1" height="21"/>
+			</line>
+			<line>
+				<reportElement x="456" y="4" width="1" height="19"/>
+			</line>
+			<line>
+				<reportElement x="422" y="2" width="1" height="20"/>
+			</line>
+			<line>
+				<reportElement x="354" y="1" width="1" height="21"/>
+			</line>
+			<line>
+				<reportElement x="276" y="4" width="1" height="19"/>
+			</line>
+			<line>
+				<reportElement x="248" y="2" width="1" height="20"/>
+			</line>
+			<textField>
+				<reportElement x="30" y="4" width="217" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{item_description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="281" y="3" width="65" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{gst_rate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="357" y="4" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="4" width="21" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="-29" width="27" height="20"/>
+				<textElement/>
+				<text><![CDATA[Sr No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="77" y="-27" width="121" height="20"/>
+				<textElement/>
+				<text><![CDATA[Item Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="251" y="-27" width="23" height="20"/>
+				<textElement/>
+				<text><![CDATA[HSN]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="251" y="3" width="23" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{hsn_sac}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="426" y="-23" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[rate]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="424" y="4" width="32" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{rate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="457" y="-24" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[per]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="456" y="4" width="36" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{per}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="521" y="5" width="1" height="20"/>
+			</line>
+			<staticText>
+				<reportElement x="496" y="-26" width="25" height="20"/>
+				<textElement/>
+				<text><![CDATA[disc]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="492" y="6" width="30" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{discount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="522" y="-28" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[amount]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="525" y="9" width="32" height="14"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="573" y="6" width="1" height="16"/>
+			</line>
+		</band>
+		<band height="41">
+			<textField>
+				<reportElement x="65" y="16" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{hsn_sac}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="198" y="16" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tax_amt_central}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="357" y="16" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tax_amt_state}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="50">
+			<textField>
+				<reportElement x="132" y="21" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{hsn_sac}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="32" splitType="Stretch"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="64">
+			<textField>
+				<reportElement x="8" y="21" width="568" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tot_amt_word}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="247" y="41" width="170" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Subject to Durgapur Jurisdiction]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="6" y="4" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tax_amt_central}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="5" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tax_amt_state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="2" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tot_amt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="233" y="-23" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tot_amt}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band height="21" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptInvoice" language="groovy" pageWidth="633" pageHeight="864" columnWidth="619" leftMargin="7" rightMargin="7" topMargin="7" bottomMargin="7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="invoice_no" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT a.*,b.*,c.*,d.*,e.item_description FROM company_master a,client_master b,bill_master c,bill_details d,item_master e WHERE TRIM(c.Invoice_no)=$P{invoice_no} AND c.Invoice_no=d.invoice_id AND c.buyer_code=b.client_code AND c.parent_company_code=a.com_id and d.item_code=e.item_code]]>
+	</queryString>
+	<field name="com_id" class="java.lang.String"/>
+	<field name="com_name" class="java.lang.String"/>
+	<field name="com_address" class="java.lang.String"/>
+	<field name="GST" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="phone" class="java.lang.String"/>
+	<field name="mobile" class="java.lang.String"/>
+	<field name="client_code" class="java.lang.String"/>
+	<field name="client_name" class="java.lang.String"/>
+	<field name="address1" class="java.lang.String"/>
+	<field name="address2" class="java.lang.String"/>
+	<field name="pin" class="java.lang.String"/>
+	<field name="state" class="java.lang.String"/>
+	<field name="gst_no" class="java.lang.String"/>
+	<field name="uin" class="java.lang.String"/>
+	<field name="parent_company_code" class="java.lang.String"/>
+	<field name="buyer_code" class="java.lang.Object"/>
+	<field name="Invoice_no" class="java.lang.String"/>
+	<field name="invoice_date" class="java.sql.Date"/>
+	<field name="delivery_note" class="java.lang.String"/>
+	<field name="supplier_ref_no" class="java.lang.String"/>
+	<field name="buyer_order_no" class="java.lang.String"/>
+	<field name="buyer_order_date" class="java.sql.Date"/>
+	<field name="other_reference" class="java.lang.String"/>
+	<field name="despatch_document_no" class="java.lang.String"/>
+	<field name="delivery_note_date" class="java.sql.Date"/>
+	<field name="despatch_through" class="java.lang.String"/>
+	<field name="destination" class="java.lang.String"/>
+	<field name="tot_amt" class="java.lang.Double"/>
+	<field name="tot_amt_word" class="java.lang.String"/>
+	<field name="igst_flag" class="java.lang.String"/>
+	<field name="s_gst" class="java.lang.Double"/>
+	<field name="c_gst" class="java.lang.Double"/>
+	<field name="tot_tax" class="java.lang.Double"/>
+	<field name="ts" class="java.sql.Timestamp"/>
+	<field name="invoice_id" class="java.lang.String"/>
+	<field name="item_code" class="java.lang.String"/>
+	<field name="hsn_sac" class="java.lang.String"/>
+	<field name="gst_rate" class="java.lang.Double"/>
+	<field name="quantity" class="java.lang.Double"/>
+	<field name="rate" class="java.lang.Double"/>
+	<field name="per" class="java.lang.String"/>
+	<field name="discount" class="java.lang.Double"/>
+	<field name="amount" class="java.lang.Double"/>
+	<field name="tax_amt_central" class="java.lang.Double"/>
+	<field name="tax_amt_state" class="java.lang.Double"/>
+	<field name="tax_percent_central" class="java.lang.Double"/>
+	<field name="tax_percent_state" class="java.lang.Double"/>
+	<field name="item_description" class="java.lang.String"/>
+	<variable name="quantity_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{quantity}]]></variableExpression>
+	</variable>
+	<variable name="amount_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="30" y="4" width="217" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{item_description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="281" y="3" width="65" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{gst_rate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="357" y="4" width="60" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="5" y="4" width="21" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="251" y="3" width="23" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{hsn_sac}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="424" y="4" width="32" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{rate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="456" y="4" width="36" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{per}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="492" y="6" width="30" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{discount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="525" y="9" width="64" height="14"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="37">
+			<textField>
+				<reportElement x="361" y="1" width="56" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{quantity_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="530" y="1" width="70" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{amount_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="13" y="15" width="344" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tot_amt_word}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band/>
+	</lastPageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

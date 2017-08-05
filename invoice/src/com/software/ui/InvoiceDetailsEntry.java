@@ -12,12 +12,21 @@ package com.software.ui;
 
 import com.software.utility.ConnDB;
 import com.software.utility.NumToWord;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -42,6 +51,10 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
         this.igst=igst;
         this.invoiceID=invoiceId;
         updateGrid();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        jComboBox1.removeAllItems();
+        hsn.removeAllItems();
     }
 
     /** This method is called from within the constructor to
@@ -131,6 +144,9 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
             }
         });
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField2KeyTyped(evt);
             }
@@ -437,7 +453,7 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
-        description();
+        //description();
     }//GEN-LAST:event_jTextField2FocusLost
 
     private void jTextField10KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyTyped
@@ -455,6 +471,7 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
        if ((c == evt.VK_ENTER)) {
                description();
              }
+       
     }//GEN-LAST:event_jTextField2KeyTyped
 
     private void jComboBox1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyTyped
@@ -575,6 +592,15 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
                     }
           }
     }//GEN-LAST:event_jTextField4FocusLost
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+
+        if(evt.getKeyCode()==KeyEvent.VK_F1){
+          viewReport();
+          jTextField2.requestFocus();
+           
+       }
+    }//GEN-LAST:event_jTextField2KeyPressed
 
     /**
      * @param args the command line arguments
@@ -845,4 +871,35 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
         }
         else return false;
     }
+
+
+
+    private void viewReport() {
+        
+           String invoiceNo=jComboBox1.getSelectedItem().toString();
+           //String reportSource = "rptInvoice1.jasper";
+            String reportSource = "c://reports//item.jasper";
+            Map<String, Object> params = new HashMap<String, Object>();
+            
+   try
+        {
+           try{
+                
+                Connection conn = new ConnDB().make_connection(); 
+                JasperPrint jasperPrint =
+                JasperFillManager.fillReport(
+                reportSource,params,conn);
+                JasperViewer.viewReport(jasperPrint,false);
+              }catch(JRException ex){
+                     ex.printStackTrace();
+                    }
+        }catch (Exception ex)
+        {
+           ex.printStackTrace();
+
+
+        }
+    }
+
+
 }
