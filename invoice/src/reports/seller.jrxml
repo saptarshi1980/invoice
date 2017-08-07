@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="seller" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT * FROM seller_master]]>
+	</queryString>
+	<field name="seller_code" class="java.lang.String"/>
+	<field name="seller_name" class="java.lang.String"/>
+	<field name="seller_address" class="java.lang.String"/>
+	<field name="seller_phone" class="java.lang.String"/>
+	<field name="seller_mobile" class="java.lang.String"/>
+	<field name="seller_gst" class="java.lang.String"/>
+	<field name="reg_date" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="166" y="0" width="250" height="35"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LIST OF SELLERS]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="8" y="0" width="61" height="20"/>
+				<textElement/>
+				<text><![CDATA[seller_code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="68" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[seller_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="168" y="0" width="128" height="20"/>
+				<textElement/>
+				<text><![CDATA[seller_address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[seller_phone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="377" y="0" width="80" height="20"/>
+				<textElement/>
+				<text><![CDATA[seller_mobile]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="476" y="0" width="61" height="20"/>
+				<textElement/>
+				<text><![CDATA[seller_gst]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="8" y="10" width="61" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{seller_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="66" y="10" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{seller_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="168" y="10" width="128" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{seller_address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="284" y="10" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{seller_phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="375" y="10" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{seller_mobile}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="463" y="10" width="92" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{seller_gst}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="24" splitType="Stretch"/>
+	</summary>
+</jasperReport>

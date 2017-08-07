@@ -65,6 +65,8 @@ public class CustomerMasterEntry extends javax.swing.JFrame {
         jTextField10 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jTextField11 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jTextField12 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -183,6 +185,16 @@ public class CustomerMasterEntry extends javax.swing.JFrame {
             }
         });
 
+        jLabel13.setText(resourceMap.getString("jLabel13.text")); // NOI18N
+        jLabel13.setName("jLabel13"); // NOI18N
+
+        jTextField12.setName("jTextField12"); // NOI18N
+        jTextField12.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField12KeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -198,23 +210,26 @@ public class CustomerMasterEntry extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel10)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel11))
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel13))
                 .addGap(53, 53, 53)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField11)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField6)
-                    .addComponent(jTextField7)
-                    .addComponent(jTextField8)
-                    .addComponent(jTextField9)
-                    .addComponent(jTextField10))
-                .addGap(31, 31, 31))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,15 +268,19 @@ public class CustomerMasterEntry extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
                     .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -328,7 +347,7 @@ public class CustomerMasterEntry extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addContainerGap())
@@ -401,7 +420,7 @@ public class CustomerMasterEntry extends javax.swing.JFrame {
         char c = evt.getKeyChar();
 
        if ((c == evt.VK_ENTER)) {
-               jTextField9.requestFocus();
+               jTextField12.requestFocus();
              }
     }//GEN-LAST:event_jTextField8KeyTyped
 
@@ -432,6 +451,14 @@ public class CustomerMasterEntry extends javax.swing.JFrame {
              }
     }//GEN-LAST:event_jTextField11KeyTyped
 
+    private void jTextField12KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField12KeyTyped
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField9.requestFocus();
+             }
+    }//GEN-LAST:event_jTextField12KeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -449,6 +476,7 @@ public class CustomerMasterEntry extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -462,6 +490,7 @@ public class CustomerMasterEntry extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -513,12 +542,13 @@ public void saveCustomer(){
     String phone=jTextField9.getText().trim();
     String mobile=jTextField10.getText().trim();
     String email=jTextField11.getText().trim();
+    String pan=jTextField12.getText().toUpperCase().trim();
         try{
         Connection conn=new ConnDB().make_connection();
         Statement stmt=conn.createStatement();
-        String query="insert into client_master(client_code,client_name,address1,address2,pin,state,gst_no,uin,phone,mobile,email)"
+        String query="insert into client_master(client_code,client_name,address1,address2,pin,state,gst_no,uin,phone,mobile,email,pan,reg_date)"
                 + " values('"+customerCode+"','"+customerName+"','"+address1+"','"+address2+"','"+pin+"','"+state+"'"
-                + ",'"+gst+"','"+uin+"','"+phone+"','"+mobile+"','"+email+"')";
+                + ",'"+gst+"','"+uin+"','"+phone+"','"+mobile+"','"+email+"','"+pan+"',now())";
         stmt.executeUpdate(query);
         JOptionPane.showMessageDialog(this, "Customer Added ");
         this.dispose();

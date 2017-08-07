@@ -596,7 +596,8 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
     private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
 
         if(evt.getKeyCode()==KeyEvent.VK_F1){
-          viewReport();
+          //viewReport();
+            new ItemSearch().setVisible(true);
           jTextField2.requestFocus();
            
        }
@@ -733,8 +734,8 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
         String desc=jTextField2.getText().trim().toUpperCase();
         double rate=0.0;
         double stock=0.0;
-        String query="select item_description,unit_price,purchase_price,stock from item_master where trim(item_code)='"+desc+"'";
-    
+        String query="SELECT item_description,IFNULL(unit_price,0),IFNULL(purchase_price,0),IFNULL(stock,0) from item_master where trim(item_code)='"+desc+"'";
+        System.out.println(query);
     try{
         Connection conn=new ConnDB().make_connection();
         Statement stmt=conn.createStatement();
@@ -754,7 +755,9 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
 
         }else{
                     Statement stmt1=conn.createStatement();
-                    ResultSet rs1=stmt1.executeQuery("select hsn_code from item_master where trim(item_code)='"+desc+"'");
+                    String query2="select hsn_code from item_master where trim(item_code)='"+desc+"'";
+                    ResultSet rs1=stmt1.executeQuery(query2);
+                    System.out.println(query2);
                     while(rs1.next()){
                                 hsn.addItem(rs1.getString(1));
                                 
