@@ -19,13 +19,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.export.JRRtfExporter;
 import net.sf.jasperreports.engine.export.JRTextExporter;
 import net.sf.jasperreports.engine.export.JRTextExporterParameter;
+import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
@@ -59,6 +64,7 @@ public class PrintInvoice extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setName("Form"); // NOI18N
@@ -163,15 +169,25 @@ public class PrintInvoice extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
+        jButton2.setName("jButton2"); // NOI18N
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(185, 185, 185)
+                .addGap(174, 174, 174)
                 .addComponent(jButton1)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addGap(54, 54, 54)
+                .addComponent(jButton2)
+                .addContainerGap(77, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(145, 145, 145)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,7 +201,9 @@ public class PrintInvoice extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -216,6 +234,10 @@ public class PrintInvoice extends javax.swing.JFrame {
         viewReport();
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+       generateDoc();
+    }//GEN-LAST:event_jButton2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -229,6 +251,7 @@ public class PrintInvoice extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
@@ -272,7 +295,7 @@ private void viewReport() {
     String invoiceNo=jComboBox1.getSelectedItem().toString();
     
     //String reportSource = "rptInvoice1.jasper";
-    String reportSource = "c://reports//rptInvoice1.jasper";
+    String reportSource = "c://reports//rptInvoice.jasper";
     Map<String, Object> params = new HashMap<String, Object>();
     params.put("invoice_no",invoiceNo);
    
@@ -297,6 +320,28 @@ catch (Exception ex)
    
 
 }
+}
+
+public void generateDoc() {
+    String invoiceNo=jComboBox1.getSelectedItem().toString();
+    String reportSource = "c://reports//rptInvoice.jasper";
+    Map<String, Object> params = new HashMap<String, Object>();
+    params.put("invoice_no",invoiceNo);
+        Connection conn = new ConnDB().make_connection(); 
+        try {
+            JasperPrint jasperPrint =
+            JasperFillManager.fillReport(
+            reportSource,params,conn);
+       
+    JRRtfExporter exporter = new JRRtfExporter();
+    exporter.setParameter(JRExporterParameter.JASPER_PRINT,jasperPrint );
+    exporter.setParameter(JRExporterParameter.OUTPUT_FILE_NAME, "myreport.rtf");
+        
+            exporter.exportReport();
+        } catch (JRException ex) {
+            Logger.getLogger(PrintInvoice.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
 }
 
 }

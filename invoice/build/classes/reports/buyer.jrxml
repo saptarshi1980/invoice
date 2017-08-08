@@ -4,7 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[select * from client_master order by client_code]]>
+		<![CDATA[select * from client_master order by reg_date desc]]>
 	</queryString>
 	<field name="client_code" class="java.lang.String"/>
 	<field name="client_name" class="java.lang.String"/>
@@ -17,6 +17,8 @@
 	<field name="phone" class="java.lang.String"/>
 	<field name="mobile" class="java.lang.String"/>
 	<field name="email" class="java.lang.String"/>
+	<field name="reg_date" class="java.sql.Timestamp"/>
+	<field name="pan" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -60,22 +62,22 @@
 			<textField>
 				<reportElement x="2" y="12" width="100" height="20"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{client_code}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{client_code}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="105" y="11" width="100" height="20"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{client_name}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{client_name}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="227" y="14" width="100" height="20"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{address1}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{address1}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="358" y="21" width="100" height="20"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$F{address2}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{address2}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
