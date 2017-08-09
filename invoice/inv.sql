@@ -143,6 +143,19 @@ CREATE TABLE `hsn_master` (
 
 insert  into `hsn_master`(`trgt_group_code`,`trgt_group_desc`,`group_code`,`group_description`,`tgt_prod`,`hsn`,`sgst`,`cgst`,`igst`) values ('905','OTHER CONS','86','CANON INKJET REMANUFACTURED','CONS','8443.99.53',14.00,14.00,28.00),('905','OTHER CONS','115','EPSON INKJET REMANUFACTURED','CONS','8443.99.53',14.00,14.00,28.00),('905','OTHER CONS','120','MEMORY CARD','CONS','8542.92.00',9.00,9.00,18.00),('905','OTHER CONS','157','IMPORTED TONERS - LEXMARK','CONS','3707.90.90',9.00,9.00,18.00),('905','OTHER CONS','162','INKJET- BROTHER','CONS','8443.99.53',9.00,9.00,18.00),('910','THERMAL CONS','191','ATM CONSUMABLE','CONS','4802.69.50',6.00,6.00,12.00),('914','TONER POWDER','90','BOTTLED TONER LOCAL','CONS','3707.90.90',9.00,9.00,18.00),('902','IMP RIBBONS','68','IMPORTED RIBBONS','CONS','9612.10.10',9.00,9.00,18.00),('905','OTHER CONS','80','TONER','CONS','3707.90.90',9.00,9.00,18.00),('905','OTHER CONS','71','HP INKJET REMANUFACTURED','CONS','8443.99.53',14.00,14.00,28.00),('905','OTHER CONS','158','IMPORTED TONERS - PSI','CONS','3707.90.90',9.00,9.00,18.00),('911','LABEL TAPES','289','LABEL TAPE','CONS','3919.90.90',0.00,0.00,0.00),('905','OTHER CONS','261','IMPORTED TONERS - RICOH','CONS','3707.90.90',9.00,9.00,18.00),('904','LIPI RIBBIONS','67','LIPI RIBBONS','CONS','9612.10.10',9.00,9.00,18.00),('905','OTHER CONS','75','IMPORTED TONERS - TALLY','CONS','8443.99.59',14.00,14.00,28.00),('907','OTHER - INKJET','89','INKJETS - TALLY','CONS','8443.99.53',9.00,9.00,18.00),('912','PACKING MATERIAL','127','PACKING MATERIAL','CONS','4819.10.90',6.00,6.00,12.00),('905','OTHER CONS','159','IMPORTED TONERS - PENTAX','CONS','3707.90.90',9.00,9.00,18.00),('905','OTHER CONS','186','COMPUTER ASSESSORIES-LIPI','CONS','8473.30.99',9.00,9.00,18.00),('905','OTHER CONS','187','IMPORTED TONER - WEP','CONS','3707.90.90',9.00,9.00,18.00),('905','OTHER CONS','146','CONSUMABLE - IMATION','CONS','',0.00,0.00,0.00),('913','IMPORTED  TONER - BROTHER','155','IMPORTED TONER - BROTHER','CONS','3707.90.90',9.00,9.00,18.00),('905','OTHER CONS','156','IMPORTED TONERS - SAMSUNG','CONS','3707.90.90',9.00,9.00,18.00),('905','OTHER CONS','171','IMPORTED TONER - ROWE','CONS','3707.90.90',9.00,9.00,18.00),('905','OTHER CONS','214','IMPORTED TONER BROTHER(S)','CONS','3707.90.90',9.00,9.00,18.00),('909','LIPI RIFFILS','69','LIPI RIFFILS','CONS','9612.10.10',9.00,9.00,18.00),('902','IMP RIBBONS','70','IMPORTED RIFFILS','CONS','9612.10.10',9.00,9.00,18.00),('901','CTC','73','CTC (Compitable Toner Cartridges)','CONS','3707.90.90',9.00,9.00,18.00),('905','OTHER CONS','81','CHARACTER BAND','CONS','8443.99.59',14.00,14.00,28.00),('910','THERMAL CONS','76','PAPER THERMAL','CONS','4802.69.50',6.00,6.00,12.00),('905','OTHER CONS','98','STORAGE DEVICE - TANDBERG','CONS','8471.70.90',9.00,9.00,18.00),('905','OTHER CONS','160','IMPORTED TONERS - HITACHI','CONS','3707.90.90',9.00,9.00,18.00),('905','OTHER CONS','74','EXPORT - CTC','CONS','3707.90.90',9.00,9.00,18.00),(NULL,NULL,'500','KEY BOARD',NULL,'500.500.500',NULL,NULL,NULL),(NULL,NULL,'501','SPEAKER',NULL,'501.501.501',NULL,NULL,NULL);
 
+/*Table structure for table `item_category` */
+
+DROP TABLE IF EXISTS `item_category`;
+
+CREATE TABLE `item_category` (
+  `id` varchar(6) DEFAULT NULL,
+  `segment` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `item_category` */
+
+insert  into `item_category`(`id`,`segment`) values ('1','MONITOR'),('2','CABINET'),('3','SMPS'),('4','MOTHER BOARD'),('5','CPU'),('6','RAM'),('7','HDD'),('8','LAN CARD'),('9','GRAPHICS CARD'),('10','KEY BOARD'),('11','SPEAKER'),('12','DESKJET PRINTER'),('13','LASERJET PRINTER'),('14','LAN CABLE'),('15','TONER'),('16','POWER CABLE'),('17','LAPTOP'),('18','POWER CABLE'),('19','UPS'),('20','LAPTOP HDD'),('21','LAPTOP KEYBOARD'),('22','LAPTOP BOARD'),('23','LAPTOP BATTERY'),('','');
+
 /*Table structure for table `item_master` */
 
 DROP TABLE IF EXISTS `item_master`;
@@ -156,12 +169,13 @@ CREATE TABLE `item_master` (
   `unit_price` double(12,2) DEFAULT NULL,
   `purchase_price` double(12,2) DEFAULT NULL,
   `stock` double(12,2) DEFAULT NULL,
+  `segment` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`item_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `item_master` */
 
-insert  into `item_master`(`item_code`,`item_description`,`hsn_code`,`tax_code`,`unit`,`unit_price`,`purchase_price`,`stock`) values ('I0001','IIJKK','501.501.501','004','PEC',NULL,NULL,NULL),('K0001','KEY BOARD','500.500.500','001','PC',NULL,NULL,NULL),('S0001','SPEAKER','501.501.501','001','PC',NULL,NULL,NULL),('T0001','TEST ITEM1','123','001','PEC',120.00,100.00,140.00),('T0002','TEST ITEM2','324','001','PEC',200.00,90.00,-10.00),('T0003','TEST ITEM3','7867','001','PEC',110.00,100.00,10.00),('T0004','TEST ITEM 5','12345','002','PEC',NULL,NULL,NULL),('T0005','TEST ITME','1234','001','PEC',60.00,50.00,90.00),('T0006','TEST ITEM','8443.99.53','001','PEC',110.00,100.00,70.00),('T0007','TEST ITEM','8443.99.53','001','PEC',210.00,200.00,80.00),('T0008','TEST ITEM','8542.92.00','002','PEC',NULL,NULL,NULL);
+insert  into `item_master`(`item_code`,`item_description`,`hsn_code`,`tax_code`,`unit`,`unit_price`,`purchase_price`,`stock`,`segment`) values ('I0001','IIJKK','501.501.501','004','PEC',NULL,NULL,NULL,NULL),('K0001','KEY BOARD','500.500.500','001','PC',NULL,NULL,NULL,NULL),('S0001','SPEAKER','501.501.501','001','PC',NULL,NULL,NULL,NULL),('T0001','TEST ITEM1','123','001','PEC',120.00,100.00,140.00,NULL),('T0002','TEST ITEM2','324','001','PEC',200.00,90.00,-10.00,NULL),('T0003','TEST ITEM3','7867','001','PEC',110.00,100.00,10.00,NULL),('T0004','TEST ITEM 5','12345','002','PEC',NULL,NULL,NULL,NULL),('T0005','TEST ITME','1234','001','PEC',60.00,50.00,90.00,NULL),('T0006','TEST ITEM','8443.99.53','001','PEC',110.00,100.00,70.00,NULL),('T0007','TEST ITEM','8443.99.53','001','PEC',210.00,200.00,80.00,NULL),('T0008','TEST ITEM','8542.92.00','002','PEC',NULL,NULL,NULL,NULL);
 
 /*Table structure for table `item_master_transaction` */
 
@@ -174,12 +188,13 @@ CREATE TABLE `item_master_transaction` (
   `dc` varchar(1) DEFAULT NULL COMMENT ',',
   `item_balance` double(12,2) DEFAULT NULL,
   `reference` varchar(200) DEFAULT NULL,
-  `ts_transaction` datetime DEFAULT NULL
+  `ts_transaction` datetime DEFAULT NULL,
+  `parent_code` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `item_master_transaction` */
 
-insert  into `item_master_transaction`(`item_code`,`quantity`,`unit_price`,`dc`,`item_balance`,`reference`,`ts_transaction`) values ('T0001',101.00,NULL,'D',-1.00,'PROV/17-18/4','2017-08-02 14:30:04'),('T0001',20.00,NULL,'D',-21.00,'PROV/17-18/5','2017-08-03 12:32:15'),('T0002',1.00,NULL,'D',-5.00,'PROV/17-18/5','2017-08-03 12:32:33'),('T0001',5.00,NULL,'D',95.00,'PROV/17-18/6','2017-08-03 14:14:18'),('T0001',5.00,NULL,'D',90.00,'PROV/17-18/7','2017-08-03 14:15:00'),('T0003',20.00,NULL,'C',20.00,'PURCHASE FROM ABC COMPANY ON 04/08/2017','2017-08-04 19:33:00'),('T0003',10.00,NULL,'D',10.00,'PROV/17-18/8','2017-08-04 19:34:14'),('T0002',10.00,NULL,'D',90.00,'PROV/17-18/8','2017-08-04 19:34:32'),('T0001',20.00,NULL,'C',110.00,'PURCHASED FROM ABC COMPANY ON 05/08/2017','2017-08-05 14:31:16'),('T0002',100.00,NULL,'D',-10.00,'PROV/17-18/9','2017-08-05 14:37:11'),('T0001',10.00,NULL,'C',120.00,'TEST','2017-08-06 08:29:53'),('K0001',20.00,NULL,'D',-20.00,'PROV/17-18/14','2017-08-06 20:31:28'),('T0005',100.00,NULL,'C',100.00,'TEST INVOICE2','2017-08-08 10:41:35'),('T0006',100.00,NULL,'C',100.00,'TEST INVOICE2','2017-08-08 10:42:10'),('T0007',100.00,NULL,'C',100.00,'TEST INVOICE2','2017-08-08 10:42:28'),('T0005',10.00,NULL,'D',90.00,'PROV/17-18/15','2017-08-08 10:43:21'),('T0006',30.00,NULL,'D',70.00,'PROV/17-18/15','2017-08-08 10:43:57'),('T0007',20.00,NULL,'D',80.00,'PROV/17-18/15','2017-08-08 10:44:21'),('T0001',20.00,NULL,'C',140.00,'TEST99877','2017-08-08 11:00:26');
+insert  into `item_master_transaction`(`item_code`,`quantity`,`unit_price`,`dc`,`item_balance`,`reference`,`ts_transaction`,`parent_code`) values ('T0001',101.00,NULL,'D',-1.00,'PROV/17-18/4','2017-08-02 14:30:04',NULL),('T0001',20.00,NULL,'D',-21.00,'PROV/17-18/5','2017-08-03 12:32:15',NULL),('T0002',1.00,NULL,'D',-5.00,'PROV/17-18/5','2017-08-03 12:32:33',NULL),('T0001',5.00,NULL,'D',95.00,'PROV/17-18/6','2017-08-03 14:14:18',NULL),('T0001',5.00,NULL,'D',90.00,'PROV/17-18/7','2017-08-03 14:15:00',NULL),('T0003',20.00,NULL,'C',20.00,'PURCHASE FROM ABC COMPANY ON 04/08/2017','2017-08-04 19:33:00',NULL),('T0003',10.00,NULL,'D',10.00,'PROV/17-18/8','2017-08-04 19:34:14',NULL),('T0002',10.00,NULL,'D',90.00,'PROV/17-18/8','2017-08-04 19:34:32',NULL),('T0001',20.00,NULL,'C',110.00,'PURCHASED FROM ABC COMPANY ON 05/08/2017','2017-08-05 14:31:16',NULL),('T0002',100.00,NULL,'D',-10.00,'PROV/17-18/9','2017-08-05 14:37:11',NULL),('T0001',10.00,NULL,'C',120.00,'TEST','2017-08-06 08:29:53',NULL),('K0001',20.00,NULL,'D',-20.00,'PROV/17-18/14','2017-08-06 20:31:28',NULL),('T0005',100.00,NULL,'C',100.00,'TEST INVOICE2','2017-08-08 10:41:35',NULL),('T0006',100.00,NULL,'C',100.00,'TEST INVOICE2','2017-08-08 10:42:10',NULL),('T0007',100.00,NULL,'C',100.00,'TEST INVOICE2','2017-08-08 10:42:28',NULL),('T0005',10.00,NULL,'D',90.00,'PROV/17-18/15','2017-08-08 10:43:21',NULL),('T0006',30.00,NULL,'D',70.00,'PROV/17-18/15','2017-08-08 10:43:57',NULL),('T0007',20.00,NULL,'D',80.00,'PROV/17-18/15','2017-08-08 10:44:21',NULL),('T0001',20.00,NULL,'C',140.00,'TEST99877','2017-08-08 11:00:26',NULL);
 
 /*Table structure for table `login_log` */
 
@@ -202,12 +217,13 @@ CREATE TABLE `payment` (
   `invoice_no` varchar(30) DEFAULT NULL,
   `invoice_amt` double(12,2) DEFAULT NULL,
   `payment_amt` double(12,2) DEFAULT NULL,
-  `reference` varchar(100) DEFAULT NULL
+  `reference` varchar(100) DEFAULT NULL,
+  `parent_code` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `payment` */
 
-insert  into `payment`(`transaction_date`,`seller_no`,`invoice_no`,`invoice_amt`,`payment_amt`,`reference`) values ('2017-08-06','001','TEST',1180.00,1180.00,'TEST REFERENCE'),('2017-08-02','02','PROV/17-18/2',672.00,672.00,'CSSD');
+insert  into `payment`(`transaction_date`,`seller_no`,`invoice_no`,`invoice_amt`,`payment_amt`,`reference`,`parent_code`) values ('2017-08-06','001','TEST',1180.00,1180.00,'TEST REFERENCE',NULL),('2017-08-02','02','PROV/17-18/2',672.00,672.00,'CSSD',NULL);
 
 /*Table structure for table `purchase_master` */
 
@@ -217,18 +233,23 @@ CREATE TABLE `purchase_master` (
   `seller_code` varchar(4) DEFAULT NULL,
   `seller_invoice_no` varchar(40) DEFAULT NULL,
   `seller_invoice_date` date DEFAULT NULL,
-  `item_code` varchar(6) DEFAULT NULL,
+  `item_code` varchar(30) DEFAULT NULL,
   `quantity` double(10,2) DEFAULT NULL,
   `unit_purchase_price` double(12,2) DEFAULT NULL,
   `tax_percent` double(4,2) DEFAULT NULL,
   `tax_amt` double(8,2) DEFAULT NULL,
   `gross_amt` double(16,2) DEFAULT NULL,
-  `parent_code` varchar(10) DEFAULT NULL
+  `parent_code` varchar(10) DEFAULT NULL,
+  `discount_percent` double(4,2) DEFAULT '0.00',
+  `unit_selling_price` double(12,2) DEFAULT NULL,
+  `item_description` varchar(200) DEFAULT NULL,
+  `unit` varchar(15) DEFAULT NULL,
+  `allocated_flag` varchar(2) DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `purchase_master` */
 
-insert  into `purchase_master`(`seller_code`,`seller_invoice_no`,`seller_invoice_date`,`item_code`,`quantity`,`unit_purchase_price`,`tax_percent`,`tax_amt`,`gross_amt`,`parent_code`) values ('001','TEST','2017-08-06','T0001',10.00,100.00,18.00,180.00,1180.00,NULL),('001','TEST INVOICE2','2017-01-01','T0005',100.00,50.00,18.00,900.00,5900.00,NULL),('001','TEST INVOICE2','2017-01-01','T0006',100.00,100.00,18.00,1800.00,11800.00,NULL),('001','TEST INVOICE2','2017-01-01','T0007',100.00,200.00,18.00,3600.00,23600.00,NULL),('001','TEST99877','2017-01-01','T0001',20.00,100.00,18.00,360.00,2360.00,NULL);
+insert  into `purchase_master`(`seller_code`,`seller_invoice_no`,`seller_invoice_date`,`item_code`,`quantity`,`unit_purchase_price`,`tax_percent`,`tax_amt`,`gross_amt`,`parent_code`,`discount_percent`,`unit_selling_price`,`item_description`,`unit`,`allocated_flag`) values ('001','TEST','2017-08-06','T0001',10.00,100.00,18.00,180.00,1180.00,NULL,NULL,NULL,NULL,NULL,'N'),('001','TEST INVOICE2','2017-01-01','T0005',100.00,50.00,18.00,900.00,5900.00,NULL,NULL,25.00,'hdjhdhj','jskdj','N'),('001','TEST INVOICE2','2017-01-01','T0006',100.00,100.00,18.00,1800.00,11800.00,NULL,NULL,NULL,'dsdksk\\','dsd','N'),('001','TEST INVOICE2','2017-01-01','T0007',100.00,200.00,18.00,3600.00,23600.00,NULL,NULL,NULL,'dsd','ds','N'),('001','TEST99877','2017-01-01','T0001',20.00,100.00,18.00,360.00,2360.00,NULL,NULL,NULL,'ds','dsd','N');
 
 /*Table structure for table `receipt` */
 
@@ -240,12 +261,27 @@ CREATE TABLE `receipt` (
   `invoice_no` varchar(30) DEFAULT NULL,
   `invoice_amt` double(12,2) DEFAULT NULL,
   `payment_amt` double(12,2) DEFAULT NULL,
-  `reference` varchar(100) DEFAULT NULL
+  `reference` varchar(100) DEFAULT NULL,
+  `parent_code` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `receipt` */
 
-insert  into `receipt`(`transaction_date`,`client_no`,`invoice_no`,`invoice_amt`,`payment_amt`,`reference`) values ('2017-08-02','001','PROV/17-18/2',672.00,672.00,'DSSS'),(NULL,NULL,NULL,NULL,NULL,NULL);
+insert  into `receipt`(`transaction_date`,`client_no`,`invoice_no`,`invoice_amt`,`payment_amt`,`reference`,`parent_code`) values ('2017-08-02','001','PROV/17-18/2',672.00,672.00,'DSSS',NULL),(NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+
+/*Table structure for table `report` */
+
+DROP TABLE IF EXISTS `report`;
+
+CREATE TABLE `report` (
+  `report_id` varchar(3) DEFAULT NULL,
+  `report_name` varchar(50) DEFAULT NULL,
+  `file_name` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `report` */
+
+insert  into `report`(`report_id`,`report_name`,`file_name`) values ('1','DEBTOR LEDGER-RECONCILED','dr_led_recon.jasper'),('2','CREDITOR LEDGER-RECONCILED','cr_led_recon.jasper'),('3','CREDITOR-ALL','cr_all.jasper'),('4','DEBTOR-ALL','dr_all.jasper');
 
 /*Table structure for table `seller_master` */
 

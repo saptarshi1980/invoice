@@ -33,10 +33,10 @@ import javax.swing.JOptionPane;
  *
  * @author 
  */
-public class ItemMasterEntry extends javax.swing.JFrame {
+public class ItemMasterEntryOld extends javax.swing.JFrame {
 
     /** Creates new form ItemMasterAdd */
-    public ItemMasterEntry() {
+    public ItemMasterEntryOld() {
         initComponents();
         loadTax();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -72,7 +72,7 @@ public class ItemMasterEntry extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setName("Form"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(invoice.InvoiceApp.class).getContext().getResourceMap(ItemMasterEntry.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(invoice.InvoiceApp.class).getContext().getResourceMap(ItemMasterEntryOld.class);
         jPanel1.setBackground(resourceMap.getColor("jPanel1.background")); // NOI18N
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         jPanel1.setName("jPanel1"); // NOI18N
@@ -354,7 +354,7 @@ public class ItemMasterEntry extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new ItemMasterEntry().setVisible(true);
+                new ItemMasterEntryOld().setVisible(true);
             }
         });
     }
@@ -403,7 +403,7 @@ public void saveItem(){
         stmt.executeUpdate(query);
         JOptionPane.showMessageDialog(this, "item Added ");
         this.dispose();
-        new ItemMasterEntry().setVisible(true);
+        new ItemMasterEntryOld().setVisible(true);
         
         
     }catch(SQLException ex){
