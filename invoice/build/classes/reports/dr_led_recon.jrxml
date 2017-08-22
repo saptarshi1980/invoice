@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dr_led_recon" language="groovy" pageWidth="802" pageHeight="612" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="from_date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="to_date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select com_name,invoice_no,date_format(invoice_date,'%d-%m-%Y'),tot_amt,payment_amt,date_format(transaction_date,'%d-%m-%Y'),reference FROM v_debtor_ledger WHERE invoice_date  BETWEEN STR_TO_DATE($P{from_date},'%d-%m-%Y') AND STR_TO_DATE($P{to_date},'%d-%m-%Y')]]>
+	</queryString>
+	<field name="com_name" class="java.lang.String"/>
+	<field name="invoice_no" class="java.lang.String"/>
+	<field name="date_format(invoice_date,&apos;%d-%m-%Y&apos;)" class="java.lang.String"/>
+	<field name="tot_amt" class="java.lang.Double"/>
+	<field name="payment_amt" class="java.lang.Double"/>
+	<field name="date_format(transaction_date,&apos;%d-%m-%Y&apos;)" class="java.lang.String"/>
+	<field name="reference" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="19" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="257" y="2" width="198" height="20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Debtors Ledger-Reconciled]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="58" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[com_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="194" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[invoice_no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="313" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[date_format(invoice_date,'%d-%m-%Y')]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="385" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[tot_amt]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="461" y="0" width="65" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[payment_amt]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="526" y="0" width="80" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[date_format(transaction_date,'%d-%m-%Y')]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="643" y="0" width="80" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[reference]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="2" width="19" height="18"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[com_name]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="56" y="0" width="136" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{com_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="194" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{invoice_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="0" width="67" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{date_format(invoice_date,'%d-%m-%Y')}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="383" y="2" width="68" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tot_amt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="1" width="65" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{payment_amt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="524" y="1" width="80" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{date_format(transaction_date,'%d-%m-%Y')}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="641" y="2" width="80" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{reference}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="3" y="1" width="53" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

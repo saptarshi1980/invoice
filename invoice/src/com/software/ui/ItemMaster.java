@@ -18,6 +18,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -82,6 +84,8 @@ public class ItemMaster extends javax.swing.JFrame {
         jComboBox6 = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setName("Form"); // NOI18N
@@ -260,11 +264,9 @@ public class ItemMaster extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         jPanel2.setName("jPanel2"); // NOI18N
 
-        jLabel9.setFont(resourceMap.getFont("jLabel16.font")); // NOI18N
         jLabel9.setText(resourceMap.getString("jLabel9.text")); // NOI18N
         jLabel9.setName("jLabel9"); // NOI18N
 
-        jLabel10.setFont(resourceMap.getFont("jLabel16.font")); // NOI18N
         jLabel10.setText(resourceMap.getString("jLabel10.text")); // NOI18N
         jLabel10.setName("jLabel10"); // NOI18N
 
@@ -302,15 +304,30 @@ public class ItemMaster extends javax.swing.JFrame {
                 jTextField8FocusGained(evt);
             }
         });
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField8KeyTyped(evt);
+            }
+        });
 
         jLabel12.setFont(resourceMap.getFont("jLabel12.font")); // NOI18N
         jLabel12.setText(resourceMap.getString("jLabel12.text")); // NOI18N
         jLabel12.setName("jLabel12"); // NOI18N
 
         jComboBox6.setName("jComboBox6"); // NOI18N
+        jComboBox6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox6ActionPerformed(evt);
+            }
+        });
         jComboBox6.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jComboBox6FocusGained(evt);
+            }
+        });
+        jComboBox6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jComboBox6KeyTyped(evt);
             }
         });
 
@@ -362,6 +379,16 @@ public class ItemMaster extends javax.swing.JFrame {
 
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
         jButton1.setName("jButton1"); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
 
         jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
         jButton2.setName("jButton2"); // NOI18N
@@ -371,35 +398,68 @@ public class ItemMaster extends javax.swing.JFrame {
             }
         });
 
+        jPanel3.setBackground(resourceMap.getColor("jPanel3.background")); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel3.setName("jPanel3"); // NOI18N
+
+        jLabel13.setFont(resourceMap.getFont("jLabel13.font")); // NOI18N
+        jLabel13.setForeground(resourceMap.getColor("jLabel13.foreground")); // NOI18N
+        jLabel13.setText(resourceMap.getString("jLabel13.text")); // NOI18N
+        jLabel13.setName("jLabel13"); // NOI18N
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(233, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addGap(231, 231, 231))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(208, 208, 208)
+                            .addComponent(jButton1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jButton2))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(224, 224, 224)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -442,16 +502,29 @@ public class ItemMaster extends javax.swing.JFrame {
         
         if ((c == evt.VK_ENTER)) {
             itemDescription();
+            jComboBox4.requestFocus();
             
         }
     }//GEN-LAST:event_jComboBox3KeyTyped
 
     private void jComboBox4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox4KeyTyped
-        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if ((c == evt.VK_ENTER)) {
+          
+            jComboBox5.requestFocus();
+            
+        }
     }//GEN-LAST:event_jComboBox4KeyTyped
 
     private void jComboBox5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox5KeyTyped
-        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if ((c == evt.VK_ENTER)) {
+            itemDescription();
+            jTextField8.requestFocus();
+            
+        }
     }//GEN-LAST:event_jComboBox5KeyTyped
 
     private void jComboBox4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox4FocusGained
@@ -474,6 +547,49 @@ public class ItemMaster extends javax.swing.JFrame {
         new ItemMasterNewItem().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        try {
+            save();
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemMaster.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        
+        try {
+            save();
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemMaster.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
+        char c = evt.getKeyChar();
+        
+        if ((c == evt.VK_ENTER)) {
+            jComboBox6.requestFocus();
+            //jButton1.requestFocus();
+            
+        }
+    }//GEN-LAST:event_jTextField8KeyTyped
+
+    private void jComboBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox6ActionPerformed
+
+    private void jComboBox6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox6KeyTyped
+         char c = evt.getKeyChar();
+        
+        if ((c == evt.VK_ENTER)) {
+           
+           jButton1.requestFocus();
+            
+        }
+    }//GEN-LAST:event_jComboBox6KeyTyped
 
     /**
      * @param args the command line arguments
@@ -499,6 +615,7 @@ public class ItemMaster extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
@@ -511,6 +628,7 @@ public class ItemMaster extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -523,7 +641,7 @@ public class ItemMaster extends javax.swing.JFrame {
 
 public void loadSeller(){
     
-    String query="SELECT DISTINCT CONCAT(a.seller_code,'(',b.seller_name,')') FROM purchase_master a,seller_master b WHERE a.seller_code=b.seller_code";
+    String query="SELECT DISTINCT CONCAT(a.seller_code,'(',b.seller_name,')') FROM purchase_master a,seller_master b WHERE a.seller_code=b.seller_code ";
     ArrayList<String> tax=new ArrayList<String>();
     try{
         Connection conn=new ConnDB().make_connection();
@@ -550,7 +668,7 @@ public void loadSeller(){
 public void findInvoice(){
     
     String sellerCode=jComboBox1.getSelectedItem().toString().substring(0,jComboBox1.getSelectedItem().toString().indexOf("("));
-    String query="SELECT distinct seller_invoice_no FROM purchase_master WHERE TRIM(seller_code)='"+sellerCode+"'";
+    String query="SELECT distinct seller_invoice_no FROM purchase_master WHERE TRIM(seller_code)='"+sellerCode+"' and allocated_flag='N'";
     ArrayList<String> tax=new ArrayList<String>();
     try{
         Connection conn=new ConnDB().make_connection();
@@ -580,7 +698,7 @@ public void findInvoice(){
 
 public void findDescription(){
     
-    String query="SELECT date_format(seller_invoice_date,'%d-%m-%Y'),UPPER(item_description) FROM purchase_master  WHERE upper(TRIM(seller_invoice_no))='"+jComboBox2.getSelectedItem().toString().trim().toUpperCase()+"'";
+    String query="SELECT date_format(seller_invoice_date,'%d-%m-%Y'),UPPER(item_description) FROM purchase_master  WHERE upper(TRIM(seller_invoice_no))='"+jComboBox2.getSelectedItem().toString().trim().toUpperCase()+"' and allocated_flag='N'";
     ArrayList<String> tax=new ArrayList<String>();
     try{
         Connection conn=new ConnDB().make_connection();
@@ -717,16 +835,16 @@ public void save() throws SQLException{
     double quantity=0;
     double discount=0;
     double stock=0;
-    String itemCode=jComboBox5.getSelectedItem().toString();
+    String itemCode=jComboBox5.getSelectedItem().toString().substring(0,jComboBox5.getSelectedItem().toString().indexOf("("));
     String itemDescription=jComboBox3.getSelectedItem().toString();
     String hsnCode=jTextField5.getText();
-    String taxCode=jComboBox6.getSelectedItem().toString();
+    String taxCode=jComboBox6.getSelectedItem().toString().substring(0,jComboBox6.getSelectedItem().toString().indexOf("("));
     String unit=jTextField3.getText().toUpperCase();
     String invoiceNo=jComboBox2.getSelectedItem().toString();
     
     try{
         unitPrice=Double.parseDouble(jTextField8.getText());
-        purchasePrice=Double.parseDouble(jTextField8.getText());
+        purchasePrice=Double.parseDouble(jTextField4.getText());
         quantity=Double.parseDouble(jTextField2.getText());
         discount=Double.parseDouble(jTextField6.getText());
     }catch(NumberFormatException ex){
@@ -747,17 +865,18 @@ public void save() throws SQLException{
         stmt1.executeUpdate(query1);
         ResultSet rs=stmt2.executeQuery("select stock from item_master where item_code='"+itemCode+"' ");
         while(rs.next()){
-            stock=rs.getDouble(unit);
+            stock=rs.getDouble(1);
         }
         
           
     
     
     Statement stmt3=conn.createStatement();
-    String query3="insert into item_master_transaction (item_code,quantity,dc,item_balance,reference,ts_transaction,parent_code) values('"+itemCode+"','"+quantity+"','C','"+stock+"','"+invoiceNo+"',now(),'"+parentCode+"')";
+    String query3="insert into item_master_transaction (item_code,unit_price,quantity,dc,item_balance,reference,ts_transaction,parent_code) values('"+itemCode+"','"+purchasePrice+"','"+quantity+"','C',"+stock+",'"+invoiceNo+"',now(),'"+parentCode+"')";
+    System.out.println(query3);
     stmt3.executeUpdate(query3);
     Statement stmt4=conn.createStatement();
-    String query4="update purchase_master set allocated_flag='Y' where seller_invoice_no='"+invoiceNo+"'and item_code='"+itemCode+"'";
+    String query4="update purchase_master set allocated_flag='Y' where seller_invoice_no='"+invoiceNo+"' and upper(item_description)='"+itemDescription.toUpperCase()+"'";
     stmt4.executeUpdate(query4);
     
     }catch(SQLException ex){
@@ -768,6 +887,8 @@ public void save() throws SQLException{
     }
   
     conn.commit();
+    conn.close();
+    new ItemMaster().setVisible(true);
             
 }
 

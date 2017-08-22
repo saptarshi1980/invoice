@@ -10,15 +10,49 @@
  */
 package com.software.ui;
 
+import com.software.utility.ConnDB;
+import com.software.utility.NumToWord;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author SAPTARSHI
+ * 
  */
 public class InvoiceDetailsEdit extends javax.swing.JFrame {
+    
+    String igst=null;
+    String hsn;
+    double gst;
+    double quantity;
+    double rate;
+    String per;
+    double discount;
+    double amount;
+    double taxAmtCentral;
+    double taxAmtState;
+    double taxPercentCentral;
+    double taxPercentState;
+    double presentStock;
+    double presentCentralGstRate;
+    double presentCentralGstAmt;
+    double presentStateGstRate;
+    double presentStateGstAmt;
+    
+    
 
     /** Creates new form InvoiceDetailsEdit */
     public InvoiceDetailsEdit() {
         initComponents();
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
 
     /** This method is called from within the constructor to
@@ -30,22 +64,403 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setName("Form"); // NOI18N
+
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(invoice.InvoiceApp.class).getContext().getResourceMap(InvoiceDetailsEdit.class);
+        jPanel1.setBackground(resourceMap.getColor("jPanel1.background")); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jPanel1.setForeground(resourceMap.getColor("jPanel1.foreground")); // NOI18N
+        jPanel1.setName("jPanel1"); // NOI18N
+
+        jLabel1.setBackground(resourceMap.getColor("jLabel1.background")); // NOI18N
+        jLabel1.setFont(resourceMap.getFont("jLabel1.font")); // NOI18N
+        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
+        jLabel1.setName("jLabel1"); // NOI18N
+
+        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
+        jLabel2.setName("jLabel2"); // NOI18N
+
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextField1.setName("jFormattedTextField1"); // NOI18N
+        jFormattedTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jFormattedTextField1KeyTyped(evt);
+            }
+        });
+
+        jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
+        jLabel3.setName("jLabel3"); // NOI18N
+
+        jComboBox1.setName("jComboBox1"); // NOI18N
+        jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jComboBox1KeyTyped(evt);
+            }
+        });
+
+        jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
+        jLabel4.setName("jLabel4"); // NOI18N
+
+        jComboBox2.setName("jComboBox2"); // NOI18N
+        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox2ItemStateChanged(evt);
+            }
+        });
+        jComboBox2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jComboBox2KeyTyped(evt);
+            }
+        });
+
+        jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
+        jLabel5.setName("jLabel5"); // NOI18N
+
+        jLabel6.setText(resourceMap.getString("jLabel6.text")); // NOI18N
+        jLabel6.setName("jLabel6"); // NOI18N
+
+        jLabel7.setText(resourceMap.getString("jLabel7.text")); // NOI18N
+        jLabel7.setName("jLabel7"); // NOI18N
+
+        jLabel8.setText(resourceMap.getString("jLabel8.text")); // NOI18N
+        jLabel8.setName("jLabel8"); // NOI18N
+
+        jLabel9.setText(resourceMap.getString("jLabel9.text")); // NOI18N
+        jLabel9.setName("jLabel9"); // NOI18N
+
+        jLabel10.setText(resourceMap.getString("jLabel10.text")); // NOI18N
+        jLabel10.setName("jLabel10"); // NOI18N
+
+        jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
+        jTextField1.setName("jTextField1"); // NOI18N
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
+
+        jTextField2.setText(resourceMap.getString("jTextField2.text")); // NOI18N
+        jTextField2.setName("jTextField2"); // NOI18N
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
+
+        jTextField3.setText(resourceMap.getString("jTextField3.text")); // NOI18N
+        jTextField3.setName("jTextField3"); // NOI18N
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
+
+        jTextField4.setText(resourceMap.getString("jTextField4.text")); // NOI18N
+        jTextField4.setName("jTextField4"); // NOI18N
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
+            }
+        });
+
+        jTextField5.setText(resourceMap.getString("jTextField5.text")); // NOI18N
+        jTextField5.setName("jTextField5"); // NOI18N
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField5KeyTyped(evt);
+            }
+        });
+
+        jTextField6.setText(resourceMap.getString("jTextField6.text")); // NOI18N
+        jTextField6.setName("jTextField6"); // NOI18N
+        jTextField6.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField6FocusLost(evt);
+            }
+        });
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField6KeyTyped(evt);
+            }
+        });
+
+        jLabel11.setText(resourceMap.getString("jLabel11.text")); // NOI18N
+        jLabel11.setName("jLabel11"); // NOI18N
+
+        jTextField7.setEditable(false);
+        jTextField7.setName("jTextField7"); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, 0, 185, Short.MAX_VALUE)
+                    .addComponent(jComboBox2, 0, 185, Short.MAX_VALUE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                .addContainerGap(53, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
+        jButton1.setName("jButton1"); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
+
+        jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
+        jButton2.setName("jButton2"); // NOI18N
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(141, 141, 141)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jFormattedTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField1KeyTyped
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               fetchInvoice();
+             }
+    }//GEN-LAST:event_jFormattedTextField1KeyTyped
+
+    private void jComboBox1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyTyped
+        
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               fetchItemCode();
+               jComboBox2.requestFocus();
+             }
+    }//GEN-LAST:event_jComboBox1KeyTyped
+
+    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
+        fetchItemDetails();
+    }//GEN-LAST:event_jComboBox2ItemStateChanged
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        saveItemDetails();
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
+        calculateAmt();
+    }//GEN-LAST:event_jTextField6FocusLost
+
+    private void jComboBox2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox2KeyTyped
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField1.requestFocus();
+             }
+    }//GEN-LAST:event_jComboBox2KeyTyped
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField2.requestFocus();
+             }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField3.requestFocus();
+             }
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField4.requestFocus();
+             }
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField5.requestFocus();
+             }
+    }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jTextField6.requestFocus();
+             }
+    }//GEN-LAST:event_jTextField5KeyTyped
+
+    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+               jButton1.requestFocus();
+             }
+    }//GEN-LAST:event_jTextField6KeyTyped
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+        saveItemDetails();
+    }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        int selectedOption = JOptionPane.showConfirmDialog(null, 
+                                  "Confirm Item deleteion?", 
+                                  "Choose", 
+                                  JOptionPane.YES_NO_OPTION); 
+                    if (selectedOption == JOptionPane.YES_OPTION) {
+                       deleteItem(jComboBox1.getSelectedItem().toString().trim(),jComboBox2.getSelectedItem().toString().trim() );
+                    }
+                    else{
+                        jComboBox2.requestFocus();
+                    }
+        
+        
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -59,5 +474,396 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
+
+public void fetchInvoice(){
+    jComboBox1.removeAllItems();
+    String date=jFormattedTextField1.getText().trim();
+    String query="select invoice_no,igst_flag from bill_master where invoice_date=str_to_date('"+date+"','%d-%m-%Y')";
+    try{
+        Connection conn=new ConnDB().make_connection();
+        Statement stmt=conn.createStatement();
+        ResultSet rs=stmt.executeQuery(query);
+        int counter=0;
+        while(rs.next()){
+            jComboBox1.addItem(rs.getString(1));
+            this.igst=rs.getString(2);
+            counter++;
+        }
+        if(counter==0){
+                    JOptionPane.showMessageDialog(this, "No Invoice found! ");
+                    
+                    jFormattedTextField1.requestFocus();
+                    reset();
+                    
+        }
+        else{
+        jComboBox1.requestFocus();
+    }
+            
+        
+        }catch(SQLException ex){
+        
+        JOptionPane.showMessageDialog(this, "Error loading Company Code! ");
+        ex.printStackTrace();
+    }
+}
+
+
+public void fetchItemCode(){
+    jComboBox2.removeAllItems();
+    String invoiceNo=jComboBox1.getSelectedItem().toString().toUpperCase().trim();
+    String query="SELECT item_code FROM bill_details WHERE invoice_id='"+invoiceNo+"'";
+    try{
+        Connection conn=new ConnDB().make_connection();
+        Statement stmt=conn.createStatement();
+        ResultSet rs=stmt.executeQuery(query);
+        int counter=0;
+        while(rs.next()){
+            jComboBox2.addItem(rs.getString(1));
+            counter++;
+        }
+        if(counter==0){
+                    JOptionPane.showMessageDialog(this, "No Invoice found! ");
+                    
+        }
+        jComboBox1.requestFocus();
+            
+        
+        }catch(SQLException ex){
+        
+        JOptionPane.showMessageDialog(this, "Error loading Company Code! ");
+        ex.printStackTrace();
+    }
+}
+
+public void fetchItemDetails(){
+    
+    String invoiceNo=jComboBox1.getSelectedItem().toString().toUpperCase().trim();
+    String itemCode=jComboBox2.getSelectedItem().toString().toUpperCase().trim();
+    String query="SELECT a.*,b.stock FROM bill_details a,item_master b WHERE a.invoice_id='"+invoiceNo+"' AND a.item_code='"+itemCode+"' AND a.item_code=b.item_code";
+    try{
+        Connection conn=new ConnDB().make_connection();
+        Statement stmt=conn.createStatement();
+        ResultSet rs=stmt.executeQuery(query);
+        
+        while(rs.next()){
+            
+            this.hsn=rs.getString("hsn_sac");
+            jTextField1.setText(hsn);
+            this.gst=rs.getDouble("gst_rate");
+            jTextField2.setText(String.valueOf(gst));
+            
+            this.quantity=rs.getDouble("quantity");
+            jTextField3.setText(String.valueOf(quantity));
+            this.rate=rs.getDouble("rate");
+            jTextField4.setText(String.valueOf(rate));
+            this.per=rs.getString("per");
+            jTextField5.setText(per);
+            this.discount=rs.getDouble("discount");
+            jTextField6.setText(String.valueOf(discount));
+            this.amount=rs.getDouble("amount");
+            jTextField7.setText(String.valueOf(amount));
+            this.taxAmtCentral=rs.getDouble("tax_amt_central");
+            this.taxAmtState=rs.getDouble("tax_amt_state");
+            this.taxPercentCentral=rs.getDouble("tax_percent_central");
+            this.taxPercentState=rs.getDouble("tax_percent_state");
+            this.presentStock=rs.getDouble("stock");
+             
+        }
+        
+        jTextField1.requestFocus();
+            
+        
+        }catch(SQLException ex){
+        
+        JOptionPane.showMessageDialog(this, "Error loading Company Code! ");
+        ex.printStackTrace();
+    }
+    
+    
+}
+
+public void reset(){
+    jComboBox1.removeAllItems();
+    jComboBox2.removeAllItems();
+    jTextField1.setText("");
+    jTextField2.setText("");
+    jTextField3.setText("");
+    jTextField4.setText("");
+    jTextField5.setText("");
+    jTextField6.setText("");
+    jTextField7.setText("");
+     
+}
+
+
+
+
+public void saveItemDetails(){
+    
+    //calculateAmt();
+    Connection conn=new ConnDB().make_connection();
+    String invoiceNo=jComboBox1.getSelectedItem().toString().toUpperCase().trim();
+    String itemCode=jComboBox2.getSelectedItem().toString().toUpperCase().trim();
+    double presentGst;
+    double presentRate;
+    double presentQuantity;
+    String presentPer;
+    double presentDiscount;
+    double presentGrossAmt;
+    try{
+        
+        conn.setAutoCommit(false);
+        Statement stmt1=conn.createStatement();
+        Statement stmt2=conn.createStatement();
+        Statement stmt3=conn.createStatement();
+        Statement stmt4=conn.createStatement();
+        
+        presentGst=Double.parseDouble(jTextField2.getText());
+        presentRate=Double.parseDouble(jTextField4.getText());
+        presentQuantity=Double.parseDouble(jTextField3.getText());
+        presentPer=jTextField5.getText().toUpperCase();
+        presentDiscount=Double.parseDouble(jTextField6.getText());
+        presentGrossAmt=Double.parseDouble(jTextField7.getText());
+        /*String insert="insert into bill_details(invoice_id,item_code,hsn_sac,gst_rate,quantity,rate,per,discount,"
+                + "amount,tax_amt_central,tax_amt_state,tax_percent_central,tax_percent_state,ts)"
+                + "values('"+invoiceid+"','"+itemCode+"','"+hsnCode+"','"+gst+"','"+quantity+"','"+rate+"','"+per+"',"
+                + "'"+discount+"','"+amount+"','"+centralGstAmt+"','"+stateGstAmt+"','"+centralGstRate+"','"+stateGstRate+"',now())";*/
+        String updateBillDetails="update bill_details set gst_rate='"+presentGst+"',quantity='"+presentQuantity+"',rate='"+presentRate+"',per='"+presentPer+"',"
+                + "discount='"+presentDiscount+"',amount='"+presentGrossAmt+"',tax_amt_central='"+presentCentralGstAmt+"',tax_amt_state='"+presentStateGstAmt+"',"
+                + " tax_percent_central='"+presentCentralGstRate+"',tax_percent_state='"+presentStateGstRate+"',ts=now() where "
+                + "invoice_id='"+invoiceNo+"' and item_code='"+itemCode+"'";
+        
+                stmt1.executeUpdate(updateBillDetails);
+        
+            System.out.println(updateBillDetails);
+            double stock=this.presentStock+this.quantity-presentQuantity;
+            System.out.println("Present Stock-"+this.presentStock+"/ Previous Quantity-"+this.quantity+"/ Present quantity-"+presentQuantity+", / Latest Stock-"+stock);
+            
+            String updateItem="update item_master set stock='"+stock+"' where item_code='"+itemCode+"' "; 
+            System.out.println(updateItem);
+            stmt2.executeUpdate(updateItem);
+            String updateTransactionTable="update item_master_transaction set quantity='"+presentQuantity+"',unit_price='"+presentRate+"',item_balance='"+stock+"',ts_transaction=now() where reference='"+invoiceNo+"' and item_code='"+itemCode+"'";
+            stmt3.executeUpdate(updateTransactionTable);
+            System.out.println(updateItem);
+            System.out.println(updateTransactionTable);
+            conn.commit();
+            updateMaster(invoiceNo);
+                        
+        
+        
+
+        
+        
+        }catch(NumberFormatException ex){
+            ex.printStackTrace();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(InvoiceDetailsEdit.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            
+        }
+        
+    
+    
+    
+}
+
+
+public void calculateAmt(){
+        double presentGst=0;
+        String igstFlag=this.igst;
+        try{
+        presentGst=Double.parseDouble(jTextField2.getText());
+        }catch(NumberFormatException ex){
+            ex.printStackTrace();
+        }
+    
+        double presentQuantity=0;
+        double presentRate=0;
+        double presentDiscount=0;
+        double presentAmount=0;
+        double presentStateGstRate=0,presentCentralGstRate=0,presentStateGstAmt=0,presentCentralGstAmt=0;
+        
+        try{
+              presentQuantity=Double.parseDouble(jTextField3.getText());
+              presentRate=Double.parseDouble(jTextField4.getText());
+            
+        }catch(NumberFormatException ex){
+            
+        }
+        
+        try{
+            
+            presentDiscount=Double.parseDouble(jTextField6.getText());
+            
+        }catch(NumberFormatException ex){
+            discount=0;
+        }
+        
+        double presentGstAmt=(presentRate*presentQuantity)*presentGst/100;
+        presentAmount=((presentRate*presentQuantity)+((presentRate*presentQuantity)*presentGst/100))-presentDiscount;
+        jTextField7.setText(String.valueOf(presentAmount));
+    
+
+
+    if(igstFlag.equals("Y")){
+            this.presentCentralGstRate=presentGst;
+            this.presentCentralGstAmt=presentGstAmt;
+            this.presentStateGstRate=0;
+            this.presentStateGstAmt=0;
+            
+            
+        }else{
+  
+            this.presentCentralGstRate=presentGst/2;
+            this.presentStateGstRate=this.presentCentralGstRate;
+            this.presentCentralGstAmt=presentGstAmt/2;
+            this.presentStateGstAmt=this.presentCentralGstAmt;
+            
+        }
+    
+    
+}
+
+public void updateMaster(String invoiceID){
+        
+        double totAmt=0;
+        double totCentralTax=0;
+        double totStateTax=0;
+        double totTax=0;
+        String amtWord=null;
+        
+    
+        String query1="SELECT SUM(amount),SUM(tax_amt_central),SUM(tax_amt_state),SUM(tax_amt_central+tax_amt_state) FROM bill_details WHERE TRIM(invoice_id)='"+invoiceID.trim()+"'";
+        
+        System.out.println(query1);
+        try{
+        Connection conn=new ConnDB().make_connection();
+        Statement stmt=conn.createStatement();
+        Statement stmt1=conn.createStatement();
+        ResultSet rs=stmt.executeQuery(query1);
+        while(rs.next()){
+            totAmt=Math.round(rs.getDouble(1));
+            totCentralTax=rs.getDouble(2);
+            totStateTax=rs.getDouble(3);
+            totTax=rs.getDouble(4);
+        }
+        int totalAmtInt=(int) totAmt;
+        amtWord="Rupees "+new NumToWord().NumberToWord(String.valueOf(totalAmtInt));
+        System.out.println(amtWord);
+        stmt1.executeUpdate("update bill_master set tot_amt='"+totAmt+"',tot_amt_word='"+amtWord+"',s_gst='"+totStateTax+"',c_gst='"+totCentralTax+"',tot_tax='"+totTax+"' where trim(invoice_no)='"+invoiceID.trim()+"'");
+        JOptionPane.showMessageDialog(this, "Invoice updated ");
+        this.dispose();
+        
+         }catch(SQLException ex){
+             ex.printStackTrace();
+         }
+        
+            
+    }
+
+
+
+public void deleteItem(String invoiceNo,String itemCode){
+    
+    double stock=0;
+    String findStockquery="select stock from item_master where item_code='"+itemCode+"' ";
+    Connection conn=new ConnDB().make_connection();
+    
+    try{
+        conn.setAutoCommit(false);
+
+        Statement stmt=conn.createStatement();
+        Statement stmt1=conn.createStatement();
+        Statement stmt2=conn.createStatement();
+        Statement stmt3=conn.createStatement();
+        ResultSet rs=stmt.executeQuery(findStockquery);
+        
+        while(rs.next()){
+         
+            stock=rs.getDouble(1);
+            
+          }
+        
+        
+    
+    
+    String deleteQuery="delete from bill_details where invoice_id='"+invoiceNo+"' and item_code='"+itemCode+"'";
+    double quantityLocal=0;
+    double rateLocal=0;
+    
+    try{
+        quantityLocal=Double.parseDouble(jTextField3.getText().trim());
+        rateLocal=Double.parseDouble(jTextField3.getText().trim());
+        
+    }catch(NumberFormatException ex){
+        ex.printStackTrace();
+    }
+    
+    stock=stock+quantityLocal;
+    stmt1.executeUpdate(deleteQuery);
+    String queryUpdateItemMaster="update item_master set stock='"+stock+"' where item_code='"+itemCode+"' ";
+    stmt2.executeUpdate(queryUpdateItemMaster);
+    
+    String queryUpdateTransactionTable="insert into item_master_transaction(item_code,quantity,unit_price,dc,item_balance,reference,ts_transaction)"
+            + "values('"+itemCode+"','"+quantityLocal+"','"+rateLocal+"','C','"+stock+"','"+invoiceNo+"',now())";
+    stmt3.executeUpdate(queryUpdateTransactionTable);
+    conn.commit();
+    updateMaster(invoiceNo);
+    
+    
+    }
+    
+    catch(SQLException ex){
+        
+        JOptionPane.showMessageDialog(this, "Error! ");
+        ex.printStackTrace();
+            try {
+                conn.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(InvoiceDetailsEdit.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+    }
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
 }

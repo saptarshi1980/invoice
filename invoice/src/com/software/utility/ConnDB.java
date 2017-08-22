@@ -35,7 +35,7 @@ public Connection make_connection(){
            {
               
                String userName = "root";
-               String password = "mahalaxmi123";
+               String password = "dpl123";
                String url="jdbc:mysql://localhost/invoice";
                Class.forName ("com.mysql.jdbc.Driver").newInstance ();
                conn = DriverManager.getConnection (url, userName, password);

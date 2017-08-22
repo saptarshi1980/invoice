@@ -446,11 +446,12 @@ public class Receipt extends javax.swing.JFrame {
     
     public void findInvoice(){
         
+       System.out.println();
         String clientCode=jComboBox1.getSelectedItem().toString().trim().substring(0,jComboBox1.getSelectedItem().toString().trim().indexOf('('));
         
-        String query="SELECT invoice_no FROM bill_master WHERE buyer_code='"+clientCode+"' AND invoice_no NOT IN(SELECT invoice_no FROM receipt)";
+        String query="SELECT invoice_no FROM bill_master WHERE buyer_code='"+clientCode+"' AND invoice_no NOT IN(SELECT ifnull(invoice_no,' ') FROM receipt)";
 
-        
+        System.out.println(query);
         try{
         Connection conn=new ConnDB().make_connection();
         Statement stmt=conn.createStatement();

@@ -38,6 +38,7 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
     String invoiceID=null;
     double balance=0;
     
+    
     /** Creates new form InvoiceDetailsEntry */
     public InvoiceDetailsEntry() {
         initComponents();
@@ -710,7 +711,7 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
                 + "'"+discount+"','"+amount+"','"+centralGstAmt+"','"+stateGstAmt+"','"+centralGstRate+"','"+stateGstRate+"',now())";
         String updateItem="update item_master SET stock=stock-'"+quantity+"' where item_code='"+itemCode+"' ";
         balance=balance-quantity;
-        String insertTransaction="insert into item_master_transaction(item_code,quantity,dc,item_balance,reference,ts_transaction) values('"+itemCode+"','"+quantity+"','D','"+balance+"','"+invoiceid+"',now())";
+        String insertTransaction="insert into item_master_transaction(item_code,quantity,dc,item_balance,reference,ts_transaction,unit_price) values('"+itemCode+"','"+quantity+"','D','"+balance+"','"+invoiceid+"',now(),'"+rate+"')";
          try{
         Connection conn=new ConnDB().make_connection();
         Statement stmt=conn.createStatement();
@@ -868,11 +869,16 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
     
     public boolean checkQuantity(){
         
+                
         double quantity=Double.parseDouble(jTextField4.getText());
-        if(quantity<balance){
+        if(quantity>this.balance){
+            System.out.println("Stock-"+this.balance+"/entered qty-"+quantity);
+            return false;
+        }
+        else {
+            System.out.println("Stock-"+this.balance+"/entered qty-"+quantity);
             return true;
         }
-        else return false;
     }
 
 

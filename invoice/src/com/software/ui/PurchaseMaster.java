@@ -581,7 +581,32 @@ public class PurchaseMaster extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField8KeyTyped
 
     private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
-        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        double discPercent=0;
+    
+    double qty=Double.parseDouble(jTextField3.getText());
+    double price=Double.parseDouble(jTextField15.getText());
+    double taxPercent=Double.parseDouble(jTextField16.getText());
+        
+        if ((c == evt.VK_ENTER)) {
+            
+            
+            try{
+        discPercent=Double.parseDouble(jTextField9.getText());
+    }catch(NumberFormatException ex){
+        ex.printStackTrace();
+        discPercent=0;
+    }
+    double basicPrice=Math.round(qty*price);
+    double discAmt=Math.round(basicPrice*discPercent/100);
+    double netPrice=basicPrice-discAmt;
+    double taxAmt=Math.round(netPrice*taxPercent/100);
+    double gross=netPrice+taxAmt;
+    jTextField14.setText(String.valueOf(taxAmt));
+    jTextField7.setText(String.valueOf(gross));
+      jTextField17.requestFocus();
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_jTextField9KeyTyped
 
     /**
@@ -711,14 +736,14 @@ public void calculate(){
         ex.printStackTrace();
         discPercent=0;
     }
-    double basicPrice=(qty*price);
-    double discAmt=basicPrice*discPercent/100;
+    double basicPrice=Math.round(qty*price);
+    double discAmt=Math.round(basicPrice*discPercent/100);
     double netPrice=basicPrice-discAmt;
-    double taxAmt=netPrice*taxPercent/100;
-    double gross=(qty*price)+taxAmt;
+    double taxAmt=Math.round(netPrice*taxPercent/100);
+    double gross=netPrice+taxAmt;
     jTextField14.setText(String.valueOf(taxAmt));
-    jTextField7.setText(String.valueOf(gross));
-    jTextField17.requestFocus();
+    //jTextField7.setText(String.valueOf(gross));
+    jTextField9.requestFocus();
             
     
     
@@ -752,10 +777,10 @@ public void saveItemDetails(){
     
     
     //String query1="update item_master set unit_price='"+sellingPrice+"',purchase_price='"+purchasePrice+"',stock='"+afterStock+"' where item_code='"+itemCode+"'";
-    String query2="INSERT INTO purchase_master(seller_code,seller_invoice_no,seller_invoice_date,item_code,quantity,unit_purchase_price,tax_percent,tax_amt,gross_amt,parent_code,discount_percent,unit,item_description)"
+    String query2="INSERT INTO purchase_master(seller_code,seller_invoice_no,seller_invoice_date,item_code,quantity,unit_purchase_price,tax_percent,tax_amt,gross_amt,parent_code,discount_percent,unit,item_description,unit_selling_price)"
             + "values('"+sellerCode+"','"+invoiceNo+"',str_to_date('"+invoiceDate+"','%d-%m-%Y'),'"+hsnCode+"','"+qty+"',"
             + "'"+purchasePrice+"','"+taxPercent+"','"+taxAmount+"','"+grossAmt+"','"+parentCode+"',"
-            + "'"+discPercent+"','"+unit+"','"+description+"')";
+            + "'"+discPercent+"','"+unit+"','"+description+"','"+sellingPrice+"')";
     //String query3="insert into item_master_transaction (item_code,quantity,dc,item_balance,reference,ts_transaction,parent_code) values('"+itemCode+"','"+qty+"','C','"+afterStock+"','"+invoiceNo+"',now(),'"+parentCode+"','"+discPercent+"')";
     try{
         Connection conn=new ConnDB().make_connection();
