@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptInvoice" language="groovy" pageWidth="633" pageHeight="864" columnWidth="619" leftMargin="7" rightMargin="7" topMargin="7" bottomMargin="7">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="540"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\Users\\dpl\\Documents\\NetBeansProjects\\invoice\\src\\reports\\"]]></defaultValueExpression>
 	</parameter>
@@ -19,6 +19,10 @@
 	<field name="email" class="java.lang.String"/>
 	<field name="phone" class="java.lang.String"/>
 	<field name="mobile" class="java.lang.String"/>
+	<field name="pan" class="java.lang.String"/>
+	<field name="banker" class="java.lang.String"/>
+	<field name="bank_ac" class="java.lang.String"/>
+	<field name="ifsc" class="java.lang.String"/>
 	<field name="client_code" class="java.lang.String"/>
 	<field name="client_name" class="java.lang.String"/>
 	<field name="address1" class="java.lang.String"/>
@@ -28,7 +32,6 @@
 	<field name="gst_no" class="java.lang.String"/>
 	<field name="uin" class="java.lang.String"/>
 	<field name="reg_date" class="java.sql.Timestamp"/>
-	<field name="pan" class="java.lang.String"/>
 	<field name="invoice_no" class="java.lang.String"/>
 	<field name="DATE_FORMAT(c.invoice_date,&apos;%d-%m-%Y&apos;)" class="java.lang.String"/>
 	<field name="delivery_note" class="java.lang.String"/>

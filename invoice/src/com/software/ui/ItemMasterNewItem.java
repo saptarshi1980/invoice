@@ -463,7 +463,7 @@ public class ItemMasterNewItem extends javax.swing.JFrame {
         
         if ((c == evt.VK_ENTER)) {
             
-            jComboBox2.requestFocus();
+            jButton1.requestFocus();
         }
         
     }//GEN-LAST:event_jComboBox1KeyTyped
@@ -649,6 +649,7 @@ public void findInvoice(){
         for(String taxCode:tax){
         jComboBox2.addItem(taxCode);
         }
+        
         
   }catch(SQLException ex){
         

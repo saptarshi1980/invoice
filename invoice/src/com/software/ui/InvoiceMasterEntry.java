@@ -551,7 +551,8 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         
 
        if ((c == evt.VK_ENTER)) {
-               jComboBox1.requestFocus();
+               //jComboBox1.requestFocus();
+               findBuyer();
              }
        else if(c==KeyEvent.VK_F1){
            System.out.println("F1 Pressed");
@@ -779,5 +780,55 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
     }
         
     
+        
+        public void findBuyer(){
+    String buyerCode=jTextField2.getText().trim();
+    String query="select client_name from client_master where trim(client_code)='"+buyerCode+"'";
+    String clientName=null;
+    try{
+        Connection conn=new ConnDB().make_connection();
+        Statement stmt=conn.createStatement();
+       
+        ResultSet rs=stmt.executeQuery(query);
+        
+        int counter=0;
+        while(rs.next()){
+            
+            clientName=rs.getString(1);
+            counter++;
+        }
+        if(counter==0){
+                    JOptionPane.showMessageDialog(this, "Client Code does not exist! ");
+                    jTextField2.requestFocus();
+                    jTextField2.setText("");
+
+        }
+        else{
+            
+                        int selectedOption = JOptionPane.showConfirmDialog(null, 
+                                  "Buyer Name-"+clientName+", Want to proceed?", 
+                                  "Choose", 
+                                  JOptionPane.YES_NO_OPTION); 
+                    if (selectedOption == JOptionPane.YES_OPTION) {
+                        jComboBox1.requestFocus();
+                    }
+                    else{
+                        jTextField2.setText("");
+                        jTextField2.requestFocus();
+                    }
+
+            
+            
+        }
+    
+    
+}catch(SQLException ex){
+        
+        JOptionPane.showMessageDialog(this, "Error Saving the data! ");
+        ex.printStackTrace();
+    }
+
+}
+        
     
 }

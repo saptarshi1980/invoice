@@ -682,6 +682,7 @@ public void findInvoice(){
         jComboBox2.addItem(taxCode);
         }
         
+        
   }catch(SQLException ex){
         
         JOptionPane.showMessageDialog(this, "Error loading Company Code! ");
