@@ -32,13 +32,17 @@ public class Start{
         
         try {
             String id=null;
-            /*try {
-                id = new CryptoUtil().encrypt("ezeon8547", SoftUtil.rom());
+            try {
+                String mac=new SoftUtil().getCode();
+                id = new CryptoUtil().encrypt("ezeon8547", mac);
+                //id=SoftUtil.getCode();
+                System.out.println("From start-"+id+"-MAC-"+mac);
             } catch (IOException ex) {
                 Logger.getLogger(Start.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
-            //String query="select * from software where token='"+new CryptoUtil().encrypt("ezeon8547", "honululu")+"' and  id='"+id+"'";
-            String query="select * from software where token='"+new CryptoUtil().encrypt("ezeon8547", "honululu")+"' ";
+            }
+            String query="select * from software where token='"+new CryptoUtil().encrypt("ezeon8547", "honululu")+"' and  id='"+id+"'";
+            System.out.println(query);
+            //String query="select * from software where token='"+new CryptoUtil().encrypt("ezeon8547", "honululu")+"' ";
             Connection conn=new ConnDB().make_connection();
             Statement stmt=conn.createStatement();
             ResultSet rs=stmt.executeQuery(query);

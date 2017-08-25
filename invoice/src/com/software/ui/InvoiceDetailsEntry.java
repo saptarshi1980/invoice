@@ -98,6 +98,7 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
         itemTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setAutoRequestFocus(false);
         setName("Form"); // NOI18N
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(invoice.InvoiceApp.class).getContext().getResourceMap(InvoiceDetailsEntry.class);
@@ -147,6 +148,9 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField2KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField2KeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField2KeyTyped(evt);
@@ -599,10 +603,14 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
         if(evt.getKeyCode()==KeyEvent.VK_F1){
           //viewReport();
             new ItemSearch().setVisible(true);
-          jTextField2.requestFocus();
+          //jTextField2.requestFocus();
            
        }
     }//GEN-LAST:event_jTextField2KeyPressed
+
+    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2KeyReleased
 
     /**
      * @param args the command line arguments

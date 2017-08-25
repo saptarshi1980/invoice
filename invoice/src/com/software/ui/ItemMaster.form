@@ -113,7 +113,11 @@
                       <Component id="jComboBox3" min="-2" pref="273" max="-2" attributes="0"/>
                       <Component id="jComboBox2" alignment="0" min="-2" pref="273" max="-2" attributes="0"/>
                       <Component id="jComboBox1" alignment="0" min="-2" pref="273" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jTextField1" min="-2" pref="132" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace pref="245" max="32767" attributes="0"/>
               </Group>
@@ -136,6 +140,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -317,6 +322,14 @@
         <Component class="javax.swing.JTextField" name="jTextField7">
           <Properties>
             <Property name="name" type="java.lang.String" value="jTextField7" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel19">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jLabel19.font"/>
+            <Property name="foreground" type="java.awt.Color" resourceKey="jLabel19.foreground"/>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel19.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel19" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>

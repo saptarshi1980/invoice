@@ -11,6 +11,8 @@
 package com.software.ui;
 
 import com.software.utility.ConnDB;
+import com.software.utility.DateUtil;
+import com.software.utility.SoftUtil;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
@@ -39,10 +41,15 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
     /** Creates new form InvoiceMasterEntry */
     public InvoiceMasterEntry() {
         initComponents();
+         if(!new DateUtil().checkDate()){
+            System.exit(0);
+        }
+        else{
         loadCompanyCode();
         getDate();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+         }
     }
 
     /** This method is called from within the constructor to
@@ -68,7 +75,6 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -83,6 +89,8 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         jTextField8 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox();
+        jLabel19 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -179,14 +187,6 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setName("jComboBox2"); // NOI18N
-        jComboBox2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jComboBox2KeyTyped(evt);
-            }
-        });
-
         jLabel9.setFont(resourceMap.getFont("jLabel9.font")); // NOI18N
         jLabel9.setText(resourceMap.getString("jLabel9.text")); // NOI18N
         jLabel9.setName("jLabel9"); // NOI18N
@@ -229,6 +229,11 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         jFormattedTextField2.setName("jFormattedTextField2"); // NOI18N
+        jFormattedTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jFormattedTextField2FocusLost(evt);
+            }
+        });
         jFormattedTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jFormattedTextField2KeyTyped(evt);
@@ -287,6 +292,22 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
             }
         });
 
+        jLabel19.setFont(resourceMap.getFont("jLabel19.font")); // NOI18N
+        jLabel19.setForeground(resourceMap.getColor("jLabel19.foreground")); // NOI18N
+        jLabel19.setText(resourceMap.getString("jLabel19.text")); // NOI18N
+        jLabel19.setName("jLabel19"); // NOI18N
+
+        jTextField3.setEditable(false);
+        jTextField3.setName("jTextField3"); // NOI18N
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField3KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -311,7 +332,6 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                         .addComponent(jTextField6)
                         .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -320,11 +340,15 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
                         .addComponent(jTextField7)
                         .addComponent(jTextField8)
                         .addComponent(jTextField9)
-                        .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel19))
                         .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jFormattedTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(66, Short.MAX_VALUE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,7 +356,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -344,7 +368,8 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -422,7 +447,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
                                 .addComponent(jButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton1)))))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -441,22 +466,22 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox2KeyTyped
-
-        
-        char c = evt.getKeyChar();
-
-       if ((c == evt.VK_ENTER)) {
-               jTextField2.requestFocus();
-             }
-    }//GEN-LAST:event_jComboBox2KeyTyped
-
     private void jFormattedTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField2KeyTyped
         
          char c = evt.getKeyChar();
 
        if ((c == evt.VK_ENTER)) {
-               jTextField4.requestFocus();
+           
+           if(SoftUtil.validateDateFormat(jFormattedTextField2.getText().trim())&& jFormattedTextField2.getText().trim().length()==10 ){
+                     
+               
+                jTextField4.requestFocus();
+           }
+               else{
+                       jFormattedTextField2.setText("");
+                       jFormattedTextField2.requestFocus();
+               }
+               
              }
        
        
@@ -495,7 +520,14 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         char c = evt.getKeyChar();
 
        if ((c == evt.VK_ENTER)) {
-               jTextField1.requestFocus();
+               
+           if(SoftUtil.validateDateFormat(jFormattedTextField1.getText().trim()))
+                       jTextField1.requestFocus();
+               else{
+                       jFormattedTextField1.setText("");
+                       jFormattedTextField1.requestFocus();
+               }
+           
              }
     }//GEN-LAST:event_jFormattedTextField1KeyTyped
 
@@ -588,6 +620,24 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_jTextField2KeyPressed
 
+    private void jFormattedTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jFormattedTextField2FocusLost
+        
+        
+        if(!new DateUtil().checkFutureDate(jFormattedTextField2.getText().trim())){
+            System.exit(0);
+        }
+        
+        
+    }//GEN-LAST:event_jFormattedTextField2FocusLost
+
+    private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3KeyPressed
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3KeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -604,7 +654,6 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JFormattedTextField jFormattedTextField3;
@@ -614,6 +663,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -626,6 +676,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
@@ -648,10 +699,12 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         while(rs.next()){
             tax.add(rs.getString(1));
         }
-        jComboBox2.removeAllItems();
+        
         for(String taxCode:tax){
-        jComboBox2.addItem(taxCode);
+       jTextField3.setText(taxCode);
+            
         }
+        jTextField2.requestFocus();
         
   }catch(SQLException ex){
         
@@ -674,7 +727,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
     
     public void saveInvoiceMaster(){
         
-        String parentCode=jComboBox2.getSelectedItem().toString().substring(0,jComboBox2.getSelectedItem().toString().indexOf("("));
+        String parentCode=jTextField3.getText().substring(0,jTextField3.getText().indexOf("("));
         String buyerCode=jTextField2.getText();
         String invoiceDate=jFormattedTextField2.getText().trim();
         String deliveryNote=jTextField4.getText();

@@ -50,7 +50,7 @@
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="12" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -89,23 +89,27 @@
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jFormattedTextField1" alignment="0" min="-2" pref="97" max="-2" attributes="0"/>
-                      <Component id="jComboBox1" alignment="0" pref="185" max="32767" attributes="0"/>
-                      <Component id="jComboBox2" alignment="0" pref="185" max="32767" attributes="0"/>
-                      <Component id="jTextField1" alignment="0" pref="185" max="32767" attributes="0"/>
-                      <Component id="jTextField2" alignment="0" pref="185" max="32767" attributes="0"/>
-                      <Component id="jTextField3" alignment="0" pref="185" max="32767" attributes="0"/>
-                      <Component id="jTextField4" alignment="0" pref="185" max="32767" attributes="0"/>
-                      <Component id="jTextField5" alignment="0" pref="185" max="32767" attributes="0"/>
-                      <Component id="jTextField6" alignment="0" pref="185" max="32767" attributes="0"/>
-                      <Component id="jTextField7" alignment="0" pref="185" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jFormattedTextField1" min="-2" pref="97" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jComboBox1" alignment="0" pref="207" max="32767" attributes="0"/>
+                      <Component id="jComboBox2" alignment="0" pref="207" max="32767" attributes="0"/>
+                      <Component id="jTextField1" alignment="0" pref="207" max="32767" attributes="0"/>
+                      <Component id="jTextField2" alignment="0" pref="207" max="32767" attributes="0"/>
+                      <Component id="jTextField3" alignment="0" pref="207" max="32767" attributes="0"/>
+                      <Component id="jTextField4" alignment="0" pref="207" max="32767" attributes="0"/>
+                      <Component id="jTextField5" alignment="0" pref="207" max="32767" attributes="0"/>
+                      <Component id="jTextField6" alignment="0" pref="207" max="32767" attributes="0"/>
+                      <Component id="jTextField7" alignment="0" pref="207" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="85" pref="85" max="85" attributes="0"/>
-                  <Component id="jLabel1" pref="191" max="32767" attributes="0"/>
-                  <EmptySpace pref="53" max="32767" attributes="0"/>
+                  <Component id="jLabel1" pref="202" max="32767" attributes="0"/>
+                  <EmptySpace pref="64" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -118,6 +122,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jFormattedTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -333,6 +338,14 @@
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="jTextField7" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel18">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jLabel18.font"/>
+            <Property name="foreground" type="java.awt.Color" resourceKey="jLabel18.foreground"/>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel18.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel18" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>

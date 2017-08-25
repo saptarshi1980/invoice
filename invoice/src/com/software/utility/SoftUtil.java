@@ -12,6 +12,9 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -56,22 +59,21 @@ public class SoftUtil {
 
    }
     
-    public static String getCode(){
-        String code=null;
+    public String getCode(){
+         
+        String[] result=null;
         try {
-            InetAddress address=InetAddress.getLocalHost();
-            NetworkInterface nwi=NetworkInterface.getByInetAddress(address);
-            byte mac[]=nwi.getHardwareAddress();
-            
-            System.out.println();
-            
-        } catch (SocketException ex) {
-            Logger.getLogger(SoftUtil.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnknownHostException ex) {
-            Logger.getLogger(SoftUtil.class.getName()).log(Level.SEVERE, null, ex);
+            Process p = Runtime.getRuntime().exec("getmac /fo csv /nh");
+        java.io.BufferedReader in = new java.io.BufferedReader(new  java.io.InputStreamReader(p.getInputStream()));
+        String line;
+        line = in.readLine();        
+        result = line.split(",");
+
+        System.out.println(result[0].replace('"', ' ').trim());
+        } catch (IOException ex) {
+            Logger.getLogger(CmdTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        return null;
+     return result[0].replace('"', ' ').trim();
     }
     
     public static String rom() throws IOException{
@@ -109,5 +111,23 @@ while ((s = stdError.readLine()) != null) {
 return s;
 
     }
+    
+    
+    
+    public static boolean validateDateFormat(String dateToValdate) {
+
+    SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+    //To make strict date format validation
+    formatter.setLenient(false);
+    Date parsedDate = null;
+    try {
+        parsedDate = formatter.parse(dateToValdate);
+        System.out.println("++validated DATE TIME ++"+formatter.format(parsedDate));
+
+    } catch (ParseException e) {
+        return false;
+    }
+    return true;
+}
     
 }

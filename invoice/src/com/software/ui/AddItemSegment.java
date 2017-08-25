@@ -214,7 +214,10 @@ public void loadSegmentID(){
 }
 
 public void saveSegment(){
-    
+    if(!verifyFields()){
+       JOptionPane.showMessageDialog(this, "Please fill up the information proeperly. ");
+    }
+    else{
    String query="insert into item_category(id,segment) values('"+jTextField1.getText().trim()+"','"+jTextField2.getText().trim().toUpperCase()+"')";
    try{
         Connection conn=new ConnDB().make_connection();
@@ -228,7 +231,18 @@ public void saveSegment(){
         JOptionPane.showMessageDialog(this, "Error in saving data! ");
         ex.printStackTrace();
     }
-   
+    }
 }
+
+public boolean verifyFields(){
+        
+        String id=jTextField1.getText().trim();
+        String description=jTextField2.getText().trim().toUpperCase();
+        if(id.trim().length()>0 && description.trim().length()>3  )
+            return true;
+        else return false;
+        
+        
+    }
 
 }

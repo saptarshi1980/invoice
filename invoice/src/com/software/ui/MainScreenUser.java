@@ -10,6 +10,7 @@
  */
 package com.software.ui;
 
+import com.software.utility.DateUtil;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
@@ -23,11 +24,16 @@ public class MainScreenUser extends javax.swing.JFrame {
     /** Creates new form MainScreenUser */
     public MainScreenUser() {
         initComponents();
+        if(!new DateUtil().checkDate()){
+            System.exit(0);
+        }
+        else{
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         jMenu1.setMnemonic(KeyEvent.VK_O);
         jMenu2.setMnemonic(KeyEvent.VK_R);
         setExtendedState(MAXIMIZED_BOTH);
+        }
     }
 
     /** This method is called from within the constructor to
@@ -42,37 +48,30 @@ public class MainScreenUser extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
         jMenuItem16 = new javax.swing.JMenuItem();
         jMenuItem17 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenuItem19 = new javax.swing.JMenuItem();
         jMenu12 = new javax.swing.JMenu();
         jMenuItem23 = new javax.swing.JMenuItem();
         jMenuItem24 = new javax.swing.JMenuItem();
-        jMenu11 = new javax.swing.JMenu();
-        jMenuItem20 = new javax.swing.JMenuItem();
-        jMenuItem21 = new javax.swing.JMenuItem();
-        jMenuItem22 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
 
@@ -93,50 +92,57 @@ public class MainScreenUser extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 355, Short.MAX_VALUE)
+            .addGap(0, 323, Short.MAX_VALUE)
         );
 
         jMenuBar1.setName("jMenuBar1"); // NOI18N
 
+        jMenu1.setIcon(resourceMap.getIcon("jMenu1.icon")); // NOI18N
         jMenu1.setText(resourceMap.getString("jMenu1.text")); // NOI18N
         jMenu1.setFont(resourceMap.getFont("jMenu1.font")); // NOI18N
         jMenu1.setName("jMenu1"); // NOI18N
 
-        jMenu3.setText(resourceMap.getString("jMenu3.text")); // NOI18N
-        jMenu3.setFont(resourceMap.getFont("jMenu3.font")); // NOI18N
-        jMenu3.setName("jMenu3"); // NOI18N
+        jMenu8.setText(resourceMap.getString("jMenu8.text")); // NOI18N
+        jMenu8.setFont(resourceMap.getFont("jMenu8.font")); // NOI18N
+        jMenu8.setName("jMenu8"); // NOI18N
 
-        jMenuItem1.setFont(resourceMap.getFont("jMenuItem1.font")); // NOI18N
-        jMenuItem1.setText(resourceMap.getString("jMenuItem1.text")); // NOI18N
-        jMenuItem1.setName("jMenuItem1"); // NOI18N
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem14.setFont(resourceMap.getFont("jMenuItem15.font")); // NOI18N
+        jMenuItem14.setText(resourceMap.getString("jMenuItem14.text")); // NOI18N
+        jMenuItem14.setName("jMenuItem14"); // NOI18N
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItem14ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem1);
+        jMenu8.add(jMenuItem14);
 
-        jMenuItem2.setFont(resourceMap.getFont("jMenuItem1.font")); // NOI18N
-        jMenuItem2.setText(resourceMap.getString("jMenuItem2.text")); // NOI18N
-        jMenuItem2.setName("jMenuItem2"); // NOI18N
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem15.setFont(resourceMap.getFont("jMenuItem15.font")); // NOI18N
+        jMenuItem15.setText(resourceMap.getString("jMenuItem15.text")); // NOI18N
+        jMenuItem15.setName("jMenuItem15"); // NOI18N
+        jMenu8.add(jMenuItem15);
+
+        jMenu1.add(jMenu8);
+
+        jMenu9.setText(resourceMap.getString("jMenu9.text")); // NOI18N
+        jMenu9.setFont(resourceMap.getFont("jMenu9.font")); // NOI18N
+        jMenu9.setName("jMenu9"); // NOI18N
+
+        jMenuItem16.setFont(resourceMap.getFont("jMenuItem16.font")); // NOI18N
+        jMenuItem16.setText(resourceMap.getString("jMenuItem16.text")); // NOI18N
+        jMenuItem16.setName("jMenuItem16"); // NOI18N
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItem16ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        jMenu9.add(jMenuItem16);
 
-        jMenuItem3.setFont(resourceMap.getFont("jMenuItem1.font")); // NOI18N
-        jMenuItem3.setText(resourceMap.getString("jMenuItem3.text")); // NOI18N
-        jMenuItem3.setName("jMenuItem3"); // NOI18N
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem3);
+        jMenuItem17.setFont(resourceMap.getFont("jMenuItem17.font")); // NOI18N
+        jMenuItem17.setText(resourceMap.getString("jMenuItem17.text")); // NOI18N
+        jMenuItem17.setName("jMenuItem17"); // NOI18N
+        jMenu9.add(jMenuItem17);
 
-        jMenu1.add(jMenu3);
+        jMenu1.add(jMenu9);
 
         jMenu4.setText(resourceMap.getString("jMenu4.text")); // NOI18N
         jMenu4.setFont(resourceMap.getFont("jMenu3.font")); // NOI18N
@@ -184,27 +190,6 @@ public class MainScreenUser extends javax.swing.JFrame {
 
         jMenu1.add(jMenu4);
 
-        jMenu5.setText(resourceMap.getString("jMenu5.text")); // NOI18N
-        jMenu5.setFont(resourceMap.getFont("jMenu3.font")); // NOI18N
-        jMenu5.setName("jMenu5"); // NOI18N
-
-        jMenuItem8.setFont(resourceMap.getFont("jMenuItem8.font")); // NOI18N
-        jMenuItem8.setText(resourceMap.getString("jMenuItem8.text")); // NOI18N
-        jMenuItem8.setName("jMenuItem8"); // NOI18N
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem8);
-
-        jMenuItem9.setFont(resourceMap.getFont("jMenuItem8.font")); // NOI18N
-        jMenuItem9.setText(resourceMap.getString("jMenuItem9.text")); // NOI18N
-        jMenuItem9.setName("jMenuItem9"); // NOI18N
-        jMenu5.add(jMenuItem9);
-
-        jMenu1.add(jMenu5);
-
         jMenu6.setText(resourceMap.getString("jMenu6.text")); // NOI18N
         jMenu6.setFont(resourceMap.getFont("jMenu6.font")); // NOI18N
         jMenu6.setName("jMenu6"); // NOI18N
@@ -226,47 +211,41 @@ public class MainScreenUser extends javax.swing.JFrame {
 
         jMenu1.add(jMenu6);
 
-        jMenu8.setText(resourceMap.getString("jMenu8.text")); // NOI18N
-        jMenu8.setFont(resourceMap.getFont("jMenu8.font")); // NOI18N
-        jMenu8.setName("jMenu8"); // NOI18N
+        jMenu3.setText(resourceMap.getString("jMenu3.text")); // NOI18N
+        jMenu3.setFont(resourceMap.getFont("jMenu3.font")); // NOI18N
+        jMenu3.setName("jMenu3"); // NOI18N
 
-        jMenuItem14.setFont(resourceMap.getFont("jMenuItem15.font")); // NOI18N
-        jMenuItem14.setText(resourceMap.getString("jMenuItem14.text")); // NOI18N
-        jMenuItem14.setName("jMenuItem14"); // NOI18N
-        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setFont(resourceMap.getFont("jMenuItem1.font")); // NOI18N
+        jMenuItem1.setText(resourceMap.getString("jMenuItem1.text")); // NOI18N
+        jMenuItem1.setName("jMenuItem1"); // NOI18N
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem14ActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu8.add(jMenuItem14);
+        jMenu3.add(jMenuItem1);
 
-        jMenuItem15.setFont(resourceMap.getFont("jMenuItem15.font")); // NOI18N
-        jMenuItem15.setText(resourceMap.getString("jMenuItem15.text")); // NOI18N
-        jMenuItem15.setName("jMenuItem15"); // NOI18N
-        jMenu8.add(jMenuItem15);
-
-        jMenu1.add(jMenu8);
-
-        jMenu9.setText(resourceMap.getString("jMenu9.text")); // NOI18N
-        jMenu9.setFont(resourceMap.getFont("jMenu9.font")); // NOI18N
-        jMenu9.setName("jMenu9"); // NOI18N
-
-        jMenuItem16.setFont(resourceMap.getFont("jMenuItem16.font")); // NOI18N
-        jMenuItem16.setText(resourceMap.getString("jMenuItem16.text")); // NOI18N
-        jMenuItem16.setName("jMenuItem16"); // NOI18N
-        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem2.setFont(resourceMap.getFont("jMenuItem1.font")); // NOI18N
+        jMenuItem2.setText(resourceMap.getString("jMenuItem2.text")); // NOI18N
+        jMenuItem2.setName("jMenuItem2"); // NOI18N
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem16ActionPerformed(evt);
+                jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu9.add(jMenuItem16);
+        jMenu3.add(jMenuItem2);
 
-        jMenuItem17.setFont(resourceMap.getFont("jMenuItem17.font")); // NOI18N
-        jMenuItem17.setText(resourceMap.getString("jMenuItem17.text")); // NOI18N
-        jMenuItem17.setName("jMenuItem17"); // NOI18N
-        jMenu9.add(jMenuItem17);
+        jMenuItem3.setFont(resourceMap.getFont("jMenuItem1.font")); // NOI18N
+        jMenuItem3.setText(resourceMap.getString("jMenuItem3.text")); // NOI18N
+        jMenuItem3.setName("jMenuItem3"); // NOI18N
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem3);
 
-        jMenu1.add(jMenu9);
+        jMenu1.add(jMenu3);
 
         jMenu10.setText(resourceMap.getString("jMenu10.text")); // NOI18N
         jMenu10.setFont(resourceMap.getFont("jMenu10.font")); // NOI18N
@@ -310,29 +289,9 @@ public class MainScreenUser extends javax.swing.JFrame {
 
         jMenu1.add(jMenu12);
 
-        jMenu11.setText(resourceMap.getString("jMenu11.text")); // NOI18N
-        jMenu11.setFont(resourceMap.getFont("jMenu11.font")); // NOI18N
-        jMenu11.setName("jMenu11"); // NOI18N
-
-        jMenuItem20.setFont(resourceMap.getFont("jMenuItem20.font")); // NOI18N
-        jMenuItem20.setText(resourceMap.getString("jMenuItem20.text")); // NOI18N
-        jMenuItem20.setName("jMenuItem20"); // NOI18N
-        jMenu11.add(jMenuItem20);
-
-        jMenuItem21.setFont(resourceMap.getFont("jMenuItem20.font")); // NOI18N
-        jMenuItem21.setText(resourceMap.getString("jMenuItem21.text")); // NOI18N
-        jMenuItem21.setName("jMenuItem21"); // NOI18N
-        jMenu11.add(jMenuItem21);
-
-        jMenuItem22.setFont(resourceMap.getFont("jMenuItem20.font")); // NOI18N
-        jMenuItem22.setText(resourceMap.getString("jMenuItem22.text")); // NOI18N
-        jMenuItem22.setName("jMenuItem22"); // NOI18N
-        jMenu11.add(jMenuItem22);
-
-        jMenu1.add(jMenu11);
-
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setIcon(resourceMap.getIcon("jMenu2.icon")); // NOI18N
         jMenu2.setText(resourceMap.getString("jMenu2.text")); // NOI18N
         jMenu2.setFont(resourceMap.getFont("jMenu2.font")); // NOI18N
         jMenu2.setName("jMenu2"); // NOI18N
@@ -380,10 +339,6 @@ public class MainScreenUser extends javax.swing.JFrame {
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         new CustomerMasterEntry().setVisible(true);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
-
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        new TaxCodeEntry().setVisible(true);
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         new SellerMaster().setVisible(true);
@@ -436,12 +391,10 @@ public class MainScreenUser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
-    private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu12;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
@@ -457,9 +410,6 @@ public class MainScreenUser extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem20;
-    private javax.swing.JMenuItem jMenuItem21;
-    private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem23;
     private javax.swing.JMenuItem jMenuItem24;
     private javax.swing.JMenuItem jMenuItem3;
@@ -467,8 +417,6 @@ public class MainScreenUser extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
