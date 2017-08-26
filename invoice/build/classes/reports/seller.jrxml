@@ -4,7 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[SELECT * FROM seller_master]]>
+		<![CDATA[SELECT seller_code,seller_name,seller_address,seller_phone,seller_mobile,seller_gst FROM seller_master]]>
 	</queryString>
 	<field name="seller_code" class="java.lang.String"/>
 	<field name="seller_name" class="java.lang.String"/>
@@ -12,7 +12,6 @@
 	<field name="seller_phone" class="java.lang.String"/>
 	<field name="seller_mobile" class="java.lang.String"/>
 	<field name="seller_gst" class="java.lang.String"/>
-	<field name="reg_date" class="java.sql.Timestamp"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>

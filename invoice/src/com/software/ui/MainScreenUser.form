@@ -17,6 +17,11 @@
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMenu8">
               <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
                 <Property name="text" type="java.lang.String" resourceKey="jMenu8.text"/>
                 <Property name="font" type="java.awt.Font" resourceKey="jMenu8.font"/>
                 <Property name="name" type="java.lang.String" value="jMenu8" noResource="true"/>
@@ -26,6 +31,11 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" resourceKey="jMenuItem15.font"/>
                     <Property name="text" type="java.lang.String" resourceKey="jMenuItem14.text"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="jMenuItem14" noResource="true"/>
                   </Properties>
                   <Events>
@@ -36,6 +46,11 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" resourceKey="jMenuItem15.font"/>
                     <Property name="text" type="java.lang.String" resourceKey="jMenuItem15.text"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="jMenuItem15" noResource="true"/>
                   </Properties>
                 </MenuItem>
@@ -43,6 +58,11 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="jMenu9">
               <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
                 <Property name="text" type="java.lang.String" resourceKey="jMenu9.text"/>
                 <Property name="font" type="java.awt.Font" resourceKey="jMenu9.font"/>
                 <Property name="name" type="java.lang.String" value="jMenu9" noResource="true"/>
@@ -52,6 +72,11 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" resourceKey="jMenuItem16.font"/>
                     <Property name="text" type="java.lang.String" resourceKey="jMenuItem16.text"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="jMenuItem16" noResource="true"/>
                   </Properties>
                   <Events>
@@ -62,6 +87,11 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" resourceKey="jMenuItem17.font"/>
                     <Property name="text" type="java.lang.String" resourceKey="jMenuItem17.text"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="jMenuItem17" noResource="true"/>
                   </Properties>
                 </MenuItem>
@@ -69,6 +99,11 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="jMenu4">
               <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
                 <Property name="text" type="java.lang.String" resourceKey="jMenu4.text"/>
                 <Property name="font" type="java.awt.Font" resourceKey="jMenu3.font"/>
                 <Property name="name" type="java.lang.String" value="jMenu4" noResource="true"/>
@@ -118,6 +153,11 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="jMenu6">
               <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
                 <Property name="text" type="java.lang.String" resourceKey="jMenu6.text"/>
                 <Property name="font" type="java.awt.Font" resourceKey="jMenu6.font"/>
                 <Property name="name" type="java.lang.String" value="jMenu6" noResource="true"/>
@@ -127,6 +167,11 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" resourceKey="jMenuItem10.font"/>
                     <Property name="text" type="java.lang.String" resourceKey="jMenuItem10.text"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="jMenuItem10" noResource="true"/>
                   </Properties>
                   <Events>
@@ -137,6 +182,11 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" resourceKey="jMenuItem11.font"/>
                     <Property name="text" type="java.lang.String" resourceKey="jMenuItem11.text"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="jMenuItem11" noResource="true"/>
                   </Properties>
                 </MenuItem>
@@ -144,6 +194,11 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="jMenu3">
               <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
                 <Property name="text" type="java.lang.String" resourceKey="jMenu3.text"/>
                 <Property name="font" type="java.awt.Font" resourceKey="jMenu3.font"/>
                 <Property name="name" type="java.lang.String" value="jMenu3" noResource="true"/>
@@ -153,6 +208,11 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" resourceKey="jMenuItem1.font"/>
                     <Property name="text" type="java.lang.String" resourceKey="jMenuItem1.text"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="jMenuItem1" noResource="true"/>
                   </Properties>
                   <Events>
@@ -163,6 +223,11 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" resourceKey="jMenuItem1.font"/>
                     <Property name="text" type="java.lang.String" resourceKey="jMenuItem2.text"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="jMenuItem2" noResource="true"/>
                   </Properties>
                   <Events>
@@ -173,6 +238,11 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" resourceKey="jMenuItem1.font"/>
                     <Property name="text" type="java.lang.String" resourceKey="jMenuItem3.text"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="jMenuItem3" noResource="true"/>
                   </Properties>
                   <Events>
@@ -183,6 +253,11 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="jMenu10">
               <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
                 <Property name="text" type="java.lang.String" resourceKey="jMenu10.text"/>
                 <Property name="font" type="java.awt.Font" resourceKey="jMenu10.font"/>
                 <Property name="name" type="java.lang.String" value="jMenu10" noResource="true"/>
@@ -192,6 +267,11 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" resourceKey="jMenuItem18.font"/>
                     <Property name="text" type="java.lang.String" resourceKey="jMenuItem18.text"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="jMenuItem18" noResource="true"/>
                   </Properties>
                   <Events>
@@ -202,6 +282,11 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" resourceKey="jMenuItem18.font"/>
                     <Property name="text" type="java.lang.String" resourceKey="jMenuItem19.text"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="jMenuItem19" noResource="true"/>
                   </Properties>
                 </MenuItem>
@@ -209,6 +294,11 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="jMenu12">
               <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
                 <Property name="text" type="java.lang.String" resourceKey="jMenu12.text"/>
                 <Property name="font" type="java.awt.Font" resourceKey="jMenu12.font"/>
                 <Property name="name" type="java.lang.String" value="jMenu12" noResource="true"/>
@@ -218,6 +308,11 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" resourceKey="jMenuItem23.font"/>
                     <Property name="text" type="java.lang.String" resourceKey="jMenuItem23.text"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="jMenuItem23" noResource="true"/>
                   </Properties>
                   <Events>
@@ -228,6 +323,11 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" resourceKey="jMenuItem24.font"/>
                     <Property name="text" type="java.lang.String" resourceKey="jMenuItem24.text"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                    </Property>
                     <Property name="name" type="java.lang.String" value="jMenuItem24" noResource="true"/>
                   </Properties>
                 </MenuItem>
@@ -247,6 +347,11 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" resourceKey="jMenuItem5.font"/>
                 <Property name="text" type="java.lang.String" resourceKey="jMenuItem5.text"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
                 <Property name="name" type="java.lang.String" value="jMenuItem5" noResource="true"/>
               </Properties>
               <Events>
@@ -257,8 +362,16 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" resourceKey="jMenuItem8.font"/>
                 <Property name="text" type="java.lang.String" resourceKey="jMenuItem8.text"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
                 <Property name="name" type="java.lang.String" value="jMenuItem8" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem8ActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -267,6 +380,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" resourceKey="Form.title"/>
     <Property name="name" type="java.lang.String" value="Form" noResource="true"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
@@ -289,7 +403,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -313,15 +427,39 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="701" max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="239" pref="239" max="239" attributes="0"/>
+                  <Component id="jLabel2" min="-2" pref="446" max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="323" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="jLabel1" min="-2" pref="375" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jLabel1.icon"/>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel1.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" resourceKey="jLabel2.icon"/>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel2.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel2" noResource="true"/>
+          </Properties>
+        </Component>
+      </SubComponents>
     </Container>
   </SubComponents>
 </Form>

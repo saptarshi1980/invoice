@@ -56,6 +56,8 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         jComboBox1.removeAllItems();
         hsn.removeAllItems();
+        jButton2.setMnemonic(KeyEvent.VK_A);
+        jButton1.setMnemonic(KeyEvent.VK_F);
     }
 
     /** This method is called from within the constructor to

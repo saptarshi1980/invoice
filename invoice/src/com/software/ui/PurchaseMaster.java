@@ -941,6 +941,7 @@ public void loadCompanyCode(){
         for(String taxCode:tax){
         jTextField18.setText(taxCode);
         }
+        jTextField13.requestFocus();
         
   }catch(SQLException ex){
         

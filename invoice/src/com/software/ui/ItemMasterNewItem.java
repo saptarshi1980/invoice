@@ -474,7 +474,7 @@ public class ItemMasterNewItem extends javax.swing.JFrame {
         
         if ((c == evt.VK_ENTER)) {
             
-            jButton1.requestFocus();
+            jComboBox2.requestFocus();
         }
         
     }//GEN-LAST:event_jComboBox1KeyTyped
@@ -704,7 +704,7 @@ public void findDescription(){
 
 public void itemDescription(){
     
-    String query="SELECT quantity,IFNULL(unit,' '),unit_purchase_price,tax_percent,item_code,ifnull(discount_percent,'0'),unit_selling_price,parent_code FROM purchase_master WHERE upper(seller_invoice_no)='"+jComboBox2.getSelectedItem().toString().trim().toUpperCase()+"' AND UPPER(item_description)='"+jComboBox3.getSelectedItem().toString().trim().toUpperCase()+"'";
+    String query="SELECT quantity,IFNULL(unit,' '),unit_purchase_price,tax_percent,item_code,ifnull(discount_percent,'0'),unit_selling_price FROM purchase_master WHERE upper(seller_invoice_no)='"+jComboBox2.getSelectedItem().toString().trim().toUpperCase()+"' AND UPPER(item_description)='"+jComboBox3.getSelectedItem().toString().trim().toUpperCase()+"'";
     try{
         Connection conn=new ConnDB().make_connection();
         Statement stmt=conn.createStatement();
@@ -718,7 +718,7 @@ public void itemDescription(){
             jTextField5.setText(rs.getString(5));
             jTextField6.setText(rs.getString(6));
             this.sellingPrice=rs.getDouble(7);
-            this.parentCode=rs.getString(8);
+            
             
             
 
@@ -851,8 +851,8 @@ public void saveItem() throws SQLException{
                 + " values('"+itemCode+"','"+itemDescription+"','"+hsnCode+"','"+taxCode+"','"+unit+"','"+unitPrice+"','"+purchasePrice+"','"+quantity+"','"+segment+"')";
         stmt.executeUpdate(query);
         Statement stmt1=conn.createStatement();
-        String query1="insert into item_master_transaction (item_code,quantity,unit_price,dc,item_balance,reference,ts_transaction,parent_code)"
-                + " values('"+itemCode+"','"+quantity+"','"+purchasePrice+"','C','"+quantity+"','"+invoiceNo+"',now(),'"+parentCode+"')";
+        String query1="insert into item_master_transaction (item_code,quantity,unit_price,dc,item_balance,reference,ts_transaction)"
+                + " values('"+itemCode+"','"+quantity+"','"+purchasePrice+"','C','"+quantity+"','"+invoiceNo+"',now())";
         JOptionPane.showMessageDialog(this, "item Added ");
         stmt1.executeUpdate(query1);
         Statement stmt4=conn.createStatement();
