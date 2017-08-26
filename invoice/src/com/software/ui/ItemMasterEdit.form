@@ -46,7 +46,7 @@
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jButton1" pref="24" max="32767" attributes="0"/>
+              <Component id="jButton1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -379,6 +379,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" resourceKey="jButton1.icon"/>
         <Property name="text" type="java.lang.String" resourceKey="jButton1.text"/>
         <Property name="name" type="java.lang.String" value="jButton1" noResource="true"/>
       </Properties>

@@ -7,7 +7,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select hsn_sac,tax_percent_central,tax_percent_state,amount,tax_percent_central,tax_amt_central,tax_percent_state,tax_amt_state from bill_details where invoice_id=$P{invoice_no}]]>
+		<![CDATA[SELECT hsn_sac,tax_percent_central,tax_percent_state,amount,tax_amt_central,tax_amt_state FROM bill_details WHERE invoice_id=$P{invoice_no}]]>
 	</queryString>
 	<field name="hsn_sac" class="java.lang.String"/>
 	<field name="tax_percent_central" class="java.lang.Double"/>
@@ -77,20 +77,13 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="15" splitType="Stretch">
+		<band height="17" splitType="Stretch">
 			<textField>
 				<reportElement x="4" y="0" width="100" height="15"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{hsn_sac}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="239" y="0" width="42" height="15"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{tax_percent_state}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="298" y="0" width="60" height="15"/>
@@ -119,6 +112,13 @@
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="229" y="0" width="50" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tax_percent_central}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

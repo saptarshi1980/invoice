@@ -163,7 +163,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <EmptySpace pref="15" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -335,6 +335,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" resourceKey="jButton1.icon"/>
         <Property name="text" type="java.lang.String" resourceKey="jButton1.text"/>
         <Property name="name" type="java.lang.String" value="jButton1" noResource="true"/>
       </Properties>

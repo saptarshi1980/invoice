@@ -288,9 +288,10 @@ public class ItemPriceEntry extends javax.swing.JFrame {
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel7)))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
+        jButton1.setIcon(resourceMap.getIcon("jButton1.icon")); // NOI18N
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
         jButton1.setName("jButton1"); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
