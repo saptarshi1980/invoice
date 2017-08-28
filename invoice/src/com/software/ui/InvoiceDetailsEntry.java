@@ -829,7 +829,7 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
         
         double gstAmt=(rate*quantity)*gst/100;
         amount=((rate*quantity)+((rate*quantity)*gst/100))-discount;
-        jTextField1.setText(String.valueOf(amount));
+        jTextField1.setText(String.valueOf(round(amount,2)));
     } 
     
     public void updateMaster(String invoiceID){
@@ -896,6 +896,16 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
 
 
 
+    
+    public double round(double value, int places) {
+    if (places < 0) throw new IllegalArgumentException();
+
+    long factor = (long) Math.pow(10, places);
+    value = value * factor;
+    long tmp = Math.round(value);
+    return (double) tmp / factor;
+}
+    
     private void viewReport() {
         
            String invoiceNo=jComboBox1.getSelectedItem().toString();

@@ -812,7 +812,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         
            String invoiceNo=jComboBox1.getSelectedItem().toString();
            //String reportSource = "rptInvoice1.jasper";
-            String reportSource = "c://reports//buyer.jasper";
+            String reportSource = "c://invoice//reports//buyer.jasper";
             Map<String, Object> params = new HashMap<String, Object>();
             
    try

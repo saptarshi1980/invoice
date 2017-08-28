@@ -364,13 +364,14 @@ public class Receipt extends javax.swing.JFrame {
            if(SoftUtil.validateDateFormat(jFormattedTextField1.getText().trim()) && jFormattedTextField1.getText().trim().length()==10)
                        jTextField5.requestFocus();
                    else
-                       jFormattedTextField1.setText("");
-                       jFormattedTextField1.requestFocus();
+           {
+               jFormattedTextField1.setText("");
+               jFormattedTextField1.requestFocus();
              }    
            
            
            
-          
+       }
                  
     }//GEN-LAST:event_jFormattedTextField1KeyTyped
 

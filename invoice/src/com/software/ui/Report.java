@@ -358,7 +358,7 @@ public class Report extends javax.swing.JFrame {
 public void generate() {
     String fromDate=jFormattedTextField1.getText();
     String toDate=jFormattedTextField2.getText();
-    String reportSource = "c://reports//"+getReportName();
+    String reportSource = "c://invoice//reports//"+getReportName();
     Map<String, Object> params = new HashMap<String, Object>();
     params.put("from_date",fromDate);
     params.put("to_date",toDate);

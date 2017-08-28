@@ -600,7 +600,7 @@ public boolean verifyFields(){
         
         
         
-        if(consumerCode.trim().length()>0 && consumerName.trim().length()>3 && address1.trim().length()>5 && address2.trim().length()>5 && pin.trim().length()>5 && gst.trim().length()>0 && state.trim().length()>0 && uin.trim().length()>0 && pan.trim().length()>0)
+        if(consumerCode.trim().length()>0 && consumerName.trim().length()>3 && address1.trim().length()>5 && address2.trim().length()>5 && pin.trim().length()>5 && state.trim().length()>0 )
             return true;
         else return false;
         

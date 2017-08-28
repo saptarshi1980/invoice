@@ -609,10 +609,10 @@ public class PurchaseMaster extends javax.swing.JFrame {
         ex.printStackTrace();
         discPercent=0;
     }
-    double basicPrice=Math.round(qty*price);
-    double discAmt=Math.round(basicPrice*discPercent/100);
+    double basicPrice=round(qty*price,2);
+    double discAmt=round(basicPrice*discPercent/100,2);
     double netPrice=basicPrice-discAmt;
-    double taxAmt=Math.round(netPrice*taxPercent/100);
+    double taxAmt=round(netPrice*taxPercent/100,2);
     double gross=netPrice+taxAmt;
     jTextField14.setText(String.valueOf(taxAmt));
     jTextField7.setText(String.valueOf(gross));
@@ -760,10 +760,10 @@ public void calculate(){
         ex.printStackTrace();
         discPercent=0;
     }
-    double basicPrice=Math.round(qty*price);
-    double discAmt=Math.round(basicPrice*discPercent/100);
+    double basicPrice=round(qty*price,2);
+    double discAmt=round(basicPrice*discPercent/100,2);
     double netPrice=basicPrice-discAmt;
-    double taxAmt=Math.round(netPrice*taxPercent/100);
+    double taxAmt=round(netPrice*taxPercent/100,2);
     double gross=netPrice+taxAmt;
     jTextField14.setText(String.valueOf(taxAmt));
     //jTextField7.setText(String.valueOf(gross));
@@ -901,7 +901,7 @@ public void findSeller(){
 private void viewReport() {
         
            
-            String reportSource = "c://reports//seller.jasper";
+            String reportSource = "c://invoice//reports//seller.jasper";
             
           Map<String, Object> params = new HashMap<String, Object>();
  
@@ -951,5 +951,14 @@ public void loadCompanyCode(){
 
     
     
+}
+
+public double round(double value, int places) {
+    if (places < 0) throw new IllegalArgumentException();
+
+    long factor = (long) Math.pow(10, places);
+    value = value * factor;
+    long tmp = Math.round(value);
+    return (double) tmp / factor;
 }
 }

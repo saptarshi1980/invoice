@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptInvoice1_subreport1" language="groovy" pageWidth="633" pageHeight="864" columnWidth="621" leftMargin="6" rightMargin="6" topMargin="0" bottomMargin="0" scriptletClass="numbertoword.NumToWord">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="invoice_no" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select hsn_sac,tax_percent_central,tax_percent_state,amount,tax_percent_central,tax_amt_central,tax_percent_state,tax_amt_state from bill_details where invoice_id=$P{invoice_no}]]>
+	</queryString>
+	<field name="hsn_sac" class="java.lang.String"/>
+	<field name="tax_percent_central" class="java.lang.Double"/>
+	<field name="tax_percent_state" class="java.lang.Double"/>
+	<field name="amount" class="java.lang.Double"/>
+	<field name="tax_amt_central" class="java.lang.Double"/>
+	<field name="tax_amt_state" class="java.lang.Double"/>
+	<variable name="tax_percent_central_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{tax_percent_central}]]></variableExpression>
+	</variable>
+	<variable name="amount_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount}]]></variableExpression>
+	</variable>
+	<variable name="tot_tax" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{tax_amt_central}+$F{tax_amt_state}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="8" splitType="Stretch"/>
+	</title>
+	<columnHeader>
+		<band height="31">
+			<staticText>
+				<reportElement x="40" y="5" width="48" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[HSN /  SAC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="4" width="100" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Taxable Value]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="3" width="108" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Central Tax]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="18" width="48" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Rate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="328" y="17" width="58" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="519" y="5" width="83" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Total Tax Amount]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="1" width="619" height="1"/>
+			</line>
+			<line>
+				<reportElement x="1" y="-8" width="1" height="39"/>
+			</line>
+			<line>
+				<reportElement x="176" y="1" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement x="280" y="1" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement x="386" y="1" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement x="281" y="15" width="105" height="1"/>
+			</line>
+			<line>
+				<reportElement x="328" y="16" width="1" height="15"/>
+			</line>
+			<staticText>
+				<reportElement x="384" y="3" width="108" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[State Tax]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="434" y="17" width="58" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<line>
+				<reportElement x="434" y="16" width="1" height="15"/>
+			</line>
+			<staticText>
+				<reportElement x="386" y="18" width="48" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Rate]]></text>
+			</staticText>
+			<line>
+				<reportElement x="387" y="15" width="105" height="1"/>
+			</line>
+			<line>
+				<reportElement x="492" y="1" width="1" height="30"/>
+			</line>
+			<line>
+				<reportElement x="2" y="30" width="619" height="1"/>
+			</line>
+			<line>
+				<reportElement x="619" y="-8" width="1" height="39"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement x="4" y="0" width="173" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{hsn_sac}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="285" y="0" width="42" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tax_percent_state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="332" y="0" width="52" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tax_amt_central}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="0" width="47" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tax_percent_state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="436" y="0" width="53" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tax_amt_state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="0" width="88" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="176" y="0" width="1" height="15"/>
+			</line>
+			<line>
+				<reportElement x="280" y="-1" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="328" y="-1" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="386" y="-1" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="434" y="-1" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="492" y="-1" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="619" y="-1" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="1" y="-1" width="1" height="16"/>
+			</line>
+			<textField>
+				<reportElement x="505" y="0" width="108" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{tot_tax}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="36">
+			<line>
+				<reportElement x="1" y="-6" width="618" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="88" y="-3" width="34" height="12"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="177" y="-4" width="91" height="13"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{amount_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="331" y="-4" width="53" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tax_amt_central}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="438" y="-3" width="51" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tax_amt_state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="15" width="452" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["INR "+$P{REPORT_SCRIPTLET}.getWord($V{amount_1})+" only"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="176" y="-5" width="1" height="15"/>
+			</line>
+			<line>
+				<reportElement x="280" y="-6" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="328" y="-6" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="386" y="-6" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="434" y="-6" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="492" y="-6" width="1" height="16"/>
+			</line>
+			<line>
+				<reportElement x="619" y="-6" width="1" height="42"/>
+			</line>
+			<line>
+				<reportElement x="1" y="-6" width="1" height="42"/>
+			</line>
+			<textField>
+				<reportElement x="513" y="-2" width="100" height="11"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$V{tot_tax}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="10" width="618" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="16" width="83" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Tax Amount ( in words )  :]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>

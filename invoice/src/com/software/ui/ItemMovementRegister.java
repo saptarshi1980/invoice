@@ -356,7 +356,7 @@ public void generate() {
     String fromDate=jFormattedTextField1.getText();
     String toDate=jFormattedTextField2.getText();
     String segment=jComboBox1.getSelectedItem().toString().toUpperCase();
-    String reportSource = "c://reports//itemMovementRegister.jasper";
+    String reportSource = "c://invoice//reports//itemMovementRegister.jasper";
     Map<String, Object> params = new HashMap<String, Object>();
     params.put("segment",segment);
     params.put("fromDate",fromDate);

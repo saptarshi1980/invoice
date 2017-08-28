@@ -609,7 +609,7 @@ public void fetchItemDetails(){
             this.discount=rs.getDouble("discount");
             jTextField6.setText(String.valueOf(discount));
             this.amount=rs.getDouble("amount");
-            jTextField7.setText(String.valueOf(amount));
+            jTextField7.setText(String.valueOf(round(amount,2)));
             this.taxAmtCentral=rs.getDouble("tax_amt_central");
             this.taxAmtState=rs.getDouble("tax_amt_state");
             this.taxPercentCentral=rs.getDouble("tax_percent_central");
@@ -753,7 +753,7 @@ public void calculateAmt(){
         
         double presentGstAmt=(presentRate*presentQuantity)*presentGst/100;
         presentAmount=((presentRate*presentQuantity)+((presentRate*presentQuantity)*presentGst/100))-presentDiscount;
-        jTextField7.setText(String.valueOf(presentAmount));
+        jTextField7.setText(String.valueOf(round(presentAmount,2)));
     
 
 
@@ -881,7 +881,14 @@ public void deleteItem(String invoiceNo,String itemCode){
 
 
 
+public double round(double value, int places) {
+    if (places < 0) throw new IllegalArgumentException();
 
+    long factor = (long) Math.pow(10, places);
+    value = value * factor;
+    long tmp = Math.round(value);
+    return (double) tmp / factor;
+}
 
 
 

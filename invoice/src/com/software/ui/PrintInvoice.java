@@ -304,7 +304,7 @@ private void viewReport() {
     String invoiceNo=jComboBox1.getSelectedItem().toString();
     
     //String reportSource = "rptInvoice1.jasper";
-    String reportSource = "c://reports//rptInvoice.jasper";
+    String reportSource = "c://invoice//reports//rptInvoice.jasper";
     Map<String, Object> params = new HashMap<String, Object>();
     params.put("invoice_no",invoiceNo);
    

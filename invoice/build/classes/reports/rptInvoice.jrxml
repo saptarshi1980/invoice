@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptInvoice" language="groovy" pageWidth="633" pageHeight="864" columnWidth="619" leftMargin="7" rightMargin="7" topMargin="7" bottomMargin="7">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="340"/>
+	<property name="ireport.y" value="216"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\Users\\dpl\\Documents\\NetBeansProjects\\invoice\\src\\reports\\"]]></defaultValueExpression>
 	</parameter>
@@ -219,7 +219,7 @@
 		</band>
 	</title>
 	<detail>
-		<band height="529">
+		<band height="515">
 			<subreport>
 				<reportElement x="2" y="0" width="617" height="39"/>
 				<subreportParameter name="invoice_no">
@@ -229,7 +229,7 @@
 				<subreportExpression class="java.lang.String"><![CDATA["rptInvoiceDetails.jasper"]]></subreportExpression>
 			</subreport>
 			<subreport>
-				<reportElement x="1" y="323" width="619" height="35"/>
+				<reportElement x="1" y="313" width="619" height="35"/>
 				<subreportParameter name="invoice_no">
 					<subreportParameterExpression><![CDATA[$P{invoice_no}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -242,7 +242,7 @@
 		<band splitType="Stretch"/>
 	</pageFooter>
 	<lastPageFooter>
-		<band height="58"/>
+		<band height="8"/>
 	</lastPageFooter>
 	<summary>
 		<band height="98" splitType="Stretch">
