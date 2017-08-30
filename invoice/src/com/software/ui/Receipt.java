@@ -86,6 +86,7 @@ public class Receipt extends javax.swing.JFrame {
         jLabel3.setName("jLabel3"); // NOI18N
 
         jTextField3.setText(resourceMap.getString("jTextField3.text")); // NOI18N
+        jTextField3.setFocusCycleRoot(true);
         jTextField3.setName("jTextField3"); // NOI18N
         jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -97,6 +98,7 @@ public class Receipt extends javax.swing.JFrame {
         jLabel4.setName("jLabel4"); // NOI18N
 
         jTextField4.setText(resourceMap.getString("jTextField4.text")); // NOI18N
+        jTextField4.setFocusCycleRoot(true);
         jTextField4.setName("jTextField4"); // NOI18N
         jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -105,6 +107,7 @@ public class Receipt extends javax.swing.JFrame {
         });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setFocusCycleRoot(true);
         jComboBox1.setName("jComboBox1"); // NOI18N
         jComboBox1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -118,6 +121,7 @@ public class Receipt extends javax.swing.JFrame {
         });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setFocusCycleRoot(true);
         jComboBox2.setName("jComboBox2"); // NOI18N
         jComboBox2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -138,6 +142,7 @@ public class Receipt extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextField1.setFocusCycleRoot(true);
         jFormattedTextField1.setName("jFormattedTextField1"); // NOI18N
         jFormattedTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -148,6 +153,7 @@ public class Receipt extends javax.swing.JFrame {
         jLabel6.setText(resourceMap.getString("jLabel6.text")); // NOI18N
         jLabel6.setName("jLabel6"); // NOI18N
 
+        jTextField5.setFocusCycleRoot(true);
         jTextField5.setName("jTextField5"); // NOI18N
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -159,6 +165,7 @@ public class Receipt extends javax.swing.JFrame {
         jLabel7.setName("jLabel7"); // NOI18N
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox3.setFocusCycleRoot(true);
         jComboBox3.setName("jComboBox3"); // NOI18N
         jComboBox3.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -192,22 +199,22 @@ public class Receipt extends javax.swing.JFrame {
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(7, 7, 7)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, 389, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, 389, Short.MAX_VALUE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
-                                .addGap(28, 28, 28)
-                                .addComponent(jLabel19))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(7, 7, 7))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                        .addGap(7, 7, 7)
-                        .addComponent(jComboBox3, 0, 402, Short.MAX_VALUE)))
+                        .addGap(20, 20, 20)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.TRAILING, 0, 389, Short.MAX_VALUE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                    .addComponent(jComboBox1, 0, 389, Short.MAX_VALUE)
+                    .addComponent(jComboBox2, 0, 389, Short.MAX_VALUE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel19)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -326,7 +333,11 @@ public class Receipt extends javax.swing.JFrame {
          char c = evt.getKeyChar();
 
        if ((c == evt.VK_ENTER)) {
-             jFormattedTextField1.requestFocus();
+             
+           checkAmt();
+                        
+           
+                        //jFormattedTextField1.requestFocus();
              }
     }//GEN-LAST:event_jTextField4KeyTyped
 
@@ -387,7 +398,7 @@ public class Receipt extends javax.swing.JFrame {
         char c = evt.getKeyChar();
 
        if ((c == evt.VK_ENTER)) {
-               jButton1.requestFocus();
+               //jButton1.requestFocus();
              }
         
         
@@ -572,5 +583,33 @@ public class Receipt extends javax.swing.JFrame {
 
     
     
+}
+    
+    public void checkAmt(){
+    double amt1=0,amt2=0;
+    amt1=Double.parseDouble(jTextField3.getText());
+    amt2=Double.parseDouble(jTextField4.getText());
+    if(amt1!=amt2){
+        
+        int selectedOption = JOptionPane.showConfirmDialog(null, 
+                                  "Amount mismatch, Want to proceed?", 
+                                  "Choose", 
+                                  JOptionPane.YES_NO_OPTION); 
+                    if (selectedOption == JOptionPane.YES_OPTION) {
+                        jFormattedTextField1.requestFocus();
+                    }
+                    else{
+                        jTextField4.setText("");
+                        jTextField4.requestFocus();
+                    }
+        
+    }
+    else{
+        jFormattedTextField1.requestFocus();
+    }
+    
+    
+   
+       
 }
 }

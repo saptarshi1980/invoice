@@ -77,6 +77,7 @@ public class ItemMasterEdit extends javax.swing.JFrame {
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
+        jComboBox1.setFocusCycleRoot(true);
         jComboBox1.setName("jComboBox1"); // NOI18N
         jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -88,6 +89,7 @@ public class ItemMasterEdit extends javax.swing.JFrame {
         jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
         jLabel3.setName("jLabel3"); // NOI18N
 
+        jComboBox2.setFocusCycleRoot(true);
         jComboBox2.setName("jComboBox2"); // NOI18N
         jComboBox2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -99,6 +101,7 @@ public class ItemMasterEdit extends javax.swing.JFrame {
         jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
         jLabel4.setName("jLabel4"); // NOI18N
 
+        jComboBox3.setFocusCycleRoot(true);
         jComboBox3.setName("jComboBox3"); // NOI18N
         jComboBox3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -110,6 +113,7 @@ public class ItemMasterEdit extends javax.swing.JFrame {
         jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
         jLabel5.setName("jLabel5"); // NOI18N
 
+        jComboBox4.setFocusCycleRoot(true);
         jComboBox4.setName("jComboBox4"); // NOI18N
         jComboBox4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -126,6 +130,7 @@ public class ItemMasterEdit extends javax.swing.JFrame {
         jLabel7.setName("jLabel7"); // NOI18N
 
         jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
+        jTextField1.setFocusCycleRoot(true);
         jTextField1.setName("jTextField1"); // NOI18N
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -138,6 +143,7 @@ public class ItemMasterEdit extends javax.swing.JFrame {
         jLabel8.setName("jLabel8"); // NOI18N
 
         jTextField2.setText(resourceMap.getString("jTextField2.text")); // NOI18N
+        jTextField2.setFocusCycleRoot(true);
         jTextField2.setName("jTextField2"); // NOI18N
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -150,6 +156,7 @@ public class ItemMasterEdit extends javax.swing.JFrame {
         jLabel9.setName("jLabel9"); // NOI18N
 
         jTextField3.setText(resourceMap.getString("jTextField3.text")); // NOI18N
+        jTextField3.setFocusCycleRoot(true);
         jTextField3.setName("jTextField3"); // NOI18N
         jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -162,6 +169,7 @@ public class ItemMasterEdit extends javax.swing.JFrame {
         jLabel10.setName("jLabel10"); // NOI18N
 
         jTextField4.setText(resourceMap.getString("jTextField4.text")); // NOI18N
+        jTextField4.setFocusCycleRoot(true);
         jTextField4.setName("jTextField4"); // NOI18N
         jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -169,6 +177,7 @@ public class ItemMasterEdit extends javax.swing.JFrame {
             }
         });
 
+        jTextField5.setFocusCycleRoot(true);
         jTextField5.setName("jTextField5"); // NOI18N
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {

@@ -77,9 +77,18 @@ public class MainScreenUser extends javax.swing.JFrame {
         jMenu12 = new javax.swing.JMenu();
         jMenuItem23 = new javax.swing.JMenuItem();
         jMenuItem24 = new javax.swing.JMenuItem();
+        jMenuItem20 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jMenu13 = new javax.swing.JMenu();
+        jMenuItem25 = new javax.swing.JMenuItem();
+        jMenuItem26 = new javax.swing.JMenuItem();
+        jMenu14 = new javax.swing.JMenu();
+        jMenuItem27 = new javax.swing.JMenuItem();
+        jMenuItem28 = new javax.swing.JMenuItem();
+        jMenuItem21 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(invoice.InvoiceApp.class).getContext().getResourceMap(MainScreenUser.class);
@@ -362,6 +371,17 @@ public class MainScreenUser extends javax.swing.JFrame {
 
         jMenu1.add(jMenu12);
 
+        jMenuItem20.setFont(resourceMap.getFont("jMenuItem20.font")); // NOI18N
+        jMenuItem20.setText(resourceMap.getString("jMenuItem20.text")); // NOI18N
+        jMenuItem20.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jMenuItem20.setName("jMenuItem20"); // NOI18N
+        jMenuItem20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem20ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem20);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setIcon(resourceMap.getIcon("jMenu2.icon")); // NOI18N
@@ -390,6 +410,54 @@ public class MainScreenUser extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem8);
+
+        jMenu7.setText(resourceMap.getString("jMenu7.text")); // NOI18N
+        jMenu7.setFont(resourceMap.getFont("jMenu7.font")); // NOI18N
+        jMenu7.setName("jMenu7"); // NOI18N
+
+        jMenu13.setText(resourceMap.getString("jMenu13.text")); // NOI18N
+        jMenu13.setFont(resourceMap.getFont("jMenu13.font")); // NOI18N
+        jMenu13.setName("jMenu13"); // NOI18N
+
+        jMenuItem25.setFont(resourceMap.getFont("jMenuItem25.font")); // NOI18N
+        jMenuItem25.setText(resourceMap.getString("jMenuItem25.text")); // NOI18N
+        jMenuItem25.setName("jMenuItem25"); // NOI18N
+        jMenu13.add(jMenuItem25);
+
+        jMenuItem26.setFont(resourceMap.getFont("jMenuItem25.font")); // NOI18N
+        jMenuItem26.setText(resourceMap.getString("jMenuItem26.text")); // NOI18N
+        jMenuItem26.setName("jMenuItem26"); // NOI18N
+        jMenu13.add(jMenuItem26);
+
+        jMenu7.add(jMenu13);
+
+        jMenu14.setText(resourceMap.getString("jMenu14.text")); // NOI18N
+        jMenu14.setFont(resourceMap.getFont("jMenu14.font")); // NOI18N
+        jMenu14.setName("jMenu14"); // NOI18N
+
+        jMenuItem27.setFont(resourceMap.getFont("jMenuItem27.font")); // NOI18N
+        jMenuItem27.setText(resourceMap.getString("jMenuItem27.text")); // NOI18N
+        jMenuItem27.setName("jMenuItem27"); // NOI18N
+        jMenu14.add(jMenuItem27);
+
+        jMenuItem28.setFont(resourceMap.getFont("jMenuItem28.font")); // NOI18N
+        jMenuItem28.setText(resourceMap.getString("jMenuItem28.text")); // NOI18N
+        jMenuItem28.setName("jMenuItem28"); // NOI18N
+        jMenu14.add(jMenuItem28);
+
+        jMenu7.add(jMenu14);
+
+        jMenuItem21.setFont(resourceMap.getFont("jMenuItem21.font")); // NOI18N
+        jMenuItem21.setText(resourceMap.getString("jMenuItem21.text")); // NOI18N
+        jMenuItem21.setName("jMenuItem21"); // NOI18N
+        jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem21ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem21);
+
+        jMenu2.add(jMenu7);
 
         jMenuBar1.add(jMenu2);
 
@@ -478,6 +546,14 @@ public class MainScreenUser extends javax.swing.JFrame {
        new GrnEdit().setVisible(true);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
+    private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
+        new CompanyMaster().setVisible(true);
+    }//GEN-LAST:event_jMenuItem20ActionPerformed
+
+    private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
+       new LedgerByName().setVisible(true);
+    }//GEN-LAST:event_jMenuItem21ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -495,11 +571,14 @@ public class MainScreenUser extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu12;
+    private javax.swing.JMenu jMenu13;
+    private javax.swing.JMenu jMenu14;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
@@ -515,8 +594,14 @@ public class MainScreenUser extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem23;
     private javax.swing.JMenuItem jMenuItem24;
+    private javax.swing.JMenuItem jMenuItem25;
+    private javax.swing.JMenuItem jMenuItem26;
+    private javax.swing.JMenuItem jMenuItem27;
+    private javax.swing.JMenuItem jMenuItem28;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;

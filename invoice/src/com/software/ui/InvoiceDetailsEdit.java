@@ -113,6 +113,7 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextField1.setFocusCycleRoot(true);
         jFormattedTextField1.setName("jFormattedTextField1"); // NOI18N
         jFormattedTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -123,6 +124,7 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
         jLabel3.setName("jLabel3"); // NOI18N
 
+        jComboBox1.setFocusCycleRoot(true);
         jComboBox1.setName("jComboBox1"); // NOI18N
         jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -133,6 +135,7 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
         jLabel4.setName("jLabel4"); // NOI18N
 
+        jComboBox2.setFocusCycleRoot(true);
         jComboBox2.setName("jComboBox2"); // NOI18N
         jComboBox2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -164,6 +167,7 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         jLabel10.setName("jLabel10"); // NOI18N
 
         jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
+        jTextField1.setFocusCycleRoot(true);
         jTextField1.setName("jTextField1"); // NOI18N
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -172,6 +176,7 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         });
 
         jTextField2.setText(resourceMap.getString("jTextField2.text")); // NOI18N
+        jTextField2.setFocusCycleRoot(true);
         jTextField2.setName("jTextField2"); // NOI18N
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -180,6 +185,7 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         });
 
         jTextField3.setText(resourceMap.getString("jTextField3.text")); // NOI18N
+        jTextField3.setFocusCycleRoot(true);
         jTextField3.setName("jTextField3"); // NOI18N
         jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -188,6 +194,7 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         });
 
         jTextField4.setText(resourceMap.getString("jTextField4.text")); // NOI18N
+        jTextField4.setFocusCycleRoot(true);
         jTextField4.setName("jTextField4"); // NOI18N
         jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -196,6 +203,7 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         });
 
         jTextField5.setText(resourceMap.getString("jTextField5.text")); // NOI18N
+        jTextField5.setFocusCycleRoot(true);
         jTextField5.setName("jTextField5"); // NOI18N
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -204,6 +212,7 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         });
 
         jTextField6.setText(resourceMap.getString("jTextField6.text")); // NOI18N
+        jTextField6.setFocusCycleRoot(true);
         jTextField6.setName("jTextField6"); // NOI18N
         jTextField6.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {

@@ -136,6 +136,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
         jLabel3.setName("jLabel3"); // NOI18N
 
+        jTextField2.setFocusCycleRoot(true);
         jTextField2.setName("jTextField2"); // NOI18N
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -158,6 +159,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         jLabel6.setText(resourceMap.getString("jLabel6.text")); // NOI18N
         jLabel6.setName("jLabel6"); // NOI18N
 
+        jTextField4.setFocusCycleRoot(true);
         jTextField4.setName("jTextField4"); // NOI18N
         jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -169,6 +171,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         jLabel7.setText(resourceMap.getString("jLabel7.text")); // NOI18N
         jLabel7.setName("jLabel7"); // NOI18N
 
+        jTextField5.setFocusCycleRoot(true);
         jTextField5.setName("jTextField5"); // NOI18N
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -180,6 +183,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         jLabel8.setText(resourceMap.getString("jLabel8.text")); // NOI18N
         jLabel8.setName("jLabel8"); // NOI18N
 
+        jTextField6.setFocusCycleRoot(true);
         jTextField6.setName("jTextField6"); // NOI18N
         jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -216,6 +220,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextField1.setFocusCycleRoot(true);
         jFormattedTextField1.setName("jFormattedTextField1"); // NOI18N
         jFormattedTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -228,6 +233,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextField2.setFocusCycleRoot(true);
         jFormattedTextField2.setName("jFormattedTextField2"); // NOI18N
         jFormattedTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -245,6 +251,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextField3.setFocusCycleRoot(true);
         jFormattedTextField3.setName("jFormattedTextField3"); // NOI18N
         jFormattedTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -253,6 +260,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         });
 
         jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
+        jTextField1.setFocusCycleRoot(true);
         jTextField1.setName("jTextField1"); // NOI18N
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -261,6 +269,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         });
 
         jTextField7.setText(resourceMap.getString("jTextField7.text")); // NOI18N
+        jTextField7.setFocusCycleRoot(true);
         jTextField7.setName("jTextField7"); // NOI18N
         jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -269,6 +278,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         });
 
         jTextField8.setText(resourceMap.getString("jTextField8.text")); // NOI18N
+        jTextField8.setFocusCycleRoot(true);
         jTextField8.setName("jTextField8"); // NOI18N
         jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -277,6 +287,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         });
 
         jTextField9.setText(resourceMap.getString("jTextField9.text")); // NOI18N
+        jTextField9.setFocusCycleRoot(true);
         jTextField9.setName("jTextField9"); // NOI18N
         jTextField9.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -285,6 +296,7 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "N", "Y" }));
+        jComboBox1.setFocusCycleRoot(true);
         jComboBox1.setName("jComboBox1"); // NOI18N
         jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -767,7 +779,11 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
         Connection conn=new ConnDB().make_connection();
         Statement stmt=conn.createStatement();
         Statement stmt1=conn.createStatement();
+        Statement stmt2=conn.createStatement();
         String querySerial="select count(*) from bill_master where invoice_date between str_to_date('"+fromDate+"','%d-%m-%Y') and str_to_date('"+toDate+"','%d-%m-%Y')";   
+        String queryCompanyName="SELECT TRIM(SUBSTRING(com_name,1,5)) FROM company_master";
+        String comName=null;
+        
         ResultSet rs=stmt.executeQuery(querySerial);
         int sr=0;
         while(rs.next()){
@@ -775,7 +791,15 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
                        
         }
         sr++;
-        String invoiceNo="PROV/"+fromYear+"-"+toYear+"/"+sr;
+        
+        ResultSet rs1=stmt2.executeQuery(queryCompanyName);
+      
+        while(rs1.next()){
+            comName=rs1.getString(1);
+                       
+        }
+        sr++;
+        String invoiceNo=comName+"/"+fromYear+"-"+toYear+"/"+sr;
         System.out.println(invoiceNo);
         String igst=jComboBox1.getSelectedItem().toString();
         

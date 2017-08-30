@@ -270,6 +270,7 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jComboBox1" noResource="true"/>
           </Properties>
           <Events>
@@ -282,6 +283,7 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jComboBox2" noResource="true"/>
           </Properties>
           <Events>
@@ -292,6 +294,7 @@
         <Component class="javax.swing.JTextField" name="jTextField1">
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="jTextField1.text"/>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jTextField1" noResource="true"/>
           </Properties>
         </Component>
@@ -300,6 +303,7 @@
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jComboBox3" noResource="true"/>
           </Properties>
           <Events>
@@ -308,6 +312,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField2">
           <Properties>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jTextField2" noResource="true"/>
           </Properties>
           <Events>
@@ -316,6 +321,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField3">
           <Properties>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jTextField3" noResource="true"/>
           </Properties>
           <Events>
@@ -324,6 +330,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField4">
           <Properties>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jTextField4" noResource="true"/>
           </Properties>
           <Events>
@@ -332,6 +339,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField5">
           <Properties>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jTextField5" noResource="true"/>
           </Properties>
           <Events>
@@ -340,6 +348,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField6">
           <Properties>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jTextField6" noResource="true"/>
           </Properties>
           <Events>
@@ -362,6 +371,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField8">
           <Properties>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jTextField8" noResource="true"/>
           </Properties>
           <Events>
@@ -378,6 +388,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField9">
           <Properties>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jTextField9" noResource="true"/>
           </Properties>
           <Events>

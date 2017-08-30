@@ -90,6 +90,7 @@ public class ItemMovementRegister extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextField1.setFocusCycleRoot(true);
         jFormattedTextField1.setName("jFormattedTextField1"); // NOI18N
         jFormattedTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -107,6 +108,7 @@ public class ItemMovementRegister extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        jFormattedTextField2.setFocusCycleRoot(true);
         jFormattedTextField2.setName("jFormattedTextField2"); // NOI18N
         jFormattedTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -119,6 +121,7 @@ public class ItemMovementRegister extends javax.swing.JFrame {
         jLabel3.setName("jLabel3"); // NOI18N
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setFocusCycleRoot(true);
         jComboBox1.setName("jComboBox1"); // NOI18N
         jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {

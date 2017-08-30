@@ -68,6 +68,7 @@ public class AddItemSegment extends javax.swing.JFrame {
         jTextField1.setEditable(false);
         jTextField1.setName("jTextField1"); // NOI18N
 
+        jTextField2.setFocusCycleRoot(true);
         jTextField2.setName("jTextField2"); // NOI18N
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {

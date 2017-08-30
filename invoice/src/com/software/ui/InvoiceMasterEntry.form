@@ -256,6 +256,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField2">
           <Properties>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jTextField2" noResource="true"/>
           </Properties>
           <Events>
@@ -286,6 +287,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField4">
           <Properties>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jTextField4" noResource="true"/>
           </Properties>
           <Events>
@@ -301,6 +303,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField5">
           <Properties>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jTextField5" noResource="true"/>
           </Properties>
           <Events>
@@ -316,6 +319,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField6">
           <Properties>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jTextField6" noResource="true"/>
           </Properties>
           <Events>
@@ -369,6 +373,7 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="##-##-####" subtype="-1" type="5"/>
             </Property>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jFormattedTextField1" noResource="true"/>
           </Properties>
           <Events>
@@ -380,6 +385,7 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="##-##-####" subtype="-1" type="5"/>
             </Property>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jFormattedTextField2" noResource="true"/>
           </Properties>
           <Events>
@@ -392,6 +398,7 @@
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="##-##-####" subtype="-1" type="5"/>
             </Property>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jFormattedTextField3" noResource="true"/>
           </Properties>
           <Events>
@@ -401,6 +408,7 @@
         <Component class="javax.swing.JTextField" name="jTextField1">
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="jTextField1.text"/>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jTextField1" noResource="true"/>
           </Properties>
           <Events>
@@ -410,6 +418,7 @@
         <Component class="javax.swing.JTextField" name="jTextField7">
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="jTextField7.text"/>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jTextField7" noResource="true"/>
           </Properties>
           <Events>
@@ -419,6 +428,7 @@
         <Component class="javax.swing.JTextField" name="jTextField8">
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="jTextField8.text"/>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jTextField8" noResource="true"/>
           </Properties>
           <Events>
@@ -428,6 +438,7 @@
         <Component class="javax.swing.JTextField" name="jTextField9">
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="jTextField9.text"/>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jTextField9" noResource="true"/>
           </Properties>
           <Events>
@@ -442,6 +453,7 @@
                 <StringItem index="1" value="Y"/>
               </StringArray>
             </Property>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
             <Property name="name" type="java.lang.String" value="jComboBox1" noResource="true"/>
           </Properties>
           <Events>

@@ -94,6 +94,7 @@ public class SellerMasterEdit extends javax.swing.JFrame {
         jLabel1.setName("jLabel1"); // NOI18N
 
         jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
+        jTextField1.setFocusCycleRoot(true);
         jTextField1.setName("jTextField1"); // NOI18N
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -109,6 +110,7 @@ public class SellerMasterEdit extends javax.swing.JFrame {
         jLabel2.setName("jLabel2"); // NOI18N
 
         jTextField2.setText(resourceMap.getString("jTextField2.text")); // NOI18N
+        jTextField2.setFocusCycleRoot(true);
         jTextField2.setName("jTextField2"); // NOI18N
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -121,6 +123,7 @@ public class SellerMasterEdit extends javax.swing.JFrame {
         jLabel3.setName("jLabel3"); // NOI18N
 
         jTextField3.setText(resourceMap.getString("jTextField3.text")); // NOI18N
+        jTextField3.setFocusCycleRoot(true);
         jTextField3.setName("jTextField3"); // NOI18N
         jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -133,6 +136,7 @@ public class SellerMasterEdit extends javax.swing.JFrame {
         jLabel4.setName("jLabel4"); // NOI18N
 
         jTextField4.setText(resourceMap.getString("jTextField4.text")); // NOI18N
+        jTextField4.setFocusCycleRoot(true);
         jTextField4.setName("jTextField4"); // NOI18N
         jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -145,6 +149,7 @@ public class SellerMasterEdit extends javax.swing.JFrame {
         jLabel5.setName("jLabel5"); // NOI18N
 
         jTextField5.setText(resourceMap.getString("jTextField5.text")); // NOI18N
+        jTextField5.setFocusCycleRoot(true);
         jTextField5.setName("jTextField5"); // NOI18N
         jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -157,6 +162,7 @@ public class SellerMasterEdit extends javax.swing.JFrame {
         jLabel6.setName("jLabel6"); // NOI18N
 
         jTextField6.setText(resourceMap.getString("jTextField6.text")); // NOI18N
+        jTextField6.setFocusCycleRoot(true);
         jTextField6.setName("jTextField6"); // NOI18N
         jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
