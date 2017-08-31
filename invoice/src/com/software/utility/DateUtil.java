@@ -51,7 +51,7 @@ public class DateUtil {
         try{
                             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                             Date date1 = sdf.parse(txtDate);
-                            Date date2 = sdf.parse(getFutureDate());
+                            Date date2 = sdf.parse(getDate());
 
                             System.out.println("date1 : " + sdf.format(date1));
                             System.out.println("date2 : " + sdf.format(date2));

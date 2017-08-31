@@ -741,6 +741,9 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
     }
     
     public void saveInvoiceMaster(){
+        if(!new DateUtil().checkFutureDate(jFormattedTextField2.getText().trim())){
+            System.exit(0);
+        }
         
         String parentCode=jTextField3.getText().substring(0,jTextField3.getText().indexOf("("));
         String buyerCode=jTextField2.getText();
