@@ -46,6 +46,9 @@ public class Report extends javax.swing.JFrame {
         populateReportCode();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        ArrayList<String> fy=new FY().getFYAL();
+        jFormattedTextField1.setText(fy.get(0));
+        jFormattedTextField2.setText(fy.get(1));
     }
 
     /** This method is called from within the constructor to

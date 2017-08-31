@@ -8,6 +8,7 @@ package com.software.ui;
  *
  * @author saptarshi
  */
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -42,6 +43,39 @@ public class FY {
         }
 
     }
+    
+    
+    
+    
+    public ArrayList<String> getFYAL(){
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
+        String fromDate=null,toDate=null;
+        ArrayList<String> fy=new ArrayList<String>();
+        
+        if (month < 4) {
+
+            fromDate="01-04-" + (year - 1);
+            toDate="31-03-"+ year;
+            System.out.println((year - 1)+"-"+(year-2000));
+            fy.add(fromDate);
+            fy.add(toDate);
+            return fy;
+
+
+        } else {
+
+            fromDate="01-04-" + (year);
+            toDate="31-03-"+ (year+1);
+            System.out.println(year+"-"+(year+1-2000));
+            fy.add(fromDate);
+            fy.add(toDate);
+            return fy;
+
+        }
+
+    }
+    
     
 }
 
