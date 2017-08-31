@@ -97,7 +97,7 @@ public class MainScreenUser extends javax.swing.JFrame {
         setResizable(false);
 
         jPanel1.setBackground(resourceMap.getColor("jPanel1.background")); // NOI18N
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setName("jPanel1"); // NOI18N
 
         jLabel1.setIcon(resourceMap.getIcon("jLabel1.icon")); // NOI18N
