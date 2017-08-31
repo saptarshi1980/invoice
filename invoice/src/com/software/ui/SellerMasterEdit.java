@@ -47,6 +47,10 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author SAPTARSHI
  */
 public class SellerMasterEdit extends javax.swing.JFrame {
+    
+    public String gst="   ";
+    public String gstState="  ";
+    
 
     /** Creates new form SellerMAster */
     public SellerMasterEdit() {
@@ -403,9 +407,16 @@ public class SellerMasterEdit extends javax.swing.JFrame {
         String address=jTextField3.getText().trim().toUpperCase();
         String phone=jTextField4.getText().trim().toUpperCase();
         String mobile=jTextField5.getText().trim().toUpperCase();
-        String gst=jTextField6.getText().trim().toUpperCase();
+        
+        try{
+        this.gst=jTextField6.getText().trim().toUpperCase();
+        this.gstState=jTextField6.getText().trim().toUpperCase().substring(0,1);
+        }catch(NullPointerException ex){
+             ex.printStackTrace();
+                
+         }
     
-        String query="update seller_master set seller_name='"+sellerName+"',seller_address='"+address+"',seller_phone='"+phone+"',seller_mobile='"+mobile+"',seller_gst='"+gst+"' where seller_code='"+sellerCode+"' ";
+        String query="update seller_master set seller_name='"+sellerName+"',seller_address='"+address+"',seller_phone='"+phone+"',seller_mobile='"+mobile+"',seller_gst='"+this.gst+"',state_code='"+this.gstState+"' where seller_code='"+sellerCode+"' ";
                
         
         try{
@@ -435,8 +446,9 @@ public class SellerMasterEdit extends javax.swing.JFrame {
         String phone=jTextField4.getText().trim().toUpperCase();
         String mobile=jTextField5.getText().trim().toUpperCase();
         String gst=jTextField6.getText().trim().toUpperCase();
+        String gstState=jTextField6.getText().trim().toUpperCase().substring(0,1);
         
-        if(sellerCode.trim().length()>0 && sellerName.trim().length()>3 && address.trim().length()>5 && gst.trim().length()>0 )
+        if(sellerCode.trim().length()>0 && sellerName.trim().length()>3 && address.trim().length()>5 )
             return true;
         else return false;
         

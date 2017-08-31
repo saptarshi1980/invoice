@@ -764,7 +764,7 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
         String desc=jTextField2.getText().trim().toUpperCase();
         double rate=0.0;
         double stock=0.0;
-        String query="SELECT item_description,IFNULL(unit_price,0),IFNULL(purchase_price,0),IFNULL(stock,0) from item_master where trim(item_code)='"+desc+"'";
+        String query="SELECT item_description,IFNULL(unit_price,0),IFNULL(purchase_price,0),IFNULL(stock,0),unit from item_master where trim(item_code)='"+desc+"'";
         System.out.println(query);
     try{
         Connection conn=new ConnDB().make_connection();
@@ -774,6 +774,7 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
         while(rs.next()){
             description.setText("Item Name-"+rs.getString(1));
             jTextField5.setText(rs.getString(2));
+            jTextField6.setText(rs.getString(5));
             stcok.setText("Stock-"+rs.getString(4));
             this.balance=Double.parseDouble(rs.getString(4));
             purchase.setText("Purchase Price-"+rs.getString(3));

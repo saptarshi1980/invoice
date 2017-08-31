@@ -27,6 +27,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
@@ -38,6 +39,7 @@ import net.proteanit.sql.DbUtils;
 public class PurchaseMaster extends javax.swing.JFrame {
     
     double presentStock=0;
+    ArrayList<String>seller=new ArrayList<String>();
 
     /** Creates new form ItemPriceEntry */
     public PurchaseMaster() {
@@ -45,6 +47,8 @@ public class PurchaseMaster extends javax.swing.JFrame {
         loadCompanyCode();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        this.seller=loadSeller();
+        
         
     }
 
@@ -88,6 +92,7 @@ public class PurchaseMaster extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jTextField18 = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -200,6 +205,9 @@ public class PurchaseMaster extends javax.swing.JFrame {
             }
         });
         jTextField13.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField13FocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField13FocusLost(evt);
             }
@@ -207,6 +215,9 @@ public class PurchaseMaster extends javax.swing.JFrame {
         jTextField13.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField13KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField13KeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField13KeyTyped(evt);
@@ -291,7 +302,9 @@ public class PurchaseMaster extends javax.swing.JFrame {
         jLabel18.setText(resourceMap.getString("jLabel18.text")); // NOI18N
         jLabel18.setName("jLabel18"); // NOI18N
 
+        jTextField18.setEditable(false);
         jTextField18.setFont(resourceMap.getFont("jTextField18.font")); // NOI18N
+        jTextField18.setEnabled(false);
         jTextField18.setFocusCycleRoot(true);
         jTextField18.setName("jTextField18"); // NOI18N
         jTextField18.addActionListener(new java.awt.event.ActionListener() {
@@ -309,66 +322,85 @@ public class PurchaseMaster extends javax.swing.JFrame {
         });
 
         jLabel19.setFont(resourceMap.getFont("jLabel19.font")); // NOI18N
+        jLabel19.setForeground(resourceMap.getColor("jLabel19.foreground")); // NOI18N
         jLabel19.setText(resourceMap.getString("jLabel19.text")); // NOI18N
         jLabel19.setName("jLabel19"); // NOI18N
+
+        jComboBox1.setName("jComboBox1"); // NOI18N
+        jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jComboBox1KeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(192, 192, 192)
+                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(70, 70, 70)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField18)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextField13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addGap(64, 64, 64)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField18)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                            .addComponent(jTextField12)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel18)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel5)
                             .addComponent(jLabel17)
                             .addComponent(jLabel16)
                             .addComponent(jLabel9)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 58, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel8)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(192, 192, 192)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel10)
+                        .addGap(139, 139, 139)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(165, 165, 165))
+                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(139, 139, 139)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(192, 192, 192)
+                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel18)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(192, 192, 192)
+                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,7 +413,9 @@ public class PurchaseMaster extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -498,11 +532,12 @@ public class PurchaseMaster extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(194, 194, 194)
-                        .addComponent(jButton1)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(219, 219, 219)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -512,7 +547,7 @@ public class PurchaseMaster extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -580,7 +615,7 @@ public class PurchaseMaster extends javax.swing.JFrame {
 
        if ((c == evt.VK_ENTER || c == evt.VK_TAB)) {
              
-           findSeller();
+           jTextField12.requestFocus();
                
              }
     }//GEN-LAST:event_jTextField13KeyTyped
@@ -720,6 +755,48 @@ public class PurchaseMaster extends javax.swing.JFrame {
        //findSeller();
     }//GEN-LAST:event_jTextField13FocusLost
 
+    private void jTextField13KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField13KeyReleased
+        jComboBox1.removeAllItems();
+        String name=jTextField13.getText().toUpperCase();
+        System.out.println(name);
+        List <String> listClone = new ArrayList<String>(); 
+           for (String string : this.seller) {
+               System.out.println("String-"+string);
+               System.out.println("index of (-"+string.indexOf("("));
+               int index=string.indexOf("(")+1;
+               String search=string.substring(index,index+2);
+               System.out.println("Search-"+search);
+               System.out.println("AL Value-"+search);
+               if(search.startsWith(name)){
+                   listClone.add(string);
+                   System.out.println("yahoo");
+               }
+               System.out.println(string);
+           }
+           
+          
+        for (String string : listClone) {
+               jComboBox1.addItem(string);
+               
+           }
+        
+    }//GEN-LAST:event_jTextField13KeyReleased
+
+    private void jTextField13FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField13FocusGained
+       jComboBox1.removeAllItems();
+    }//GEN-LAST:event_jTextField13FocusGained
+
+    private void jComboBox1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyTyped
+       char c = evt.getKeyChar();
+        System.out.println(c);
+
+       if ((c == evt.VK_ENTER || c == evt.VK_TAB)) {
+             
+           jTextField12.requestFocus();
+               
+             }
+    }//GEN-LAST:event_jComboBox1KeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -733,6 +810,7 @@ public class PurchaseMaster extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -768,94 +846,25 @@ public class PurchaseMaster extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 
-/*public void description(){
-     String desc=jTextField1.getText().trim().toUpperCase();
-        double rate=0.0;
-        double stock=0.0;
-        
-        String query="select item_description,unit,stock,unit_price from item_master where trim(item_code)='"+desc+"'";
-        System.out.println(query);
-        String fetch="SELECT ifnull(MAX(unit_purchase_price),'0') FROM purchase_master WHERE trim(item_code)='"+desc+"'";
-    
-    try{
-        Connection conn=new ConnDB().make_connection();
-        Statement stmt=conn.createStatement();
-        Statement stmt1=conn.createStatement();
-        ResultSet rs=stmt.executeQuery(query);
-        ResultSet rs1=stmt1.executeQuery(fetch);
-        int counter=0;
-        while(rs.next()){
-            jTextField2.setText(rs.getString(1));
-            jTextField8.setText(rs.getString(2));
-            presentStock=rs.getDouble(3);
-            jTextField9.setText(rs.getString(3));
-            jTextField11.setText(rs.getString(4));
-            counter++;
-        }
-        if(counter==0){
-                    JOptionPane.showMessageDialog(this, "Item Code does not exist! ");
-                    jTextField1.requestFocus();
 
-        }
-        else{
-            
-            jTextField3.requestFocus();
-        }
-        
-        int counter2=0;
-        while(rs1.next()){
-            jTextField10.setText(rs1.getString(1));
-            counter2++;
-            System.out.println(rs1.getString(1));
-        }
-            if(counter2==0){
-                System.out.println("inside if");
-               jTextField10.setText("0"); 
-            }
-            
-               
-  }catch(SQLException ex){
-        
-        JOptionPane.showMessageDialog(this, "Error loading values! ");
-        ex.printStackTrace();
-    }
-        
-        
-    }
-*/
-
-/*public void calculateStock(){
-    
-    double qty=Double.parseDouble(jTextField3.getText());
-
-   
-            jTextField6.setText(String.valueOf(qty+presentStock));
-            
-    
-    
-
-}*/
 
 public void calculate(){
-    double discPercent=0;
+    double disc=0;
     
     double qty=Double.parseDouble(jTextField3.getText());
     double price=Double.parseDouble(jTextField15.getText());
     double taxPercent=Double.parseDouble(jTextField16.getText());
     
     try{
-        discPercent=Double.parseDouble(jTextField9.getText());
+        disc=Double.parseDouble(jTextField9.getText());
     }catch(NumberFormatException ex){
         ex.printStackTrace();
-        discPercent=0;
+        disc=0;
     }
     double basicPrice=round(qty*price,2);
-    double discAmt=round(basicPrice*discPercent/100,2);
-    double netPrice=basicPrice-discAmt;
-    double taxAmt=round(netPrice*taxPercent/100,2);
-    double gross=netPrice+taxAmt;
+    double taxAmt=round(basicPrice*taxPercent/100,2);
+    double gross=basicPrice+taxAmt-disc;
     jTextField14.setText(String.valueOf(taxAmt));
-    //jTextField7.setText(String.valueOf(gross));
     jTextField9.requestFocus();
             
     
@@ -872,7 +881,7 @@ public void saveItemDetails(){
     double qty=Double.parseDouble(jTextField3.getText().trim());
     double purchasePrice=Double.parseDouble(jTextField15.getText());
     double sellingPrice=Double.parseDouble(jTextField17.getText());
-    String sellerCode=jTextField13.getText();
+    String sellerCode=jComboBox1.getSelectedItem().toString().substring(0,jComboBox1.getSelectedItem().toString().indexOf("("));
     String invoiceNo=jTextField12.getText().toUpperCase().trim();
     String invoiceDate=jFormattedTextField1.getText().trim();
     double taxPercent=Double.parseDouble(jTextField16.getText());
@@ -1079,5 +1088,29 @@ public boolean checkTax(){
         return false;
     }
     return true;
+}
+
+public ArrayList<String> loadSeller(){
+    
+    String query="SELECT CONCAT(seller_code,'(',seller_name,')') FROM seller_master ORDER BY reg_date desc";
+    ArrayList<String>alParty=new ArrayList<String>();
+    try{
+        Connection conn=new ConnDB().make_connection();
+        Statement stmt=conn.createStatement();
+        ResultSet rs=stmt.executeQuery(query);
+        while(rs.next()){
+            alParty.add(rs.getString(1));
+            System.out.println("insdie al");
+        }
+        
+        
+        
+  }catch(SQLException ex){
+        
+        JOptionPane.showMessageDialog(this, "Error loading Company Code! ");
+        ex.printStackTrace();
+    }
+    
+    return alParty;
 }
 }

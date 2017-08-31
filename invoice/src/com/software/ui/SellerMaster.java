@@ -23,6 +23,9 @@ import javax.swing.JOptionPane;
  * @author SAPTARSHI
  */
 public class SellerMaster extends javax.swing.JFrame {
+    
+    public String gst="   ";
+    public String gstState="  ";
 
     /** Creates new form SellerMAster */
     public SellerMaster() {
@@ -62,7 +65,7 @@ public class SellerMaster extends javax.swing.JFrame {
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(invoice.InvoiceApp.class).getContext().getResourceMap(SellerMaster.class);
         jPanel1.setBackground(resourceMap.getColor("jPanel1.background")); // NOI18N
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setName("jPanel1"); // NOI18N
 
         jLabel1.setFont(resourceMap.getFont("jLabel1.font")); // NOI18N
@@ -152,14 +155,16 @@ public class SellerMaster extends javax.swing.JFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -189,7 +194,7 @@ public class SellerMaster extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButton1.setFont(resourceMap.getFont("jButton1.font")); // NOI18N
@@ -216,14 +221,15 @@ public class SellerMaster extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(128, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(162, 162, 162))
             .addGroup(layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(jButton1)))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,9 +238,9 @@ public class SellerMaster extends javax.swing.JFrame {
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -276,7 +282,14 @@ public class SellerMaster extends javax.swing.JFrame {
          char c = evt.getKeyChar();
 
        if ((c == evt.VK_ENTER)) {
-               jButton1.requestFocus();
+               
+           
+                    if(jTextField6.getText().length()>16){
+                        JOptionPane.showMessageDialog(this, "GST Number can not be more than 16 letters! ");
+                    }else{
+           
+                    jButton1.requestFocus();
+                    }
              }
     }//GEN-LAST:event_jTextField6KeyTyped
 
@@ -356,10 +369,16 @@ public class SellerMaster extends javax.swing.JFrame {
         String address=jTextField3.getText().trim().toUpperCase();
         String phone=jTextField4.getText().trim().toUpperCase();
         String mobile=jTextField5.getText().trim().toUpperCase();
-        String gst=jTextField6.getText().trim().toUpperCase();
+        try{
+        this.gst=jTextField6.getText().trim().toUpperCase();
+        this.gstState=jTextField6.getText().trim().toUpperCase().substring(0,1);
+        }catch(NullPointerException ex){
+             ex.printStackTrace();
+                
+         }
     
-        String query="insert into seller_master(seller_code,seller_name,seller_address,seller_phone,seller_mobile,seller_gst,reg_date)"
-                + "values('"+sellerCode+"','"+sellerName+"','"+address+"','"+phone+"','"+mobile+"','"+gst+"',now())";
+        String query="insert into seller_master(seller_code,seller_name,seller_address,seller_phone,seller_mobile,seller_gst,reg_date,state_code)"
+                + "values('"+sellerCode+"','"+sellerName+"','"+address+"','"+phone+"','"+mobile+"','"+this.gst+"',now(),'"+this.gstState+"')";
         
         try{
         Connection conn=new ConnDB().make_connection();
@@ -388,8 +407,9 @@ public class SellerMaster extends javax.swing.JFrame {
         String phone=jTextField4.getText().trim().toUpperCase();
         String mobile=jTextField5.getText().trim().toUpperCase();
         String gst=jTextField6.getText().trim().toUpperCase();
+        String gstState=jTextField6.getText().trim().toUpperCase().substring(0,1);
         
-        if(sellerCode.trim().length()>0 && sellerName.trim().length()>0 && address.trim().length()>0 && gst.trim().length()>0 )
+        if(sellerCode.trim().length()>0 && sellerName.trim().length()>0 && address.trim().length()>0 )
             return true;
         else return false;
         

@@ -24,6 +24,9 @@ import javax.swing.JOptionPane;
  * @author SAPTARSHI
  */
 public class CustomerMasterEntry extends javax.swing.JFrame {
+    
+    public String gst="   ";
+    public String gstState="  ";
 
     /** Creates new form CustomerMasterEntry */
     public CustomerMasterEntry() {
@@ -435,8 +438,13 @@ public class CustomerMasterEntry extends javax.swing.JFrame {
         char c = evt.getKeyChar();
 
        if ((c == evt.VK_ENTER)) {
+           
+                if(jTextField7.getText().length()>16){
+                        JOptionPane.showMessageDialog(this, "GST Number can not be more than 16 letters! ");
+                    }else{
                jTextField8.requestFocus();
              }
+       }
     }//GEN-LAST:event_jTextField7KeyTyped
 
     private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
@@ -565,18 +573,27 @@ public void saveCustomer(){
     String address2=jTextField4.getText().toUpperCase().trim();
     String pin=jTextField5.getText().trim();
     String state=jTextField6.getText().toUpperCase().trim();
-    String gst=jTextField7.getText().toUpperCase().trim();
+    //String gst=jTextField7.getText().toUpperCase().trim();
     String uin=jTextField8.getText().toUpperCase().trim();
     String phone=jTextField9.getText().trim();
     String mobile=jTextField10.getText().trim();
     String email=jTextField11.getText().trim();
     String pan=jTextField12.getText().toUpperCase().trim();
+    try{
+        this.gst=jTextField7.getText().trim().toUpperCase();
+        this.gstState=jTextField7.getText().trim().toUpperCase().substring(0,1);
+        }catch(NullPointerException ex){
+             ex.printStackTrace();
+                
+         }
+    
+     
         try{
         Connection conn=new ConnDB().make_connection();
         Statement stmt=conn.createStatement();
-        String query="insert into client_master(client_code,client_name,address1,address2,pin,state,gst_no,uin,phone,mobile,email,pan,reg_date)"
+        String query="insert into client_master(client_code,client_name,address1,address2,pin,state,gst_no,uin,phone,mobile,email,pan,reg_date,state_code)"
                 + " values('"+customerCode+"','"+customerName+"','"+address1+"','"+address2+"','"+pin+"','"+state+"'"
-                + ",'"+gst+"','"+uin+"','"+phone+"','"+mobile+"','"+email+"','"+pan+"',now())";
+                + ",'"+this.gst+"','"+uin+"','"+phone+"','"+mobile+"','"+email+"','"+pan+"',now(),'"+this.gstState+"')";
         stmt.executeUpdate(query);
         JOptionPane.showMessageDialog(this, "Customer Added ");
         this.dispose();

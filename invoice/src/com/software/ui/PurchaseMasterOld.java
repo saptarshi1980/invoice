@@ -17,6 +17,7 @@ import net.sf.jasperreports.view.JasperViewer;
 
 import com.software.utility.ConnDB;
 import com.software.utility.NumToWord;
+import com.software.utility.SoftUtil;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
@@ -34,17 +35,17 @@ import net.proteanit.sql.DbUtils;
  *
  * @author dpl
  */
-public class PurchaseMasterEdit extends javax.swing.JFrame {
+public class PurchaseMasterOld extends javax.swing.JFrame {
     
     double presentStock=0;
 
     /** Creates new form ItemPriceEntry */
-    public PurchaseMasterEdit() {
+    public PurchaseMasterOld() {
         initComponents();
         loadCompanyCode();
-        loadSellerCode();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        
     }
 
     /** This method is called from within the constructor to
@@ -58,6 +59,7 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -69,7 +71,9 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
         jTextField8 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jTextField12 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        jTextField13 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel16 = new javax.swing.JLabel();
@@ -79,12 +83,11 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
         jTextField16 = new javax.swing.JTextField();
         jTextField17 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
-        jComboBox3 = new javax.swing.JComboBox();
-        jComboBox4 = new javax.swing.JComboBox();
-        jComboBox5 = new javax.swing.JComboBox();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField18 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -92,14 +95,23 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setName("Form"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(invoice.InvoiceApp.class).getContext().getResourceMap(PurchaseMasterEdit.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(invoice.InvoiceApp.class).getContext().getResourceMap(PurchaseMasterOld.class);
         jPanel1.setBackground(resourceMap.getColor("jPanel1.background")); // NOI18N
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setName("jPanel1"); // NOI18N
 
         jLabel1.setFont(resourceMap.getFont("jLabel1.font")); // NOI18N
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
+
+        jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
+        jTextField1.setFocusCycleRoot(true);
+        jTextField1.setName("jTextField1"); // NOI18N
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
         jLabel2.setFont(resourceMap.getFont("jLabel1.font")); // NOI18N
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
@@ -161,9 +173,45 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
         jLabel13.setText(resourceMap.getString("jLabel13.text")); // NOI18N
         jLabel13.setName("jLabel13"); // NOI18N
 
+        jTextField12.setFont(resourceMap.getFont("jTextField18.font")); // NOI18N
+        jTextField12.setFocusCycleRoot(true);
+        jTextField12.setName("jTextField12"); // NOI18N
+        jTextField12.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField12FocusGained(evt);
+            }
+        });
+        jTextField12.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField12KeyTyped(evt);
+            }
+        });
+
         jLabel14.setFont(resourceMap.getFont("jLabel14.font")); // NOI18N
         jLabel14.setText(resourceMap.getString("jLabel14.text")); // NOI18N
         jLabel14.setName("jLabel14"); // NOI18N
+
+        jTextField13.setFont(resourceMap.getFont("jTextField18.font")); // NOI18N
+        jTextField13.setFocusCycleRoot(true);
+        jTextField13.setName("jTextField13"); // NOI18N
+        jTextField13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField13ActionPerformed(evt);
+            }
+        });
+        jTextField13.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField13FocusLost(evt);
+            }
+        });
+        jTextField13.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField13KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField13KeyTyped(evt);
+            }
+        });
 
         jLabel15.setFont(resourceMap.getFont("jLabel15.font")); // NOI18N
         jLabel15.setText(resourceMap.getString("jLabel15.text")); // NOI18N
@@ -216,11 +264,6 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
 
         jTextField17.setFocusCycleRoot(true);
         jTextField17.setName("jTextField17"); // NOI18N
-        jTextField17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField17ActionPerformed(evt);
-            }
-        });
         jTextField17.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField17KeyTyped(evt);
@@ -230,15 +273,6 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
         jLabel4.setFont(resourceMap.getFont("jLabel4.font")); // NOI18N
         jLabel4.setText(resourceMap.getString("jLabel4.text")); // NOI18N
         jLabel4.setName("jLabel4"); // NOI18N
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setFocusCycleRoot(true);
-        jComboBox2.setName("jComboBox2"); // NOI18N
-        jComboBox2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jComboBox2KeyTyped(evt);
-            }
-        });
 
         jLabel10.setFont(resourceMap.getFont("jLabel10.font")); // NOI18N
         jLabel10.setText(resourceMap.getString("jLabel10.text")); // NOI18N
@@ -252,47 +286,31 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
             }
         });
 
-        jComboBox3.setFocusCycleRoot(true);
-        jComboBox3.setName("jComboBox3"); // NOI18N
-        jComboBox3.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox3ItemStateChanged(evt);
+        jLabel18.setFont(resourceMap.getFont("jLabel18.font")); // NOI18N
+        jLabel18.setForeground(resourceMap.getColor("jLabel18.foreground")); // NOI18N
+        jLabel18.setText(resourceMap.getString("jLabel18.text")); // NOI18N
+        jLabel18.setName("jLabel18"); // NOI18N
+
+        jTextField18.setFont(resourceMap.getFont("jTextField18.font")); // NOI18N
+        jTextField18.setFocusCycleRoot(true);
+        jTextField18.setName("jTextField18"); // NOI18N
+        jTextField18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField18ActionPerformed(evt);
             }
         });
-        jComboBox3.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextField18.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField18KeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jComboBox3KeyTyped(evt);
+                jTextField18KeyTyped(evt);
             }
         });
 
-        jComboBox4.setFocusCycleRoot(true);
-        jComboBox4.setName("jComboBox4"); // NOI18N
-        jComboBox4.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox4ItemStateChanged(evt);
-            }
-        });
-        jComboBox4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jComboBox4KeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jComboBox4KeyTyped(evt);
-            }
-        });
-
-        jComboBox5.setFocusCycleRoot(true);
-        jComboBox5.setName("jComboBox5"); // NOI18N
-        jComboBox5.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox5ItemStateChanged(evt);
-            }
-        });
-        jComboBox5.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jComboBox5KeyTyped(evt);
-            }
-        });
+        jLabel19.setFont(resourceMap.getFont("jLabel19.font")); // NOI18N
+        jLabel19.setText(resourceMap.getString("jLabel19.text")); // NOI18N
+        jLabel19.setName("jLabel19"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -301,70 +319,81 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel14)
-                                .addComponent(jLabel13)
-                                .addComponent(jLabel15)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel8)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 64, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(165, 165, 165))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(64, 64, 64)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addGap(64, 64, 64)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField18)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                            .addComponent(jTextField12)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox5, javax.swing.GroupLayout.Alignment.TRAILING, 0, 242, Short.MAX_VALUE)
-                                    .addComponent(jComboBox4, javax.swing.GroupLayout.Alignment.TRAILING, 0, 242, Short.MAX_VALUE)
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.TRAILING, 0, 242, Short.MAX_VALUE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jComboBox2, 0, 242, Short.MAX_VALUE))
-                                .addContainerGap())))))
+                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel18)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 58, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField17, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(165, 165, 165))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(139, 139, 139)
+                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -404,6 +433,20 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        setFocusTraversalKeysEnabled(false);
+        setFocusTraversalKeysEnabled(false);
+        setFocusTraversalKeysEnabled(false);
+        setFocusTraversalKeysEnabled(false);
+        setFocusTraversalKeysEnabled(false);
+        setFocusTraversalKeysEnabled(false);
+        setFocusTraversalKeysEnabled(false);
+        setFocusTraversalKeysEnabled(false);
+        setFocusTraversalKeysEnabled(false);
+        setFocusTraversalKeysEnabled(false);
+        setFocusTraversalKeysEnabled(false);
+        setFocusTraversalKeysEnabled(false);
+        setFocusTraversalKeysEnabled(false);
+
         jButton1.setIcon(resourceMap.getIcon("jButton1.icon")); // NOI18N
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
         jButton1.setEnabled(false);
@@ -441,7 +484,7 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
+                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -453,22 +496,21 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(194, 194, 194)
+                        .addComponent(jButton1)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(196, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(193, 193, 193))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -476,11 +518,27 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        char c = evt.getKeyChar();
+
+       if ((c == evt.VK_ENTER)) {
+              // description();
+              jTextField2.requestFocus();
+               
+             }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
         char c = evt.getKeyChar();
 
        if ((c == evt.VK_ENTER)) {
-               jTextField15.requestFocus();
+               if(checkQuantity())
+               {
+                   jTextField15.requestFocus();
+               }
+               else{
+                   jTextField3.requestFocus();
+               }
              }
        
     }//GEN-LAST:event_jTextField3KeyTyped
@@ -502,6 +560,35 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
       saveItemDetails();
     }//GEN-LAST:event_jButton1MouseClicked
 
+    private void jTextField12KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField12KeyTyped
+        if (jTextField12.getText().length()>=17) {
+            getToolkit().beep();
+            evt.consume();
+        }
+        else{
+    
+            char c = evt.getKeyChar();
+                if ((c == evt.VK_ENTER)) {
+                        jFormattedTextField1.requestFocus();
+                      }
+        }
+    }//GEN-LAST:event_jTextField12KeyTyped
+
+    private void jTextField13KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField13KeyTyped
+        char c = evt.getKeyChar();
+        System.out.println(c);
+
+       if ((c == evt.VK_ENTER || c == evt.VK_TAB)) {
+             
+           findSeller();
+               
+             }
+    }//GEN-LAST:event_jTextField13KeyTyped
+
+    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField13ActionPerformed
+
     private void jTextField14KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField14KeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField14KeyTyped
@@ -510,7 +597,11 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
         char c = evt.getKeyChar();
 
        if ((c == evt.VK_ENTER)) {
-               jTextField16.requestFocus();
+               if(checkUnitPrice()){
+                   jTextField16.requestFocus();
+               }else{
+                   jTextField15.requestFocus();
+               }
              }
     }//GEN-LAST:event_jTextField15KeyTyped
 
@@ -519,8 +610,14 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
         char c = evt.getKeyChar();
 
        if ((c == evt.VK_ENTER)) {
-              calculate();
-              jButton1.setEnabled(true);
+           
+                if(checkTax()){
+                   calculate();
+                   jButton1.setEnabled(true);
+               }else{
+                   jTextField16.requestFocus();
+               }
+              
              }
     }//GEN-LAST:event_jTextField16KeyTyped
 
@@ -537,19 +634,24 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
         char c = evt.getKeyChar();
 
        if ((c == evt.VK_ENTER)) {
-               //jTextField1.requestFocus();
+                   if(SoftUtil.validateDateFormat(jFormattedTextField1.getText().trim()) && jFormattedTextField1.getText().trim().length()==10)
+                       jTextField1.requestFocus();
+                   else
+                       jFormattedTextField1.setText("");
              }
+       
     }//GEN-LAST:event_jFormattedTextField1KeyTyped
 
-    private void jComboBox2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox2KeyTyped
+    private void jTextField13KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField13KeyPressed
         
         
-        char c = evt.getKeyChar();
+        if(evt.getKeyCode()==KeyEvent.VK_F1){
+          viewReport();
+           
+       }
         
-        if ((c == evt.VK_ENTER)) {
-            jComboBox3.requestFocus();
-        }
-}//GEN-LAST:event_jComboBox2KeyTyped
+        
+    }//GEN-LAST:event_jTextField13KeyPressed
 
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
         char c = evt.getKeyChar();
@@ -595,49 +697,28 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
     jTextField14.setText(String.valueOf(taxAmt));
     jTextField7.setText(String.valueOf(gross));
       jTextField17.requestFocus();
-        }
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_jTextField9KeyTyped
 
-    private void jComboBox3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox3KeyTyped
-        char c = evt.getKeyChar();
+    private void jTextField18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField18ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField18ActionPerformed
+
+    private void jTextField18KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField18KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField18KeyPressed
+
+    private void jTextField18KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField18KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField18KeyTyped
+
+    private void jTextField12FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField12FocusGained
         
-        if ((c == evt.VK_ENTER)) {
-             jTextField2.requestFocus();
-        }
-    }//GEN-LAST:event_jComboBox3KeyTyped
+    }//GEN-LAST:event_jTextField12FocusGained
 
-    private void jComboBox4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox4KeyTyped
-        char c = evt.getKeyChar();
-        
-        if ((c == evt.VK_ENTER)) {
-            jTextField2.requestFocus();
-        }
-    }//GEN-LAST:event_jComboBox4KeyTyped
-
-    private void jComboBox5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox5KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox5KeyTyped
-
-    private void jComboBox3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox3ItemStateChanged
-        loadInvoiceDetails();
-    }//GEN-LAST:event_jComboBox3ItemStateChanged
-
-    private void jComboBox5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox5ItemStateChanged
-        loadDescritpion();
-        jComboBox4.requestFocus();
-    }//GEN-LAST:event_jComboBox5ItemStateChanged
-
-    private void jTextField17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField17ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField17ActionPerformed
-
-    private void jComboBox4ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox4ItemStateChanged
-        loadDetails();
-    }//GEN-LAST:event_jComboBox4ItemStateChanged
-
-    private void jComboBox4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox4KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox4KeyReleased
+    private void jTextField13FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField13FocusLost
+       //findSeller();
+    }//GEN-LAST:event_jTextField13FocusLost
 
     /**
      * @param args the command line arguments
@@ -646,16 +727,12 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new PurchaseMasterEdit().setVisible(true);
+                new PurchaseMasterOld().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JComboBox jComboBox4;
-    private javax.swing.JComboBox jComboBox5;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -665,6 +742,8 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -674,10 +753,14 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
+    private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField7;
@@ -768,7 +851,7 @@ public void calculate(){
     }
     double basicPrice=round(qty*price,2);
     //double discAmt=round(basicPrice*discPercent/100,2);
-    //double netPrice=basicPrice-discAmt;
+    
     double taxAmt=round(basicPrice*taxPercent/100,2);
     double gross=basicPrice+taxAmt-disc;
     jTextField14.setText(String.valueOf(taxAmt));
@@ -784,17 +867,17 @@ public void calculate(){
 public void saveItemDetails(){
     
     double discPercent=0;
-    String parentCode=jComboBox2.getSelectedItem().toString().substring(0,jComboBox2.getSelectedItem().toString().indexOf("("));
-    String hsnCode=jTextField2.getText().toUpperCase();
+    String parentCode=jTextField18.getText().trim().substring(0,jTextField18.getText().trim().indexOf("("));
+    String hsnCode=jTextField1.getText().toUpperCase();
     double qty=Double.parseDouble(jTextField3.getText().trim());
     double purchasePrice=Double.parseDouble(jTextField15.getText());
     double sellingPrice=Double.parseDouble(jTextField17.getText());
-    String sellerCode=jComboBox3.getSelectedItem().toString().substring(0,jComboBox3.getSelectedItem().toString().indexOf("("));
-    String invoiceNo=jComboBox5.getSelectedItem().toString().toUpperCase().trim();
+    String sellerCode=jTextField13.getText();
+    String invoiceNo=jTextField12.getText().toUpperCase().trim();
     String invoiceDate=jFormattedTextField1.getText().trim();
     double taxPercent=Double.parseDouble(jTextField16.getText());
     double taxAmount=Double.parseDouble(jTextField14.getText());
-    String description=jComboBox4.getSelectedItem().toString().toUpperCase().trim();
+    String description=jTextField2.getText().toUpperCase().trim();
     String unit=jTextField8.getText().trim().toUpperCase();
     double grossAmt=Double.parseDouble(jTextField7.getText());
     try{
@@ -807,21 +890,15 @@ public void saveItemDetails(){
     
     
     //String query1="update item_master set unit_price='"+sellingPrice+"',purchase_price='"+purchasePrice+"',stock='"+afterStock+"' where item_code='"+itemCode+"'";
-    /*String query2="INSERT INTO purchase_master(seller_code,seller_invoice_no,seller_invoice_date,item_code,quantity,unit_purchase_price,tax_percent,tax_amt,gross_amt,parent_code,discount_percent,unit,item_description,unit_selling_price)"
+    String query2="INSERT INTO purchase_master(seller_code,seller_invoice_no,seller_invoice_date,item_code,quantity,unit_purchase_price,tax_percent,tax_amt,gross_amt,parent_code,discount_percent,unit,item_description,unit_selling_price)"
             + "values('"+sellerCode+"','"+invoiceNo+"',str_to_date('"+invoiceDate+"','%d-%m-%Y'),'"+hsnCode+"','"+qty+"',"
             + "'"+purchasePrice+"','"+taxPercent+"','"+taxAmount+"','"+grossAmt+"','"+parentCode+"',"
-            + "'"+discPercent+"','"+unit+"','"+description+"','"+sellingPrice+"')";*/
-    //String query3 ="insert into item_master_transaction (item_code,quantity,dc,item_balance,reference,ts_transaction,parent_code) values('"+itemCode+"','"+qty+"','C','"+afterStock+"','"+invoiceNo+"',now(),'"+parentCode+"','"+discPercent+"')";
-    
-    String update="update purchase_master set item_code='"+hsnCode+"',unit='"+unit+"',quantity='"+qty+"',unit_purchase_price='"+purchasePrice+"',"
-            + "tax_percent='"+taxPercent+"',tax_amt='"+taxAmount+"',discount_percent='"+discPercent+"',gross_amt='"+grossAmt+"',unit_selling_price='"+sellingPrice+"' "
-            + "where seller_code='"+sellerCode+"' and upper(seller_invoice_no)='"+invoiceNo.toUpperCase()+"' and upper(item_description)='"+description.toUpperCase()+"'";
-    
-    System.out.println(update);
+            + "'"+discPercent+"','"+unit+"','"+description+"','"+sellingPrice+"')";
+    //String query3="insert into item_master_transaction (item_code,quantity,dc,item_balance,reference,ts_transaction,parent_code) values('"+itemCode+"','"+qty+"','C','"+afterStock+"','"+invoiceNo+"',now(),'"+parentCode+"','"+discPercent+"')";
     try{
         Connection conn=new ConnDB().make_connection();
         Statement stmt1=conn.createStatement();
-        stmt1.executeUpdate(update);
+        stmt1.executeUpdate(query2);
         
           
   }catch(SQLException ex){
@@ -830,11 +907,9 @@ public void saveItemDetails(){
         ex.printStackTrace();
     }
     
-    //resetFields();
+    resetFields();
     JOptionPane.showMessageDialog(this, "Item Information updated! ");
-    //jTextField1.requestFocus();
-    this.dispose();
-    new PurchaseMasterEdit().setVisible(true);
+    jTextField1.requestFocus();
     
     
     
@@ -843,7 +918,7 @@ public void saveItemDetails(){
 }
 
 public void resetFields(){
-    //jTextField1.setText("");
+    jTextField1.setText("");
     jTextField2.setText("");
     jTextField3.setText("");
     jTextField9.setText("");
@@ -863,7 +938,7 @@ public void resetFields(){
     
 }
 
-/*public void findSeller(){
+public void findSeller(){
     String sellerCode=jTextField13.getText().trim();
     String query="select seller_name from seller_master where trim(seller_code)='"+sellerCode+"'";
     String sellerName=null;
@@ -910,12 +985,12 @@ public void resetFields(){
         ex.printStackTrace();
     }
 
-}*/
+}
 
 private void viewReport() {
         
            
-            String reportSource = "c://reports//seller.jasper";
+            String reportSource = "c://invoice//reports//seller.jasper";
             
           Map<String, Object> params = new HashMap<String, Object>();
  
@@ -951,10 +1026,11 @@ public void loadCompanyCode(){
         while(rs.next()){
             tax.add(rs.getString(1));
         }
-        jComboBox2.removeAllItems();
+        
         for(String taxCode:tax){
-        jComboBox2.addItem(taxCode);
+        jTextField18.setText(taxCode);
         }
+        jTextField13.requestFocus();
         
   }catch(SQLException ex){
         
@@ -962,112 +1038,6 @@ public void loadCompanyCode(){
         ex.printStackTrace();
     }
 
-    
-    
-}
-
-public void loadSellerCode(){
-
-    
-    String query="select concat(seller_code,'(',seller_name,')') from seller_master";
-    ArrayList<String> tax=new ArrayList<String>();
-    try{
-        Connection conn=new ConnDB().make_connection();
-        Statement stmt=conn.createStatement();
-        ResultSet rs=stmt.executeQuery(query);
-        while(rs.next()){
-            tax.add(rs.getString(1));
-        }
-        jComboBox3.removeAllItems();
-        for(String taxCode:tax){
-        jComboBox3.addItem(taxCode);
-        }
-        
-  }catch(SQLException ex){
-        
-        JOptionPane.showMessageDialog(this, "Error loading Company Code! ");
-        ex.printStackTrace();
-    }
-
-    
-    
-}
-
-public void loadInvoiceDetails(){
-    
-    String sellerCode=jComboBox3.getSelectedItem().toString().substring(0,jComboBox3.getSelectedItem().toString().indexOf("("));
-    String query="SELECT a.seller_invoice_no FROM purchase_master a, seller_master b WHERE a.seller_code='"+sellerCode+"' AND a.seller_code=b.seller_code AND a.allocated_flag='N'";
-try{
-        Connection conn=new ConnDB().make_connection();
-        Statement stmt=conn.createStatement();
-        ResultSet rs=stmt.executeQuery(query);
-        while(rs.next()){
-            
-            jComboBox5.addItem(rs.getString(1));
-            
-        }
-    
-}catch(SQLException ex){
-    ex.printStackTrace();
-}
-}
-
-public void loadDescritpion(){
-    
-    String sellerCode=jComboBox3.getSelectedItem().toString().substring(0,jComboBox3.getSelectedItem().toString().indexOf("("));
-    String invoiceNo=jComboBox5.getSelectedItem().toString().trim().toUpperCase();
-    String query="SELECT date_format(a.seller_invoice_date,'%d-%m-%Y'),item_description FROM purchase_master a, seller_master b WHERE a.seller_code='"+sellerCode+"' AND a.seller_code=b.seller_code AND a.allocated_flag='N'";
-try{
-        Connection conn=new ConnDB().make_connection();
-        Statement stmt=conn.createStatement();
-        ResultSet rs=stmt.executeQuery(query);
-        while(rs.next()){
-            
-            jComboBox4.addItem(rs.getString(2));
-            jFormattedTextField1.setText(rs.getString(1));
-            
-        }
-    
-}catch(SQLException ex){
-    ex.printStackTrace();
-}
-}
-
-public void loadDetails(){
-    
-    String sellerCode=jComboBox3.getSelectedItem().toString().substring(0,jComboBox3.getSelectedItem().toString().indexOf("("));
-    String invoiceNo=jComboBox5.getSelectedItem().toString().trim().toUpperCase();
-    String description=jComboBox4.getSelectedItem().toString().toUpperCase().trim();
-    
-    String query="SELECT * FROM purchase_master WHERE UPPER(seller_invoice_no)='"+invoiceNo+"' AND seller_code='"+sellerCode+"' AND UPPER(item_description)='"+description+"' AND allocated_flag='N'";
-    
-    try{
-        Connection conn=new ConnDB().make_connection();
-        Statement stmt=conn.createStatement();
-        ResultSet rs=stmt.executeQuery(query);
-        while(rs.next()){
-            
-           jTextField2.setText(rs.getString("item_code"));
-           jTextField8.setText(rs.getString("unit"));
-           jTextField3.setText(rs.getString("quantity"));
-           jTextField15.setText(rs.getString("unit_purchase_price"));
-           jTextField16.setText(rs.getString("tax_percent"));
-           jTextField14.setText(rs.getString("tax_amt"));
-           jTextField9.setText(rs.getString("discount_percent"));
-           jTextField7.setText(rs.getString("gross_amt"));
-           jTextField17.setText(rs.getString("unit_selling_price"));
-           
-           
-           
-
-           
-            
-        }
-    
-}catch(SQLException ex){
-    ex.printStackTrace();
-}
-    
     
     
 }
@@ -1081,4 +1051,33 @@ public double round(double value, int places) {
     return (double) tmp / factor;
 }
 
+public boolean checkQuantity(){
+    
+    try{
+        double qty=Double.parseDouble(jTextField3.getText());
+    }catch(NumberFormatException ex){
+        return false;
+    }
+    return true;
+}
+
+public boolean checkUnitPrice(){
+    
+    try{
+        double price=Double.parseDouble(jTextField15.getText());
+    }catch(NumberFormatException ex){
+        return false;
+    }
+    return true;
+}
+
+public boolean checkTax(){
+    
+    try{
+        double tax=Double.parseDouble(jTextField16.getText());
+    }catch(NumberFormatException ex){
+        return false;
+    }
+    return true;
+}
 }

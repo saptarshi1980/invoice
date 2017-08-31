@@ -26,21 +26,20 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel1" max="32767" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
+                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="196" max="32767" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -48,9 +47,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -75,55 +74,66 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel4" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
-                                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel4" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
+                              <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jTextField18" max="32767" attributes="1"/>
+                              <Component id="jTextField2" alignment="0" pref="242" max="32767" attributes="1"/>
+                              <Component id="jTextField12" alignment="0" max="32767" attributes="1"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace type="unrelated" pref="64" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jTextField3" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                                      <Component id="jTextField15" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                                      <Component id="jTextField16" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                                      <Component id="jTextField14" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                                      <Component id="jTextField7" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                                      <Component id="jTextField17" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                                      <Component id="jTextField9" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
+                                  <Component id="jTextField13" min="-2" pref="97" max="-2" attributes="1"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jLabel19" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jComboBox5" alignment="1" pref="242" max="32767" attributes="1"/>
-                                      <Component id="jComboBox4" alignment="1" pref="242" max="32767" attributes="1"/>
-                                      <Component id="jComboBox3" alignment="1" pref="242" max="32767" attributes="1"/>
-                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jTextField8" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
-                                          <Component id="jTextField2" alignment="0" pref="242" max="32767" attributes="1"/>
-                                          <Component id="jFormattedTextField1" alignment="0" min="-2" pref="94" max="-2" attributes="1"/>
+                                      <Component id="jTextField8" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                                      <Component id="jTextField1" alignment="0" min="-2" pref="70" max="-2" attributes="1"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jFormattedTextField1" min="-2" pref="94" max="-2" attributes="1"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jComboBox2" alignment="0" pref="242" max="32767" attributes="1"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" pref="58" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jTextField3" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                              <Component id="jTextField15" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                              <Component id="jTextField16" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                              <Component id="jTextField14" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                              <Component id="jTextField7" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                              <Component id="jTextField17" alignment="0" min="-2" pref="87" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
+                          <Component id="jTextField9" min="-2" pref="87" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -134,27 +144,29 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField18" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField13" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox5" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField12" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jFormattedTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -214,6 +226,19 @@
             <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JTextField" name="jTextField1">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="jTextField1.text"/>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
+            <Property name="name" type="java.lang.String" value="jTextField1" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField1KeyTyped"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="setFocusTraversalKeysEnabled(false);"/>
+          </AuxValues>
+        </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" resourceKey="jLabel1.font"/>
@@ -229,6 +254,9 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField2KeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="setFocusTraversalKeysEnabled(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
@@ -245,6 +273,9 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField3KeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="setFocusTraversalKeysEnabled(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -268,6 +299,9 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField7KeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="setFocusTraversalKeysEnabled(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
@@ -284,6 +318,9 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField8KeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="setFocusTraversalKeysEnabled(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
@@ -299,12 +336,42 @@
             <Property name="name" type="java.lang.String" value="jLabel13" noResource="true"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JTextField" name="jTextField12">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jTextField18.font"/>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
+            <Property name="name" type="java.lang.String" value="jTextField12" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField12FocusGained"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField12KeyTyped"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="setFocusTraversalKeysEnabled(false);"/>
+          </AuxValues>
+        </Component>
         <Component class="javax.swing.JLabel" name="jLabel14">
           <Properties>
             <Property name="font" type="java.awt.Font" resourceKey="jLabel14.font"/>
             <Property name="text" type="java.lang.String" resourceKey="jLabel14.text"/>
             <Property name="name" type="java.lang.String" value="jLabel14" noResource="true"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField13">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jTextField18.font"/>
+            <Property name="focusCycleRoot" type="boolean" value="true"/>
+            <Property name="name" type="java.lang.String" value="jTextField13" noResource="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField13ActionPerformed"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField13FocusLost"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField13KeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField13KeyTyped"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="setFocusTraversalKeysEnabled(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
           <Properties>
@@ -324,6 +391,9 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jFormattedTextField1KeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="setFocusTraversalKeysEnabled(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
           <Properties>
@@ -340,6 +410,9 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField14KeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="setFocusTraversalKeysEnabled(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">
           <Properties>
@@ -356,6 +429,9 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField15KeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="setFocusTraversalKeysEnabled(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField16">
           <Properties>
@@ -365,6 +441,9 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField16KeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="setFocusTraversalKeysEnabled(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField17">
           <Properties>
@@ -372,9 +451,11 @@
             <Property name="name" type="java.lang.String" value="jTextField17" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField17ActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField17KeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="setFocusTraversalKeysEnabled(false);"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -382,23 +463,6 @@
             <Property name="text" type="java.lang.String" resourceKey="jLabel4.text"/>
             <Property name="name" type="java.lang.String" value="jLabel4" noResource="true"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox2">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
-            </Property>
-            <Property name="focusCycleRoot" type="boolean" value="true"/>
-            <Property name="name" type="java.lang.String" value="jComboBox2" noResource="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jComboBox2KeyTyped"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
@@ -415,46 +479,36 @@
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField9KeyTyped"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="setFocusTraversalKeysEnabled(false);"/>
+          </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox3">
+        <Component class="javax.swing.JLabel" name="jLabel18">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
+            <Property name="font" type="java.awt.Font" resourceKey="jLabel18.font"/>
+            <Property name="foreground" type="java.awt.Color" resourceKey="jLabel18.foreground"/>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel18.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel18" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField18">
+          <Properties>
+            <Property name="font" type="java.awt.Font" resourceKey="jTextField18.font"/>
             <Property name="focusCycleRoot" type="boolean" value="true"/>
-            <Property name="name" type="java.lang.String" value="jComboBox3" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="jTextField18" noResource="true"/>
           </Properties>
           <Events>
-            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBox3ItemStateChanged"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jComboBox3KeyTyped"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField18ActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField18KeyPressed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField18KeyTyped"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox4">
+        <Component class="javax.swing.JLabel" name="jLabel19">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-            <Property name="focusCycleRoot" type="boolean" value="true"/>
-            <Property name="name" type="java.lang.String" value="jComboBox4" noResource="true"/>
+            <Property name="font" type="java.awt.Font" resourceKey="jLabel19.font"/>
+            <Property name="text" type="java.lang.String" resourceKey="jLabel19.text"/>
+            <Property name="name" type="java.lang.String" value="jLabel19" noResource="true"/>
           </Properties>
-          <Events>
-            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBox4ItemStateChanged"/>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jComboBox4KeyReleased"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jComboBox4KeyTyped"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox5">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="0"/>
-            </Property>
-            <Property name="focusCycleRoot" type="boolean" value="true"/>
-            <Property name="name" type="java.lang.String" value="jComboBox5" noResource="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jComboBox5ItemStateChanged"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jComboBox5KeyTyped"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

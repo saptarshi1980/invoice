@@ -24,6 +24,9 @@ import javax.swing.JOptionPane;
  * @author SAPTARSHI
  */
 public class CustomerMasterEdit extends javax.swing.JFrame {
+    
+    public String gst="   ";
+    public String gstState="  ";
 
     /** Creates new form CustomerMasterEntry */
     public CustomerMasterEdit() {
@@ -590,16 +593,23 @@ public void saveCustomer(){
     String address2=jTextField4.getText().toUpperCase().trim();
     String pin=jTextField5.getText().trim();
     String state=jTextField6.getText().toUpperCase().trim();
-    String gst=jTextField7.getText().toUpperCase().trim();
+    //String gst=jTextField7.getText().toUpperCase().trim();
     String uin=jTextField8.getText().toUpperCase().trim();
     String phone=jTextField9.getText().trim();
     String mobile=jTextField10.getText().trim();
     String email=jTextField11.getText().trim();
     String pan=jTextField12.getText().toUpperCase().trim();
+    try{
+        this.gst=jTextField7.getText().trim().toUpperCase();
+        this.gstState=jTextField7.getText().trim().toUpperCase().substring(0,1);
+        }catch(NullPointerException ex){
+             ex.printStackTrace();
+                
+         }
         try{
         Connection conn=new ConnDB().make_connection();
         Statement stmt=conn.createStatement();
-        String update="update client_master set client_name='"+customerName+"',address1='"+address1+"',address2='"+address2+"',pin='"+pin+"',state='"+state+"',gst_no='"+gst+"',uin='"+uin+"',phone='"+phone+"',mobile='"+mobile+"',email='"+email+"',pan='"+pan+"' where client_code='"+customerCode+"'";
+        String update="update client_master set client_name='"+customerName+"',address1='"+address1+"',address2='"+address2+"',pin='"+pin+"',state='"+state+"',gst_no='"+this.gst+"',uin='"+uin+"',phone='"+phone+"',mobile='"+mobile+"',email='"+email+"',pan='"+pan+"',state_code='"+this.gstState+"' where client_code='"+customerCode+"'";
         stmt.executeUpdate(update);
         JOptionPane.showMessageDialog(this, "Customer edited ");
         this.dispose();
