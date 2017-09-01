@@ -19,6 +19,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -54,6 +55,7 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        jDateChooser1.setDateFormatString("dd-MM-yyyy");
     }
 
     /** This method is called from within the constructor to
@@ -68,7 +70,6 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
@@ -87,7 +88,7 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -96,7 +97,7 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(invoice.InvoiceApp.class).getContext().getResourceMap(InvoiceDetailsEdit.class);
         jPanel1.setBackground(resourceMap.getColor("jPanel1.background")); // NOI18N
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setForeground(resourceMap.getColor("jPanel1.foreground")); // NOI18N
         jPanel1.setName("jPanel1"); // NOI18N
 
@@ -108,24 +109,19 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
 
-        try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextField1.setFocusCycleRoot(true);
-        jFormattedTextField1.setName("jFormattedTextField1"); // NOI18N
-        jFormattedTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jFormattedTextField1KeyTyped(evt);
-            }
-        });
-
         jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
         jLabel3.setName("jLabel3"); // NOI18N
 
         jComboBox1.setFocusCycleRoot(true);
         jComboBox1.setName("jComboBox1"); // NOI18N
+        jComboBox1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBox1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBox1FocusLost(evt);
+            }
+        });
         jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jComboBox1KeyTyped(evt);
@@ -140,6 +136,11 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         jComboBox2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox2ItemStateChanged(evt);
+            }
+        });
+        jComboBox2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBox2FocusLost(evt);
             }
         });
         jComboBox2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -231,10 +232,31 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         jTextField7.setEditable(false);
         jTextField7.setName("jTextField7"); // NOI18N
 
-        jLabel18.setFont(resourceMap.getFont("jLabel18.font")); // NOI18N
-        jLabel18.setForeground(resourceMap.getColor("jLabel18.foreground")); // NOI18N
-        jLabel18.setText(resourceMap.getString("jLabel18.text")); // NOI18N
-        jLabel18.setName("jLabel18"); // NOI18N
+        jDateChooser1.setName("jDateChooser1"); // NOI18N
+        jDateChooser1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jDateChooser1MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jDateChooser1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jDateChooser1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jDateChooser1MouseReleased(evt);
+            }
+        });
+        jDateChooser1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jDateChooser1FocusLost(evt);
+            }
+        });
+        jDateChooser1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jDateChooser1PropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -256,10 +278,6 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel18))
                     .addComponent(jComboBox1, 0, 207, Short.MAX_VALUE)
                     .addComponent(jComboBox2, 0, 207, Short.MAX_VALUE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
@@ -268,7 +286,10 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
                     .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                     .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE))
+                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(85, 85, 85)
@@ -281,10 +302,9 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -379,29 +399,13 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFormattedTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField1KeyTyped
-        char c = evt.getKeyChar();
-
-       if ((c == evt.VK_ENTER)) {
-               if(SoftUtil.validateDateFormat(jFormattedTextField1.getText().trim()) && jFormattedTextField1.getText().trim().length()==10)
-                   fetchInvoice();
-               else{
-                   jFormattedTextField1.requestFocus();
-                   jFormattedTextField1.setText("");
-               }
-           
-           
-                    
-             }
-    }//GEN-LAST:event_jFormattedTextField1KeyTyped
-
     private void jComboBox1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyTyped
         
         char c = evt.getKeyChar();
 
        if ((c == evt.VK_ENTER)) {
-               fetchItemCode();
-               jComboBox2.requestFocus();
+               
+               //jComboBox2.requestFocus();
              }
     }//GEN-LAST:event_jComboBox1KeyTyped
 
@@ -492,6 +496,43 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2MouseClicked
 
+    private void jDateChooser1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooser1MouseExited
+        
+    }//GEN-LAST:event_jDateChooser1MouseExited
+
+    private void jDateChooser1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooser1MouseReleased
+        
+    }//GEN-LAST:event_jDateChooser1MouseReleased
+
+    private void jDateChooser1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooser1MousePressed
+        
+    }//GEN-LAST:event_jDateChooser1MousePressed
+
+    private void jDateChooser1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jDateChooser1MouseClicked
+        
+    }//GEN-LAST:event_jDateChooser1MouseClicked
+
+    private void jDateChooser1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooser1PropertyChange
+        
+    }//GEN-LAST:event_jDateChooser1PropertyChange
+
+    private void jDateChooser1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDateChooser1FocusLost
+        
+    }//GEN-LAST:event_jDateChooser1FocusLost
+
+    private void jComboBox1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusGained
+        System.out.println("AA");
+        fetchInvoice();
+    }//GEN-LAST:event_jComboBox1FocusGained
+
+    private void jComboBox2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox2FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2FocusLost
+
+    private void jComboBox1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusLost
+        fetchItemCode();
+    }//GEN-LAST:event_jComboBox1FocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -508,11 +549,10 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -533,7 +573,8 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
 
 public void fetchInvoice(){
     jComboBox1.removeAllItems();
-    String date=jFormattedTextField1.getText().trim();
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    String date=sdf.format(jDateChooser1.getDate());
     String query="select invoice_no,igst_flag from bill_master where invoice_date=str_to_date('"+date+"','%d-%m-%Y')";
     try{
         Connection conn=new ConnDB().make_connection();
@@ -545,16 +586,7 @@ public void fetchInvoice(){
             this.igst=rs.getString(2);
             counter++;
         }
-        if(counter==0){
-                    JOptionPane.showMessageDialog(this, "No Invoice found! ");
-                    
-                    jFormattedTextField1.requestFocus();
-                    reset();
-                    
-        }
-        else{
-        jComboBox1.requestFocus();
-    }
+        
             
         
         }catch(SQLException ex){
@@ -578,11 +610,8 @@ public void fetchItemCode(){
             jComboBox2.addItem(rs.getString(1));
             counter++;
         }
-        if(counter==0){
-                    JOptionPane.showMessageDialog(this, "No Invoice found! ");
-                    
-        }
-        jComboBox1.requestFocus();
+        
+//        
             
         
         }catch(SQLException ex){

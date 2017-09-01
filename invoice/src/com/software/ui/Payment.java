@@ -17,7 +17,13 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,6 +31,8 @@ import javax.swing.JOptionPane;
  * @author SAPTARSHI
  */
 public class Payment extends javax.swing.JFrame {
+    
+    double balanceAmt=0;
 
     /** Creates new form SellerMAster */
     public Payment() {
@@ -36,6 +44,20 @@ public class Payment extends javax.swing.JFrame {
         jComboBox1.removeAllItems();
         jComboBox2.removeAllItems();
         populateSellerCode();
+        jDateChooser1.setDateFormatString("dd-MM-yyyy");
+        Calendar calender = Calendar.getInstance();
+        calender.add(Calendar.DATE, 0);
+        jDateChooser1.setMaxSelectableDate(new java.util.Date());
+        Date curDateVal=new Date();
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+            String currDate=format.format(curDateVal);
+            java.util.Date dt=null;
+            try {
+                dt = format.parse(currDate);
+            } catch (ParseException ex) {
+                Logger.getLogger(InvoiceMasterEntry.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            jDateChooser1.setDate(dt);
         
     }
 
@@ -63,7 +85,9 @@ public class Payment extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox();
-        jLabel19 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -73,7 +97,7 @@ public class Payment extends javax.swing.JFrame {
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(invoice.InvoiceApp.class).getContext().getResourceMap(Payment.class);
         jPanel1.setBackground(resourceMap.getColor("jPanel1.background")); // NOI18N
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setName("jPanel1"); // NOI18N
 
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
@@ -110,6 +134,9 @@ public class Payment extends javax.swing.JFrame {
         jComboBox1.setFocusCycleRoot(true);
         jComboBox1.setName("jComboBox1"); // NOI18N
         jComboBox1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jComboBox1FocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jComboBox1FocusLost(evt);
             }
@@ -178,10 +205,19 @@ public class Payment extends javax.swing.JFrame {
             }
         });
 
-        jLabel19.setFont(resourceMap.getFont("jLabel19.font")); // NOI18N
-        jLabel19.setForeground(resourceMap.getColor("jLabel19.foreground")); // NOI18N
-        jLabel19.setText(resourceMap.getString("jLabel19.text")); // NOI18N
-        jLabel19.setName("jLabel19"); // NOI18N
+        jLabel9.setText(resourceMap.getString("jLabel9.text")); // NOI18N
+        jLabel9.setName("jLabel9"); // NOI18N
+
+        jTextField6.setEditable(false);
+        jTextField6.setFocusCycleRoot(true);
+        jTextField6.setName("jTextField6"); // NOI18N
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField6KeyTyped(evt);
+            }
+        });
+
+        jDateChooser1.setName("jDateChooser1"); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -208,13 +244,21 @@ public class Payment extends javax.swing.JFrame {
                             .addComponent(jComboBox3, 0, 352, Short.MAX_VALUE)
                             .addComponent(jComboBox1, 0, 352, Short.MAX_VALUE)
                             .addComponent(jComboBox2, 0, 352, Short.MAX_VALUE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel19)))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -234,16 +278,19 @@ public class Payment extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -339,7 +386,13 @@ public class Payment extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4KeyTyped
 
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
-        savePayment();
+        if(checkLastAmt()){
+            savePayment();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Payment amount can not be more than balance amount ");
+            jTextField4.requestFocus();
+        }
     }//GEN-LAST:event_jButton1KeyPressed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
@@ -416,6 +469,14 @@ public class Payment extends javax.swing.JFrame {
              }
     }//GEN-LAST:event_jComboBox3KeyTyped
 
+    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6KeyTyped
+
+    private void jComboBox1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusGained
+        jComboBox2.removeAllItems();
+    }//GEN-LAST:event_jComboBox1FocusGained
+
     /**
      * @param args the command line arguments
      */
@@ -432,9 +493,9 @@ public class Payment extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -442,11 +503,13 @@ public class Payment extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 
     
@@ -482,7 +545,7 @@ public class Payment extends javax.swing.JFrame {
         
         String sellerCode=jComboBox1.getSelectedItem().toString().trim().substring(0,jComboBox1.getSelectedItem().toString().trim().indexOf('('));
         
-        String query="SELECT seller_invoice_no FROM purchase_master WHERE seller_code='"+sellerCode+"' AND seller_invoice_no NOT IN(SELECT invoice_no FROM payment)";
+        String query="SELECT seller_invoice_no FROM purchase_master WHERE seller_code='"+sellerCode+"' ";
 
         
         try{
@@ -514,9 +577,11 @@ public class Payment extends javax.swing.JFrame {
         String invoiceNumber=jComboBox2.getSelectedItem().toString();
         double invoiceAmt= Double.parseDouble(jTextField3.getText().trim());
         double paymentAmt=Double.parseDouble(jTextField4.getText().trim());
-        String paymentDate=jFormattedTextField1.getText().trim();
+        double balanceAmt=invoiceAmt-paymentAmt;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String paymentDate = sdf.format(jDateChooser1.getDate());
         String reference=jTextField5.getText().toUpperCase().trim();
-        String query="insert into payment(transaction_date,seller_no,invoice_no,invoice_amt,payment_amt,reference,parent_code) values(str_to_date('"+paymentDate+"','%d-%m-%Y'),'"+sellerCode+"','"+invoiceNumber+"','"+invoiceAmt+"','"+paymentAmt+"','"+reference+"','"+parentCode+"')";
+        String query="insert into payment(transaction_date,seller_no,invoice_no,invoice_amt,payment_amt,reference,parent_code,insert_time) values(str_to_date('"+paymentDate+"','%d-%m-%Y'),'"+sellerCode+"','"+invoiceNumber+"','"+invoiceAmt+"','"+paymentAmt+"','"+reference+"','"+parentCode+"',now())";
     try{
         Connection conn=new ConnDB().make_connection();
         Statement stmt=conn.createStatement();
@@ -541,15 +606,31 @@ public class Payment extends javax.swing.JFrame {
     private void findInvAmt() {
         
         String invoiceNo=jComboBox2.getSelectedItem().toString().trim();
+        double totPayment=0,invAmt=0;
         String query="SELECT SUM(gross_amt) FROM purchase_master WHERE seller_invoice_no='"+invoiceNo+"'";
+        String query1="SELECT IFNULL(SUM(payment_amt),0) FROM payment WHERE invoice_no='"+invoiceNo+"'";
+        System.out.println(query);
+        System.out.println(query1);
         try{
         Connection conn=new ConnDB().make_connection();
-        Statement stmt=conn.createStatement();
-        ResultSet rs=stmt.executeQuery(query);
+        Statement stmt1=conn.createStatement();
+        Statement stmt2=conn.createStatement();
+        ResultSet rs=stmt1.executeQuery(query);
+        ResultSet rs1=stmt2.executeQuery(query1);
         
         while(rs.next()){
-           jTextField3.setText(rs.getString(1));
+           invAmt=rs.getDouble(1);
+            jTextField3.setText(String.valueOf(invAmt));
+           
         }
+        
+        while(rs1.next()){
+           totPayment=rs1.getDouble(1);
+        }
+        System.out.println("Inv-"+invAmt+"/ tot pay-"+totPayment);
+        
+        //this.balanceAmt=invAmt-totPayment;
+        jTextField6.setText(String.valueOf(invAmt-totPayment));
 
         }catch(SQLException ex){
             ex.printStackTrace();
@@ -586,7 +667,7 @@ public class Payment extends javax.swing.JFrame {
     
     public void checkAmt(){
     double amt1=0,amt2=0;
-    amt1=Double.parseDouble(jTextField3.getText());
+    amt1=Double.parseDouble(jTextField6.getText());
     amt2=Double.parseDouble(jTextField4.getText());
     if(amt1!=amt2){
         
@@ -611,5 +692,15 @@ public class Payment extends javax.swing.JFrame {
    
        
 }
+    
+    public boolean checkLastAmt(){
+        
+        double paymentAmt=Double.parseDouble(jTextField4.getText().trim());
+        double balanceAmt=Double.parseDouble(jTextField6.getText().trim());
+        if(paymentAmt<=balanceAmt){
+            return true;
+        }
+        else return false;
+    }
     
 }
