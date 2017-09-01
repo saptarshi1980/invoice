@@ -15,10 +15,8 @@
 	<field name="seller_code" class="java.lang.String"/>
 	<field name="seller_invoice_no" class="java.lang.String"/>
 	<field name="seller_invoice_date" class="java.sql.Date"/>
-	<field name="grn_no" class="java.lang.String"/>
 	<field name="item_code" class="java.lang.String"/>
 	<field name="quantity" class="java.lang.Double"/>
-	<field name="grn_quantity" class="java.lang.Double"/>
 	<field name="unit_purchase_price" class="java.lang.Double"/>
 	<field name="tax_percent" class="java.lang.Double"/>
 	<field name="tax_amt" class="java.lang.Double"/>
@@ -29,7 +27,6 @@
 	<field name="item_description" class="java.lang.String"/>
 	<field name="unit" class="java.lang.String"/>
 	<field name="allocated_flag" class="java.lang.String"/>
-	<field name="insert_ts" class="java.sql.Timestamp"/>
 	<field name="seller_name" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
@@ -55,18 +52,11 @@
 				<text><![CDATA[Seller]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="187" y="0" width="59" height="20"/>
+				<reportElement x="264" y="0" width="59" height="20"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<text><![CDATA[Invoice date]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="247" y="0" width="49" height="20"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[GRN No]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="324" y="0" width="39" height="20"/>
@@ -74,13 +64,6 @@
 					<font size="8"/>
 				</textElement>
 				<text><![CDATA[Inv Qty]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="364" y="0" width="46" height="20"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[GRN Qty]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="411" y="0" width="28" height="20"/>
@@ -131,6 +114,13 @@
 				</textElement>
 				<text><![CDATA[Gross Amt]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="190" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[seller_invoice_no]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -150,32 +140,11 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{seller_name}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement x="187" y="2" width="59" height="20"/>
+				<reportElement x="264" y="2" width="59" height="20"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.util.Date"><![CDATA[$F{seller_invoice_date}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="247" y="2" width="100" height="20"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{grn_no}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="324" y="2" width="39" height="20"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{quantity}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="364" y="2" width="46" height="20"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{grn_quantity}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="411" y="2" width="28" height="20"/>
@@ -218,6 +187,20 @@
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.Double"><![CDATA[$F{gross_amt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="2" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{seller_invoice_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="326" y="2" width="37" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{quantity}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -19,10 +19,10 @@
 	<field name="delivery_note" class="java.lang.String"/>
 	<field name="supplier_ref_no" class="java.lang.String"/>
 	<field name="buyer_order_no" class="java.lang.String"/>
-	<field name="buyer_order_date" class="java.sql.Date"/>
+	<field name="buyer_order_date" class="java.lang.String"/>
 	<field name="other_reference" class="java.lang.String"/>
 	<field name="despatch_document_no" class="java.lang.String"/>
-	<field name="delivery_note_date" class="java.sql.Date"/>
+	<field name="delivery_note_date" class="java.lang.String"/>
 	<field name="despatch_through" class="java.lang.String"/>
 	<field name="destination" class="java.lang.String"/>
 	<field name="tot_amt" class="java.lang.Double"/>
@@ -121,63 +121,63 @@
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="494" y="2" width="62" height="20"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tot_amt}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tot_amt}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="440" y="0" width="47" height="20"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tot_tax}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tot_tax}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="339" y="2" width="50" height="20"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{c_gst}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c_gst}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="393" y="2" width="47" height="20"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{s_gst}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{s_gst}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="45" y="2" width="148" height="20"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{client_name}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{client_name}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="561" y="2" width="100" height="20"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{buyer_order_no}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{buyer_order_no}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="286" y="2" width="53" height="20"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{invoice_date}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{invoice_date}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="194" y="2" width="100" height="20"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{Invoice_no}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Invoice_no}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

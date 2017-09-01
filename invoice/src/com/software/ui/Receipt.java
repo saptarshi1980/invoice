@@ -17,7 +17,13 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -36,6 +42,20 @@ public class Receipt extends javax.swing.JFrame {
         jComboBox1.removeAllItems();
         jComboBox2.removeAllItems();
         populateClientCode();
+        jDateChooser1.setDateFormatString("dd-MM-yyyy");
+        Calendar calender = Calendar.getInstance();
+        calender.add(Calendar.DATE, 0);
+        jDateChooser1.setMaxSelectableDate(new java.util.Date());
+        Date curDateVal=new Date();
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+            String currDate=format.format(curDateVal);
+            java.util.Date dt=null;
+            try {
+                dt = format.parse(currDate);
+            } catch (ParseException ex) {
+                Logger.getLogger(InvoiceMasterEntry.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            jDateChooser1.setDate(dt);
         
     }
 
@@ -58,12 +78,15 @@ public class Receipt extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox();
         jComboBox2 = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox();
-        jLabel19 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jComboBox4 = new javax.swing.JComboBox();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -73,7 +96,7 @@ public class Receipt extends javax.swing.JFrame {
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(invoice.InvoiceApp.class).getContext().getResourceMap(Receipt.class);
         jPanel1.setBackground(resourceMap.getColor("jPanel1.background")); // NOI18N
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setName("jPanel1"); // NOI18N
 
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
@@ -137,19 +160,6 @@ public class Receipt extends javax.swing.JFrame {
         jLabel5.setText(resourceMap.getString("jLabel5.text")); // NOI18N
         jLabel5.setName("jLabel5"); // NOI18N
 
-        try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextField1.setFocusCycleRoot(true);
-        jFormattedTextField1.setName("jFormattedTextField1"); // NOI18N
-        jFormattedTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jFormattedTextField1KeyTyped(evt);
-            }
-        });
-
         jLabel6.setText(resourceMap.getString("jLabel6.text")); // NOI18N
         jLabel6.setName("jLabel6"); // NOI18N
 
@@ -178,10 +188,30 @@ public class Receipt extends javax.swing.JFrame {
             }
         });
 
-        jLabel19.setFont(resourceMap.getFont("jLabel19.font")); // NOI18N
-        jLabel19.setForeground(resourceMap.getColor("jLabel19.foreground")); // NOI18N
-        jLabel19.setText(resourceMap.getString("jLabel19.text")); // NOI18N
-        jLabel19.setName("jLabel19"); // NOI18N
+        jLabel10.setText(resourceMap.getString("jLabel10.text")); // NOI18N
+        jLabel10.setName("jLabel10"); // NOI18N
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CASH", "BANK" }));
+        jComboBox4.setName("jComboBox4"); // NOI18N
+        jComboBox4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jComboBox4KeyTyped(evt);
+            }
+        });
+
+        jDateChooser1.setName("jDateChooser1"); // NOI18N
+
+        jLabel9.setText(resourceMap.getString("jLabel9.text")); // NOI18N
+        jLabel9.setName("jLabel9"); // NOI18N
+
+        jTextField6.setEditable(false);
+        jTextField6.setFocusCycleRoot(true);
+        jTextField6.setName("jTextField6"); // NOI18N
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField6KeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -202,20 +232,42 @@ public class Receipt extends javax.swing.JFrame {
                         .addGap(7, 7, 7))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                        .addGap(20, 20, 20)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.TRAILING, 0, 389, Short.MAX_VALUE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, 0, 389, Short.MAX_VALUE)
-                    .addComponent(jComboBox2, 0, 389, Short.MAX_VALUE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jFormattedTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel19)))
-                .addContainerGap())
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jComboBox2, 0, 389, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jComboBox1, 0, 389, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(120, Short.MAX_VALUE)
+                .addComponent(jComboBox3, 0, 389, Short.MAX_VALUE)
+                .addGap(10, 10, 10))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,21 +286,28 @@ public class Receipt extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jButton1.setIcon(resourceMap.getIcon("jButton1.icon")); // NOI18N
@@ -342,11 +401,23 @@ public class Receipt extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4KeyTyped
 
     private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
-        savePayment();
+        if(checkLastAmt()){
+            savePayment();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Payment amount can not be more than balance amount ");
+            jTextField4.requestFocus();
+        }
     }//GEN-LAST:event_jButton1KeyPressed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        savePayment();
+        if(checkLastAmt()){
+            savePayment();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Payment amount can not be more than balance amount ");
+            jTextField4.requestFocus();
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jComboBox1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox1KeyTyped
@@ -368,24 +439,6 @@ public class Receipt extends javax.swing.JFrame {
                         jTextField4.requestFocus();
              }    }//GEN-LAST:event_jComboBox2KeyTyped
 
-    private void jFormattedTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jFormattedTextField1KeyTyped
-         char c = evt.getKeyChar();
-
-       if ((c == evt.VK_ENTER)) {
-           if(SoftUtil.validateDateFormat(jFormattedTextField1.getText().trim()) && jFormattedTextField1.getText().trim().length()==10)
-                       jTextField5.requestFocus();
-                   else
-           {
-               jFormattedTextField1.setText("");
-               jFormattedTextField1.requestFocus();
-             }    
-           
-           
-           
-       }
-                 
-    }//GEN-LAST:event_jFormattedTextField1KeyTyped
-
     private void jComboBox2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox2FocusLost
         findInvAmt();
     }//GEN-LAST:event_jComboBox2FocusLost
@@ -398,7 +451,7 @@ public class Receipt extends javax.swing.JFrame {
         char c = evt.getKeyChar();
 
        if ((c == evt.VK_ENTER)) {
-               //jButton1.requestFocus();
+               jComboBox4.requestFocus();
              }
         
         
@@ -416,6 +469,18 @@ public class Receipt extends javax.swing.JFrame {
              }
     }//GEN-LAST:event_jComboBox3KeyTyped
 
+    private void jComboBox4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox4KeyTyped
+        char c = evt.getKeyChar();
+
+        if ((c == evt.VK_ENTER)) {
+            jButton1.requestFocus();
+        }
+    }//GEN-LAST:event_jComboBox4KeyTyped
+
+    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6KeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -432,9 +497,10 @@ public class Receipt extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JComboBox jComboBox4;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -442,11 +508,13 @@ public class Receipt extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 
     
@@ -510,14 +578,17 @@ public class Receipt extends javax.swing.JFrame {
     public void savePayment()
     {
         
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String paymentDate = sdf.format(jDateChooser1.getDate());
         String parentCode=jComboBox3.getSelectedItem().toString().substring(0,jComboBox3.getSelectedItem().toString().indexOf("("));
         String clientCode=jComboBox1.getSelectedItem().toString().trim().substring(0,jComboBox1.getSelectedItem().toString().trim().indexOf('('));
         String invoiceNumber=jComboBox2.getSelectedItem().toString();
         double invoiceAmt= Double.parseDouble(jTextField3.getText().trim());
         double paymentAmt=Double.parseDouble(jTextField4.getText().trim());
-        String paymentDate=jFormattedTextField1.getText().trim();
+        //String paymentDate=jFormattedTextField1.getText().trim();
         String reference=jTextField5.getText().toUpperCase().trim();
-        String query="insert into receipt(transaction_date,client_no,invoice_no,invoice_amt,payment_amt,reference,parent_code) values(str_to_date('"+paymentDate+"','%d-%m-%Y'),'"+clientCode+"','"+invoiceNumber+"','"+invoiceAmt+"','"+paymentAmt+"','"+reference+"','"+parentCode+"')";
+        String paymentMode=jComboBox4.getSelectedItem().toString();
+        String query="insert into receipt(transaction_date,client_no,invoice_no,invoice_amt,payment_amt,reference,parent_code,insert_time,payment_mode) values(str_to_date('"+paymentDate+"','%d-%m-%Y'),'"+clientCode+"','"+invoiceNumber+"','"+invoiceAmt+"','"+paymentAmt+"','"+reference+"','"+parentCode+"',now(),'"+paymentMode+"')";
     try{
         Connection conn=new ConnDB().make_connection();
         Statement stmt=conn.createStatement();
@@ -542,15 +613,26 @@ public class Receipt extends javax.swing.JFrame {
     private void findInvAmt() {
         
         String invoiceNo=jComboBox2.getSelectedItem().toString().trim();
+        double totPayment=0,invAmt=0;
         String query="SELECT tot_amt FROM bill_master WHERE invoice_no='"+invoiceNo+"'";
+         String query1="SELECT IFNULL(SUM(payment_amt),0) FROM receipt WHERE invoice_no='"+invoiceNo+"'";
         try{
         Connection conn=new ConnDB().make_connection();
         Statement stmt=conn.createStatement();
+        Statement stmt2=conn.createStatement();
         ResultSet rs=stmt.executeQuery(query);
+        ResultSet rs1=stmt2.executeQuery(query1);
         
         while(rs.next()){
-           jTextField3.setText(rs.getString(1));
+            invAmt=rs.getDouble(1);
+            jTextField3.setText(String.valueOf(invAmt));
         }
+        
+        while(rs1.next()){
+           totPayment=rs1.getDouble(1);
+        }
+        
+        jTextField6.setText(String.valueOf(invAmt-totPayment));
 
         }catch(SQLException ex){
             ex.printStackTrace();
@@ -587,7 +669,7 @@ public class Receipt extends javax.swing.JFrame {
     
     public void checkAmt(){
     double amt1=0,amt2=0;
-    amt1=Double.parseDouble(jTextField3.getText());
+    amt1=Double.parseDouble(jTextField6.getText());
     amt2=Double.parseDouble(jTextField4.getText());
     if(amt1!=amt2){
         
@@ -596,7 +678,7 @@ public class Receipt extends javax.swing.JFrame {
                                   "Choose", 
                                   JOptionPane.YES_NO_OPTION); 
                     if (selectedOption == JOptionPane.YES_OPTION) {
-                        jFormattedTextField1.requestFocus();
+                        jDateChooser1.requestFocus();
                     }
                     else{
                         jTextField4.setText("");
@@ -605,11 +687,21 @@ public class Receipt extends javax.swing.JFrame {
         
     }
     else{
-        jFormattedTextField1.requestFocus();
+        jDateChooser1.requestFocus();
     }
     
     
    
        
 }
+    
+    public boolean checkLastAmt(){
+        
+        double paymentAmt=Double.parseDouble(jTextField4.getText().trim());
+        double balanceAmt=Double.parseDouble(jTextField6.getText().trim());
+        if(paymentAmt<=balanceAmt){
+            return true;
+        }
+        else return false;
+    }
 }

@@ -10,10 +10,18 @@
  */
 package com.software.ui;
 
+import com.software.utility.ConnDB;
 import com.software.utility.DateUtil;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -79,16 +87,20 @@ public class MainScreenUser extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem20 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
-        jMenu13 = new javax.swing.JMenu();
-        jMenuItem25 = new javax.swing.JMenuItem();
-        jMenuItem26 = new javax.swing.JMenuItem();
-        jMenu14 = new javax.swing.JMenu();
-        jMenuItem27 = new javax.swing.JMenuItem();
-        jMenuItem28 = new javax.swing.JMenuItem();
-        jMenuItem21 = new javax.swing.JMenuItem();
+        jMenuItem22 = new javax.swing.JMenuItem();
+        jMenuItem29 = new javax.swing.JMenuItem();
+        jMenuItem30 = new javax.swing.JMenuItem();
+        jMenuItem31 = new javax.swing.JMenuItem();
+        jMenuItem32 = new javax.swing.JMenuItem();
+        jMenuItem33 = new javax.swing.JMenuItem();
+        jMenuItem34 = new javax.swing.JMenuItem();
+        jMenu11 = new javax.swing.JMenu();
+        jMenuItem37 = new javax.swing.JMenuItem();
+        jMenuItem36 = new javax.swing.JMenuItem();
+        jMenu16 = new javax.swing.JMenu();
+        jMenuItem38 = new javax.swing.JMenuItem();
+        jMenuItem39 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(invoice.InvoiceApp.class).getContext().getResourceMap(MainScreenUser.class);
@@ -409,17 +421,6 @@ public class MainScreenUser extends javax.swing.JFrame {
         jMenu2.setFont(resourceMap.getFont("jMenu2.font")); // NOI18N
         jMenu2.setName("jMenu2"); // NOI18N
 
-        jMenuItem5.setFont(resourceMap.getFont("jMenuItem5.font")); // NOI18N
-        jMenuItem5.setText(resourceMap.getString("jMenuItem5.text")); // NOI18N
-        jMenuItem5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jMenuItem5.setName("jMenuItem5"); // NOI18N
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem5);
-
         jMenuItem8.setFont(resourceMap.getFont("jMenuItem8.font")); // NOI18N
         jMenuItem8.setText(resourceMap.getString("jMenuItem8.text")); // NOI18N
         jMenuItem8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -431,53 +432,123 @@ public class MainScreenUser extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem8);
 
-        jMenu7.setText(resourceMap.getString("jMenu7.text")); // NOI18N
-        jMenu7.setFont(resourceMap.getFont("jMenu7.font")); // NOI18N
-        jMenu7.setName("jMenu7"); // NOI18N
-
-        jMenu13.setText(resourceMap.getString("jMenu13.text")); // NOI18N
-        jMenu13.setFont(resourceMap.getFont("jMenu13.font")); // NOI18N
-        jMenu13.setName("jMenu13"); // NOI18N
-
-        jMenuItem25.setFont(resourceMap.getFont("jMenuItem25.font")); // NOI18N
-        jMenuItem25.setText(resourceMap.getString("jMenuItem25.text")); // NOI18N
-        jMenuItem25.setName("jMenuItem25"); // NOI18N
-        jMenu13.add(jMenuItem25);
-
-        jMenuItem26.setFont(resourceMap.getFont("jMenuItem25.font")); // NOI18N
-        jMenuItem26.setText(resourceMap.getString("jMenuItem26.text")); // NOI18N
-        jMenuItem26.setName("jMenuItem26"); // NOI18N
-        jMenu13.add(jMenuItem26);
-
-        jMenu7.add(jMenu13);
-
-        jMenu14.setText(resourceMap.getString("jMenu14.text")); // NOI18N
-        jMenu14.setFont(resourceMap.getFont("jMenu14.font")); // NOI18N
-        jMenu14.setName("jMenu14"); // NOI18N
-
-        jMenuItem27.setFont(resourceMap.getFont("jMenuItem27.font")); // NOI18N
-        jMenuItem27.setText(resourceMap.getString("jMenuItem27.text")); // NOI18N
-        jMenuItem27.setName("jMenuItem27"); // NOI18N
-        jMenu14.add(jMenuItem27);
-
-        jMenuItem28.setFont(resourceMap.getFont("jMenuItem28.font")); // NOI18N
-        jMenuItem28.setText(resourceMap.getString("jMenuItem28.text")); // NOI18N
-        jMenuItem28.setName("jMenuItem28"); // NOI18N
-        jMenu14.add(jMenuItem28);
-
-        jMenu7.add(jMenu14);
-
-        jMenuItem21.setFont(resourceMap.getFont("jMenuItem21.font")); // NOI18N
-        jMenuItem21.setText(resourceMap.getString("jMenuItem21.text")); // NOI18N
-        jMenuItem21.setName("jMenuItem21"); // NOI18N
-        jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem22.setFont(resourceMap.getFont("jMenuItem22.font")); // NOI18N
+        jMenuItem22.setText(resourceMap.getString("jMenuItem22.text")); // NOI18N
+        jMenuItem22.setName("jMenuItem22"); // NOI18N
+        jMenuItem22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem21ActionPerformed(evt);
+                jMenuItem22ActionPerformed(evt);
             }
         });
-        jMenu7.add(jMenuItem21);
+        jMenu2.add(jMenuItem22);
 
-        jMenu2.add(jMenu7);
+        jMenuItem29.setFont(resourceMap.getFont("jMenuItem29.font")); // NOI18N
+        jMenuItem29.setText(resourceMap.getString("jMenuItem29.text")); // NOI18N
+        jMenuItem29.setName("jMenuItem29"); // NOI18N
+        jMenuItem29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem29ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem29);
+
+        jMenuItem30.setFont(resourceMap.getFont("jMenuItem30.font")); // NOI18N
+        jMenuItem30.setText(resourceMap.getString("jMenuItem30.text")); // NOI18N
+        jMenuItem30.setName("jMenuItem30"); // NOI18N
+        jMenuItem30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem30ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem30);
+
+        jMenuItem31.setFont(resourceMap.getFont("jMenuItem31.font")); // NOI18N
+        jMenuItem31.setText(resourceMap.getString("jMenuItem31.text")); // NOI18N
+        jMenuItem31.setName("jMenuItem31"); // NOI18N
+        jMenuItem31.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem31ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem31);
+
+        jMenuItem32.setFont(resourceMap.getFont("jMenuItem32.font")); // NOI18N
+        jMenuItem32.setText(resourceMap.getString("jMenuItem32.text")); // NOI18N
+        jMenuItem32.setName("jMenuItem32"); // NOI18N
+        jMenuItem32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem32ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem32);
+
+        jMenuItem33.setFont(resourceMap.getFont("jMenuItem33.font")); // NOI18N
+        jMenuItem33.setText(resourceMap.getString("jMenuItem33.text")); // NOI18N
+        jMenuItem33.setName("jMenuItem33"); // NOI18N
+        jMenuItem33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem33ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem33);
+
+        jMenuItem34.setFont(resourceMap.getFont("jMenuItem33.font")); // NOI18N
+        jMenuItem34.setText(resourceMap.getString("jMenuItem34.text")); // NOI18N
+        jMenuItem34.setName("jMenuItem34"); // NOI18N
+        jMenuItem34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem34ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem34);
+
+        jMenu11.setText(resourceMap.getString("jMenu11.text")); // NOI18N
+        jMenu11.setFont(resourceMap.getFont("jMenu16.font")); // NOI18N
+        jMenu11.setName("jMenu11"); // NOI18N
+
+        jMenuItem37.setText(resourceMap.getString("jMenuItem37.text")); // NOI18N
+        jMenuItem37.setName("jMenuItem37"); // NOI18N
+        jMenuItem37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem37ActionPerformed(evt);
+            }
+        });
+        jMenu11.add(jMenuItem37);
+
+        jMenuItem36.setText(resourceMap.getString("jMenuItem36.text")); // NOI18N
+        jMenuItem36.setName("jMenuItem36"); // NOI18N
+        jMenuItem36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem36ActionPerformed(evt);
+            }
+        });
+        jMenu11.add(jMenuItem36);
+
+        jMenu2.add(jMenu11);
+
+        jMenu16.setText(resourceMap.getString("jMenu16.text")); // NOI18N
+        jMenu16.setFont(resourceMap.getFont("jMenu16.font")); // NOI18N
+        jMenu16.setName("jMenu16"); // NOI18N
+
+        jMenuItem38.setText(resourceMap.getString("jMenuItem38.text")); // NOI18N
+        jMenuItem38.setName("jMenuItem38"); // NOI18N
+        jMenuItem38.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem38ActionPerformed(evt);
+            }
+        });
+        jMenu16.add(jMenuItem38);
+
+        jMenuItem39.setText(resourceMap.getString("jMenuItem39.text")); // NOI18N
+        jMenuItem39.setName("jMenuItem39"); // NOI18N
+        jMenuItem39.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem39ActionPerformed(evt);
+            }
+        });
+        jMenu16.add(jMenuItem39);
+
+        jMenu2.add(jMenu16);
 
         jMenuBar1.add(jMenu2);
 
@@ -530,10 +601,6 @@ public class MainScreenUser extends javax.swing.JFrame {
         new Receipt().setVisible(true);
     }//GEN-LAST:event_jMenuItem23ActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        new Report().setVisible(true);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         new ItemMaster().setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
@@ -549,10 +616,6 @@ public class MainScreenUser extends javax.swing.JFrame {
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         new AddItemSegment().setVisible(true);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
-
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        new ItemMovementRegister().setVisible(true);
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
       new PurchaseMasterEdit().setVisible(true);
@@ -570,13 +633,57 @@ public class MainScreenUser extends javax.swing.JFrame {
         new CompanyMaster().setVisible(true);
     }//GEN-LAST:event_jMenuItem20ActionPerformed
 
-    private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
-       new LedgerByName().setVisible(true);
-    }//GEN-LAST:event_jMenuItem21ActionPerformed
-
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         new SellerMasterEdit().setVisible(true);
     }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenuItem39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem39ActionPerformed
+        new PurchaseSeleRegister("BANK").setVisible(true);
+    }//GEN-LAST:event_jMenuItem39ActionPerformed
+
+    private void jMenuItem38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem38ActionPerformed
+        new PurchaseSeleRegister("CASH").setVisible(true);
+    }//GEN-LAST:event_jMenuItem38ActionPerformed
+
+    private void jMenuItem36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem36ActionPerformed
+        new RReport("BANK").setVisible(true);
+    }//GEN-LAST:event_jMenuItem36ActionPerformed
+
+    private void jMenuItem37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem37ActionPerformed
+        new RReport("CASH").setVisible(true);
+    }//GEN-LAST:event_jMenuItem37ActionPerformed
+
+    private void jMenuItem34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem34ActionPerformed
+        new LedgerByName().setVisible(true);
+    }//GEN-LAST:event_jMenuItem34ActionPerformed
+
+    private void jMenuItem33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem33ActionPerformed
+        new PurchaseSeleRegister("SALE").setVisible(true);
+    }//GEN-LAST:event_jMenuItem33ActionPerformed
+
+    private void jMenuItem32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem32ActionPerformed
+        new PurchaseSeleRegister("PURCHASE").setVisible(true);
+    }//GEN-LAST:event_jMenuItem32ActionPerformed
+
+    private void jMenuItem31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem31ActionPerformed
+        new DebitCreditRegister("DEBIT").setVisible(true);
+    }//GEN-LAST:event_jMenuItem31ActionPerformed
+
+    private void jMenuItem30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem30ActionPerformed
+        new DebitCreditRegister("CREDIT").setVisible(true);
+    }//GEN-LAST:event_jMenuItem30ActionPerformed
+
+    private void jMenuItem29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem29ActionPerformed
+        new LedgerRecon("CREDIT").setVisible(true);
+    }//GEN-LAST:event_jMenuItem29ActionPerformed
+
+    private void jMenuItem22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem22ActionPerformed
+        new LedgerRecon("DEBIT").setVisible(true);
+    }//GEN-LAST:event_jMenuItem22ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        new ItemMovementRegister().setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -594,15 +701,14 @@ public class MainScreenUser extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu12;
-    private javax.swing.JMenu jMenu13;
-    private javax.swing.JMenu jMenu14;
+    private javax.swing.JMenu jMenu16;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
@@ -619,20 +725,91 @@ public class MainScreenUser extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
-    private javax.swing.JMenuItem jMenuItem21;
+    private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem23;
     private javax.swing.JMenuItem jMenuItem24;
-    private javax.swing.JMenuItem jMenuItem25;
-    private javax.swing.JMenuItem jMenuItem26;
-    private javax.swing.JMenuItem jMenuItem27;
-    private javax.swing.JMenuItem jMenuItem28;
+    private javax.swing.JMenuItem jMenuItem29;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem30;
+    private javax.swing.JMenuItem jMenuItem31;
+    private javax.swing.JMenuItem jMenuItem32;
+    private javax.swing.JMenuItem jMenuItem33;
+    private javax.swing.JMenuItem jMenuItem34;
+    private javax.swing.JMenuItem jMenuItem36;
+    private javax.swing.JMenuItem jMenuItem37;
+    private javax.swing.JMenuItem jMenuItem38;
+    private javax.swing.JMenuItem jMenuItem39;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+public void generateCreditorAll(){
+    
+   
+        
+        String reportFile="c:/invoice/reports/cr_all.jasper";
+        Map<String, Object> params = new HashMap<String, Object>();
+        
+   
+        
+
+try
+{
+           try{
+                
+                Connection conn = new ConnDB().make_connection(); 
+                JasperPrint jasperPrint =
+                JasperFillManager.fillReport(
+                reportFile,params,conn);
+                JasperViewer.viewReport(jasperPrint,false);
+              }catch(JRException ex){
+                     ex.printStackTrace();
+                    }
+}
+catch (Exception ex)
+{
+   ex.printStackTrace();
+   
+
+
+}
+}
+
+public void generateDebitAll(){
+    
+   
+        
+        String reportFile="c:/invoice/reports/dr_all.jasper";
+        Map<String, Object> params = new HashMap<String, Object>();
+        
+   
+        
+
+try
+{
+           try{
+                
+                Connection conn = new ConnDB().make_connection(); 
+                JasperPrint jasperPrint =
+                JasperFillManager.fillReport(
+                reportFile,params,conn);
+                JasperViewer.viewReport(jasperPrint,false);
+              }catch(JRException ex){
+                     ex.printStackTrace();
+                    }
+}
+catch (Exception ex)
+{
+   ex.printStackTrace();
+   
+
+
+}
+}
+
+
 }

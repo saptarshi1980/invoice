@@ -10,14 +10,24 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select com_name,seller_invoice_no,date_format(seller_invoice_date,'%d-%m-%Y'),gross_amt,ref,debit_credit FROM v_all_creditor WHERE seller_invoice_date  BETWEEN STR_TO_DATE($P{from_date},'%d-%m-%Y') AND STR_TO_DATE($P{to_date},'%d-%m-%Y')]]>
+		<![CDATA[select * FROM v_all_creditor WHERE seller_invoice_date  BETWEEN STR_TO_DATE($P{from_date},'%d-%m-%Y') AND STR_TO_DATE($P{to_date},'%d-%m-%Y')]]>
 	</queryString>
-	<field name="com_name" class="java.lang.String"/>
+	<field name="seller_code" class="java.lang.String"/>
 	<field name="seller_invoice_no" class="java.lang.String"/>
-	<field name="date_format(seller_invoice_date,&apos;%d-%m-%Y&apos;)" class="java.lang.String"/>
+	<field name="seller_invoice_date" class="java.sql.Date"/>
+	<field name="item_code" class="java.lang.String"/>
+	<field name="quantity" class="java.lang.Double"/>
+	<field name="unit_purchase_price" class="java.lang.Double"/>
+	<field name="tax_percent" class="java.lang.Double"/>
+	<field name="tax_amt" class="java.lang.Double"/>
 	<field name="gross_amt" class="java.lang.Double"/>
-	<field name="ref" class="java.lang.String"/>
-	<field name="debit_credit" class="java.lang.String"/>
+	<field name="parent_code" class="java.lang.String"/>
+	<field name="discount_percent" class="java.lang.Double"/>
+	<field name="unit_selling_price" class="java.lang.Double"/>
+	<field name="item_description" class="java.lang.String"/>
+	<field name="unit" class="java.lang.String"/>
+	<field name="allocated_flag" class="java.lang.String"/>
+	<field name="seller_name" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -38,38 +48,66 @@
 	<columnHeader>
 		<band height="21" splitType="Stretch">
 			<staticText>
-				<reportElement x="48" y="0" width="100" height="20"/>
-				<textElement/>
-				<text><![CDATA[com_name]]></text>
+				<reportElement x="39" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[seller_name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="152" y="0" width="100" height="20"/>
-				<textElement/>
-				<text><![CDATA[invoice_no]]></text>
+				<reportElement x="142" y="0" width="90" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[seller_invoice_no]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="257" y="0" width="100" height="20"/>
-				<textElement/>
-				<text><![CDATA[date_format(invoice_date,'%d-%m-%Y')]]></text>
+				<reportElement x="247" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[seller_invoice_date]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="361" y="0" width="100" height="20"/>
-				<textElement/>
-				<text><![CDATA[tot_amt]]></text>
+				<reportElement x="350" y="0" width="49" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[quantity]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="465" y="0" width="100" height="20"/>
-				<textElement/>
-				<text><![CDATA[ref]]></text>
+				<reportElement x="401" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[unit_purchase_price]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="570" y="0" width="100" height="20"/>
-				<textElement/>
-				<text><![CDATA[debit_credit]]></text>
+				<reportElement x="503" y="0" width="46" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[tax %]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="2" y="1" width="46" height="20"/>
-				<textElement/>
+				<reportElement x="545" y="0" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[item_description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="755" y="0" width="31" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[unit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="31" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<text><![CDATA[Sr No]]></text>
 			</staticText>
 		</band>
@@ -77,39 +115,65 @@
 	<detail>
 		<band height="23" splitType="Stretch">
 			<textField>
-				<reportElement x="465" y="3" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{ref}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="570" y="3" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{debit_credit}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="2" y="3" width="46" height="20"/>
+				<reportElement x="7" y="1" width="30" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.Integer"><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="51" y="3" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{com_name}]]></textFieldExpression>
+				<reportElement x="39" y="3" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{seller_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="153" y="3" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="142" y="3" width="90" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{seller_invoice_no}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="258" y="3" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{date_format(seller_invoice_date,'%d-%m-%Y')}]]></textFieldExpression>
+			<textField pattern="dd/MM/yy">
+				<reportElement x="247" y="3" width="48" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{seller_invoice_date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="363" y="3" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{gross_amt}]]></textFieldExpression>
+				<reportElement x="350" y="3" width="49" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="402" y="3" width="53" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{unit_purchase_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="503" y="3" width="21" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{tax_percent}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="545" y="3" width="178" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{item_description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="755" y="3" width="31" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{unit}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
