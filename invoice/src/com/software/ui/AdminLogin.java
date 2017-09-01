@@ -10,15 +10,22 @@
  */
 package com.software.ui;
 
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author SAPTARSHI
  */
 public class AdminLogin extends javax.swing.JFrame {
+    
 
     /** Creates new form AdminLogin */
     public AdminLogin() {
         initComponents();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        dateChooserCombo1.setDateFormat(format);
+        
+        
     }
 
     /** This method is called from within the constructor to
@@ -30,18 +37,28 @@ public class AdminLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("Form"); // NOI18N
+
+        dateChooserCombo1.setCalendarPreferredSize(new java.awt.Dimension(221, 156));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(137, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(242, Short.MAX_VALUE))
         );
 
         pack();
@@ -59,5 +76,6 @@ public class AdminLogin extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private datechooser.beans.DateChooserCombo dateChooserCombo1;
     // End of variables declaration//GEN-END:variables
 }
