@@ -638,11 +638,11 @@ public class MainScreenUser extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenuItem39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem39ActionPerformed
-        new PurchaseSeleRegister("BANK").setVisible(true);
+        new PReport("BANK").setVisible(true);
     }//GEN-LAST:event_jMenuItem39ActionPerformed
 
     private void jMenuItem38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem38ActionPerformed
-        new PurchaseSeleRegister("CASH").setVisible(true);
+        new PReport("CASH").setVisible(true);
     }//GEN-LAST:event_jMenuItem38ActionPerformed
 
     private void jMenuItem36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem36ActionPerformed

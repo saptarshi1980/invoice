@@ -953,5 +953,20 @@ public class InvoiceMasterEntry extends javax.swing.JFrame {
     
     return alParty;
 }
+    
+    public void deleteHandler(){
+        
+        int selectedOption = JOptionPane.showConfirmDialog(null, 
+                                  "Do you realy want to delete this item?", 
+                                  "Choose", 
+                                  JOptionPane.YES_NO_OPTION); 
+                    if (selectedOption == JOptionPane.YES_OPTION) {
+                        jComboBox1.requestFocus();
+                    }
+                    else{
+                        jTextField2.setText("");
+                        jTextField2.requestFocus();
+                    }
+    }
 
 }

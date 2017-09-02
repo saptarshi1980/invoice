@@ -88,7 +88,7 @@ public class GrnEdit extends javax.swing.JFrame {
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(invoice.InvoiceApp.class).getContext().getResourceMap(GrnEdit.class);
         jPanel1.setBackground(resourceMap.getColor("jPanel1.background")); // NOI18N
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setName("jPanel1"); // NOI18N
 
         jLabel1.setFont(resourceMap.getFont("jLabel3.font")); // NOI18N
@@ -399,7 +399,7 @@ public class GrnEdit extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(30, 30, 30))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(326, Short.MAX_VALUE)
+                .addContainerGap(312, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(323, 323, 323))
         );
@@ -408,7 +408,7 @@ public class GrnEdit extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(19, Short.MAX_VALUE))
@@ -823,7 +823,9 @@ public void saveItem() throws SQLException{
     try{
         
         conn.setAutoCommit(false);
-        Statement stmt=conn.createStatement();
+        Statement stmt1=conn.createStatement();
+        Statement stmt2=conn.createStatement();
+        String delete="delete from grn where seller_code='"+sellerCode+"' and seller_invoice_no='"+invoiceNo+"'and grn_no='"+jComboBox2.getSelectedItem().toString()+"' ";
         String query1="UPDATE grn SET grn_quantity='"+grnQuantity+"',unit_purchase_price='"+purchasePrice+"' ,tax_amt='"+taxAmt+"',gross_amt='"+gross+"' WHERE grn_no='"+jComboBox2.getSelectedItem().toString()+"' AND seller_invoice_no='"+invoiceNo+"' AND item_description='"+itemDescription+"'";
         String query2="INSERT INTO grn(seller_code,seller_invoice_no,seller_invoice_date,grn_no,item_code,quantity,"
                 + "grn_quantity,unit_purchase_price,tax_percent,tax_amt,gross_amt,discount_percent,unit,"
@@ -832,10 +834,11 @@ public void saveItem() throws SQLException{
                 + "'"+hsnCode+"','"+invQuantity+"','"+grnQuantity+"',"+ "'"+purchasePrice+"','"+taxPercent+"','"+taxAmt+"','"+gross+"',"
             + "'"+discount+"','"+unit+"','"+itemDescription+"','"+this.sellingPrice+"',now(),'N')";
         
-        stmt.executeUpdate(query2);
-        /*Statement stmt4=conn.createStatement();
-        String query4="update grn set allocated_flag='N' where grn_no='"+jComboBox2.getSelectedItem().toString()+"' AND seller_invoice_no='"+invoiceNo+"' and upper(item_description)='"+itemDescription.toUpperCase()+"'";
-        stmt4.executeUpdate(query4);*/
+        stmt1.executeUpdate(delete);
+        //stmt2.executeUpdate(query2);
+        Statement stmt4=conn.createStatement();
+        String query4="update purchase_master set allocated_flag='N' where seller_code='"+sellerCode+"' AND seller_invoice_no='"+invoiceNo+"' and upper(item_description)='"+itemDescription.toUpperCase()+"'";
+        stmt4.executeUpdate(query4);
         
     }catch(SQLException ex){
         

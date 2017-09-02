@@ -572,7 +572,12 @@ public class Payment extends javax.swing.JFrame {
         String reference=jTextField5.getText().toUpperCase().trim();
         String paymentMode=jComboBox4.getSelectedItem().toString();
         String query="insert into payment(transaction_date,seller_no,invoice_no,invoice_amt,payment_amt,reference,parent_code,insert_time,payment_mode) values(str_to_date('"+paymentDate+"','%d-%m-%Y'),'"+sellerCode+"','"+invoiceNumber+"','"+invoiceAmt+"','"+paymentAmt+"','"+reference+"','"+parentCode+"',now(),'"+paymentMode+"')";
-    try{
+    
+        if(paymentAmt==0){
+            JOptionPane.showMessageDialog(this, "Payment amount can not be zero!");
+            this.dispose();
+        }else{
+        try{
         Connection conn=new ConnDB().make_connection();
         Statement stmt=conn.createStatement();
         stmt.executeUpdate(query);
@@ -589,7 +594,7 @@ public class Payment extends javax.swing.JFrame {
         
         
                 
-                
+        }        
                 
     }
 
