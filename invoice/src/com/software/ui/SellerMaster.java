@@ -371,7 +371,7 @@ public class SellerMaster extends javax.swing.JFrame {
         String mobile=jTextField5.getText().trim().toUpperCase();
         try{
         this.gst=jTextField6.getText().trim().toUpperCase();
-        this.gstState=jTextField6.getText().trim().toUpperCase().substring(0,1);
+        this.gstState=jTextField6.getText().trim().toUpperCase().substring(0,2);
         }catch(NullPointerException ex){
              ex.printStackTrace();
                 

@@ -254,6 +254,11 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
                 jComboBox3ItemStateChanged(evt);
             }
         });
+        jComboBox3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBox3FocusLost(evt);
+            }
+        });
         jComboBox3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jComboBox3KeyTyped(evt);
@@ -281,6 +286,11 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
         jComboBox5.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox5ItemStateChanged(evt);
+            }
+        });
+        jComboBox5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBox5FocusLost(evt);
             }
         });
         jComboBox5.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -411,7 +421,6 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
 
         jButton1.setIcon(resourceMap.getIcon("jButton1.icon")); // NOI18N
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
-        jButton1.setEnabled(false);
         jButton1.setName("jButton1"); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -599,7 +608,7 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
         char c = evt.getKeyChar();
         
         if ((c == evt.VK_ENTER)) {
-             jTextField2.requestFocus();
+             //jTextField2.requestFocus();
         }
     }//GEN-LAST:event_jComboBox3KeyTyped
 
@@ -612,11 +621,12 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox4KeyTyped
 
     private void jComboBox5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBox5KeyTyped
-        // TODO add your handling code here:
+        // eTODO add your handling code here:
     }//GEN-LAST:event_jComboBox5KeyTyped
 
     private void jComboBox3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox3ItemStateChanged
-        loadInvoiceDetails();
+        //jComboBox5.removeAllItems();
+        
     }//GEN-LAST:event_jComboBox3ItemStateChanged
 
     private void jComboBox5ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox5ItemStateChanged
@@ -646,6 +656,14 @@ public class PurchaseMasterEdit extends javax.swing.JFrame {
                
              }
     }//GEN-LAST:event_jDateChooser1KeyTyped
+
+    private void jComboBox5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox5FocusLost
+        
+    }//GEN-LAST:event_jComboBox5FocusLost
+
+    private void jComboBox3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox3FocusLost
+        loadInvoiceDetails();
+    }//GEN-LAST:event_jComboBox3FocusLost
 
     /**
      * @param args the command line arguments
@@ -823,15 +841,17 @@ public void saveItemDetails(){
             + "'"+discPercent+"','"+unit+"','"+description+"','"+sellingPrice+"')";*/
     //String query3 ="insert into item_master_transaction (item_code,quantity,dc,item_balance,reference,ts_transaction,parent_code) values('"+itemCode+"','"+qty+"','C','"+afterStock+"','"+invoiceNo+"',now(),'"+parentCode+"','"+discPercent+"')";
     
-    String update="update purchase_master set seller_invoice_date=str_to_date('"+invoiceDate+"','%d-%m-%Y'),item_code='"+hsnCode+"',unit='"+unit+"',quantity='"+qty+"',unit_purchase_price='"+purchasePrice+"',"
+    String update="update purchase_master set item_code='"+hsnCode+"',unit='"+unit+"',quantity='"+qty+"',unit_purchase_price='"+purchasePrice+"',"
             + "tax_percent='"+taxPercent+"',tax_amt='"+taxAmount+"',discount_percent='"+discPercent+"',gross_amt='"+grossAmt+"',unit_selling_price='"+sellingPrice+"' "
             + "where seller_code='"+sellerCode+"' and upper(seller_invoice_no)='"+invoiceNo.toUpperCase()+"' and upper(item_description)='"+description.toUpperCase()+"'";
-    
+    String updateInvoiceDate="update purchase_master set seller_invoice_date=str_to_date('"+invoiceDate+"','%d-%m-%Y') where upper(seller_invoice_no)='"+invoiceNo.toUpperCase()+"'";
     System.out.println(update);
     try{
         Connection conn=new ConnDB().make_connection();
         Statement stmt1=conn.createStatement();
+        Statement stmt2=conn.createStatement();
         stmt1.executeUpdate(update);
+        stmt2.executeUpdate(updateInvoiceDate);
         
           
   }catch(SQLException ex){
@@ -1005,14 +1025,17 @@ public void loadSellerCode(){
 
 public void loadInvoiceDetails(){
     
+    //jComboBox5.removeAllItems();
+    System.out.println("called ");
     String sellerCode=jComboBox3.getSelectedItem().toString().substring(0,jComboBox3.getSelectedItem().toString().indexOf("("));
-    String query="SELECT a.seller_invoice_no FROM purchase_master a, seller_master b WHERE a.seller_code='"+sellerCode+"' AND a.seller_code=b.seller_code AND a.allocated_flag='N'";
+    String query="SELECT distinct(a.seller_invoice_no) FROM purchase_master a, seller_master b WHERE a.seller_code='"+sellerCode+"' AND a.seller_code=b.seller_code AND a.allocated_flag='N'";
 try{
         Connection conn=new ConnDB().make_connection();
         Statement stmt=conn.createStatement();
         ResultSet rs=stmt.executeQuery(query);
         while(rs.next()){
             
+            System.out.println("A");
             jComboBox5.addItem(rs.getString(1));
             
         }
