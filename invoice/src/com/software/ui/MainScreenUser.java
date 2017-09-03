@@ -230,6 +230,7 @@ public class MainScreenUser extends javax.swing.JFrame {
         jMenuBar1.add(jMenu5);
 
         jMenu4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jMenu4.setIcon(resourceMap.getIcon("jMenu4.icon")); // NOI18N
         jMenu4.setText(resourceMap.getString("jMenu4.text")); // NOI18N
         jMenu4.setFont(resourceMap.getFont("jMenu3.font")); // NOI18N
         jMenu4.setName("jMenu4"); // NOI18N
@@ -399,6 +400,7 @@ public class MainScreenUser extends javax.swing.JFrame {
         jMenu1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jMenu1.setIcon(resourceMap.getIcon("jMenu1.icon")); // NOI18N
         jMenu1.setText(resourceMap.getString("jMenu1.text")); // NOI18N
+        jMenu1.setEnabled(false);
         jMenu1.setFont(resourceMap.getFont("jMenu1.font")); // NOI18N
         jMenu1.setName("jMenu1"); // NOI18N
 

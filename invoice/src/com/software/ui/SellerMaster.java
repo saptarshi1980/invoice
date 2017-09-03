@@ -12,6 +12,8 @@ package com.software.ui;
 import com.software.utility.ConnDB;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,6 +35,18 @@ public class SellerMaster extends javax.swing.JFrame {
         populateSellerCode();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        jTextField5.addKeyListener(new KeyAdapter() {
+        public void keyTyped(KeyEvent e) {
+          char c = e.getKeyChar();
+          
+          if (!((c >= '0') && (c <= '9') ||
+             (c == KeyEvent.VK_BACK_SPACE) ||
+             (c == KeyEvent.VK_DELETE))) {
+            getToolkit().beep();
+            e.consume();
+          }
+        }
+      });
     }
 
     /** This method is called from within the constructor to
@@ -274,8 +288,11 @@ public class SellerMaster extends javax.swing.JFrame {
          char c = evt.getKeyChar();
 
        if ((c == evt.VK_ENTER)) {
-               jTextField6.requestFocus();
-             }
+               
+           
+           jTextField6.requestFocus();
+       }
+       
     }//GEN-LAST:event_jTextField5KeyTyped
 
     private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
@@ -409,8 +426,10 @@ public class SellerMaster extends javax.swing.JFrame {
         String gst=jTextField6.getText().trim().toUpperCase();
         String gstState=jTextField6.getText().trim().toUpperCase().substring(0,1);
         
-        if(sellerCode.trim().length()>0 && sellerName.trim().length()>0 && address.trim().length()>0 )
+        if(sellerCode.trim().length()>0 && sellerName.trim().length()>0 && address.trim().length()>0 && mobile.trim().length()!=10 ){
             return true;
+        }
+            
         else return false;
         
         
