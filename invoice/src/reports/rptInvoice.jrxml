@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptInvoice" language="groovy" pageWidth="633" pageHeight="864" columnWidth="619" leftMargin="7" rightMargin="7" topMargin="7" bottomMargin="7">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptInvoice" language="groovy" pageWidth="595" pageHeight="842" columnWidth="581" leftMargin="7" rightMargin="7" topMargin="7" bottomMargin="7">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -10,7 +10,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT a.*,b.*,c.invoice_no,DATE_FORMAT(c.invoice_date,'%d-%m-%Y'),c.delivery_note,c.supplier_ref_no,c.buyer_order_no,ifnull(c.buyer_order_date,'  '),c.other_reference,c.despatch_document_no,ifnull(c.delivery_note_date,'  '),c.despatch_through,c.destination,c.tot_amt,c.tot_amt_word,c.s_gst,c.c_gst,c.tot_tax FROM company_master a,client_master b,bill_master c WHERE TRIM(c.Invoice_no)=$P{invoice_no} AND c.buyer_code=b.client_code AND c.parent_company_code=a.com_id]]>
+		<![CDATA[SELECT a.*,b.*,c.invoice_no,DATE_FORMAT(c.invoice_date,'%d-%m-%Y'),c.delivery_note,c.supplier_ref_no,c.buyer_order_no,IFNULL(c.buyer_order_date,'  '),c.other_reference,c.despatch_document_no,IFNULL(c.delivery_note_date,'  '),c.despatch_through,c.destination,c.tot_amt,c.tot_amt_word,c.s_gst,c.c_gst,c.tot_tax,a.email AS com_email,a.phone AS com_ph,a.mobile AS com_mob,a.pan AS com_pan,b.email AS cli_email,b.phone AS cli_ph, b.mobile AS cli_mob,b.pan AS cli_pan FROM company_master a,client_master b,bill_master c WHERE TRIM(c.Invoice_no)=$P{invoice_no} AND c.buyer_code=b.client_code]]>
 	</queryString>
 	<field name="com_id" class="java.lang.String"/>
 	<field name="com_name" class="java.lang.String"/>
@@ -38,10 +38,10 @@
 	<field name="delivery_note" class="java.lang.String"/>
 	<field name="supplier_ref_no" class="java.lang.String"/>
 	<field name="buyer_order_no" class="java.lang.String"/>
-	<field name="ifnull(c.buyer_order_date,&apos;  &apos;)" class="java.lang.String"/>
+	<field name="IFNULL(c.buyer_order_date,&apos;  &apos;)" class="java.lang.String"/>
 	<field name="other_reference" class="java.lang.String"/>
 	<field name="despatch_document_no" class="java.lang.String"/>
-	<field name="ifnull(c.delivery_note_date,&apos;  &apos;)" class="java.lang.String"/>
+	<field name="IFNULL(c.delivery_note_date,&apos;  &apos;)" class="java.lang.String"/>
 	<field name="despatch_through" class="java.lang.String"/>
 	<field name="destination" class="java.lang.String"/>
 	<field name="tot_amt" class="java.lang.Double"/>
@@ -49,371 +49,212 @@
 	<field name="s_gst" class="java.lang.Double"/>
 	<field name="c_gst" class="java.lang.Double"/>
 	<field name="tot_tax" class="java.lang.Double"/>
+	<field name="com_email" class="java.lang.String"/>
+	<field name="com_ph" class="java.lang.String"/>
+	<field name="com_mob" class="java.lang.String"/>
+	<field name="com_pan" class="java.lang.String"/>
+	<field name="cli_email" class="java.lang.String"/>
+	<field name="cli_ph" class="java.lang.String"/>
+	<field name="cli_mob" class="java.lang.String"/>
+	<field name="cli_pan" class="java.lang.String"/>
 	<background>
-		<band splitType="Stretch"/>
+		<band height="828">
+			<image>
+				<reportElement x="1" y="0" width="580" height="828"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\invoice\\reports\\INVOICE FORMATE.jpg"]]></imageExpression>
+			</image>
+		</band>
 	</background>
 	<title>
-		<band height="217">
+		<band height="272">
 			<textField>
-				<reportElement x="52" y="91" width="248" height="12"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{email}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="199" y="0" width="221" height="20"/>
-				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[TAX INVOICE CUM CHALLAN]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="53" y="176" width="132" height="13"/>
+				<reportElement x="108" y="217" width="132" height="13"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{gst_no}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="5" y="143" width="102" height="20"/>
+				<reportElement x="46" y="188" width="169" height="13"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{address2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="504" y="84" width="114" height="12"/>
+				<reportElement x="466" y="152" width="114" height="12"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{other_reference}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="4" y="35" width="378" height="20"/>
+				<reportElement x="38" y="106" width="378" height="20"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{com_address}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="393" y="161" width="100" height="15"/>
+				<reportElement x="353" y="217" width="100" height="15"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{despatch_through}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="393" y="108" width="100" height="17"/>
+				<reportElement x="353" y="173" width="100" height="17"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{buyer_order_no}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="393" y="83" width="100" height="13"/>
+				<reportElement x="353" y="152" width="100" height="13"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{supplier_ref_no}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="5" y="129" width="373" height="20"/>
+				<reportElement x="46" y="179" width="316" height="14"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{address1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="393" y="56" width="100" height="13"/>
+				<reportElement x="353" y="131" width="100" height="13"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{delivery_note}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="504" y="161" width="100" height="16"/>
+				<reportElement x="466" y="216" width="100" height="16"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{destination}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="5" y="115" width="377" height="22"/>
+				<reportElement x="46" y="171" width="316" height="16"/>
 				<textElement>
 					<font size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{client_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="4" y="21" width="378" height="20"/>
+				<reportElement x="38" y="98" width="378" height="20"/>
 				<textElement>
 					<font size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{com_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="393" y="135" width="99" height="12"/>
+				<reportElement x="353" y="196" width="99" height="12"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{despatch_document_no}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="178" y="145" width="100" height="20"/>
+				<reportElement x="274" y="187" width="81" height="14"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{state}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="111" y="144" width="66" height="20"/>
+				<reportElement x="208" y="187" width="66" height="14"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{pin}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement x="0" y="18" width="619" height="2"/>
-			</line>
-			<line>
-				<reportElement x="1" y="103" width="381" height="2"/>
-			</line>
-			<line>
-				<reportElement x="0" y="216" width="618" height="1"/>
-			</line>
 			<textField>
-				<reportElement x="504" y="33" width="100" height="13"/>
+				<reportElement x="466" y="108" width="100" height="13"/>
 				<textElement>
 					<font size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Invoice Dt "+$F{DATE_FORMAT(c.invoice_date,'%d-%m-%Y')}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{DATE_FORMAT(c.invoice_date,'%d-%m-%Y')}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="393" y="32" width="100" height="16"/>
+				<reportElement x="353" y="107" width="100" height="16"/>
 				<textElement>
 					<font size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Invoice no "+$F{invoice_no}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{invoice_no}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="4" y="105" width="100" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Buyer :]]></text>
-			</staticText>
-			<line>
-				<reportElement x="382" y="20" width="1" height="195"/>
-			</line>
-			<line>
-				<reportElement x="618" y="21" width="1" height="196"/>
-			</line>
-			<line>
-				<reportElement x="0" y="18" width="1" height="197"/>
-			</line>
-			<staticText>
-				<reportElement x="4" y="91" width="31" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[E-Mail : ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="4" y="54" width="31" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Ph No :- ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="4" y="67" width="48" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[GSTN/UIN :]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="4" y="79" width="31" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[CIN :]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="5" y="200" width="31" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[E-Mail : ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="5" y="188" width="31" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[CIN :]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="5" y="163" width="31" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Ph No :- ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="5" y="176" width="48" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[GSTN/UIN :]]></text>
-			</staticText>
-			<line>
-				<reportElement x="383" y="176" width="235" height="2"/>
-			</line>
-			<staticText>
-				<reportElement x="393" y="20" width="46" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Invoice No.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="504" y="20" width="46" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Dated]]></text>
-			</staticText>
-			<line>
-				<reportElement x="383" y="46" width="235" height="2"/>
-			</line>
-			<staticText>
-				<reportElement x="393" y="47" width="51" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Delivery Note]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="504" y="48" width="100" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Mode/Terms of Payment]]></text>
-			</staticText>
-			<line>
-				<reportElement x="383" y="71" width="235" height="2"/>
-			</line>
-			<staticText>
-				<reportElement x="393" y="71" width="69" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Supplier's Ref.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="504" y="72" width="69" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Other Reference(s)]]></text>
-			</staticText>
-			<line>
-				<reportElement x="383" y="97" width="235" height="2"/>
-			</line>
-			<staticText>
-				<reportElement x="393" y="98" width="69" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Buyer's Order No.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="504" y="98" width="69" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Dated]]></text>
-			</staticText>
-			<line>
-				<reportElement x="383" y="123" width="235" height="2"/>
-			</line>
-			<staticText>
-				<reportElement x="393" y="123" width="99" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Despatch Document No.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="504" y="124" width="99" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Delivery Note Date]]></text>
-			</staticText>
-			<line>
-				<reportElement x="383" y="147" width="235" height="2"/>
-			</line>
-			<staticText>
-				<reportElement x="504" y="149" width="99" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Destination]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="393" y="148" width="99" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Despatched Through]]></text>
-			</staticText>
-			<line>
-				<reportElement x="500" y="20" width="1" height="157"/>
-			</line>
-			<staticText>
-				<reportElement x="393" y="176" width="99" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Terms of Delivery]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="52" y="68" width="100" height="13"/>
+				<reportElement x="108" y="130" width="100" height="13"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{GST}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="42" y="54" width="100" height="20"/>
+				<reportElement x="466" y="173" width="100" height="15"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{phone}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{IFNULL(c.buyer_order_date,'  ')}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="505" y="108" width="100" height="20"/>
+				<reportElement x="466" y="196" width="100" height="12"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{ifnull(c.buyer_order_date,'  ')}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{IFNULL(c.delivery_note_date,'  ')}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="507" y="135" width="100" height="20"/>
+				<reportElement x="96" y="119" width="100" height="20"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{ifnull(c.delivery_note_date,'  ')}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{com_ph}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="152" width="100" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{com_email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="196" width="100" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{state_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="207" width="100" height="13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cli_ph}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="227" width="100" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{uin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="238" width="100" height="11"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cli_email}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
 	<detail>
-		<band height="38">
+		<band height="21">
 			<subreport>
-				<reportElement x="-7" y="-1" width="637" height="39"/>
+				<reportElement x="1" y="0" width="580" height="21"/>
 				<subreportParameter name="invoice_no">
 					<subreportParameterExpression><![CDATA[$P{invoice_no}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -421,9 +262,9 @@
 				<subreportExpression class="java.lang.String"><![CDATA["rptInvoiceDetails.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
-		<band height="36">
+		<band height="26">
 			<subreport>
-				<reportElement x="-7" y="0" width="626" height="36"/>
+				<reportElement x="1" y="1" width="580" height="25"/>
 				<subreportParameter name="invoice_no">
 					<subreportParameterExpression><![CDATA[$P{invoice_no}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -434,125 +275,40 @@
 	</detail>
 	<summary>
 		<band height="164" splitType="Stretch">
-			<staticText>
-				<reportElement x="3" y="39" width="64" height="14"/>
-				<textElement>
-					<font size="8" isBold="false" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Declaration]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="325" y="39" width="100" height="14"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Company's Bank Details]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="3" y="19" width="93" height="20"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Company's PAN            :]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="439" y="97" width="100" height="20"/>
+				<reportElement x="361" y="80" width="100" height="20"/>
 				<textElement>
 					<font size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["For "+$F{com_name}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{com_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="96" y="19" width="100" height="20"/>
-				<textElement>
-					<font size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{pan}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="3" y="53" width="300" height="26"/>
-				<textElement>
-					<font size="8" isBold="false" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[We declare that this invoice shows the actual price of the goods described and that all particulars are true and correct.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="326" y="53" width="78" height="16"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Bank Name              :]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="327" y="67" width="77" height="16"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[A/c No.                     :]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="327" y="81" width="77" height="16"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Branch & IFS Code  :                     :]]></text>
-			</staticText>
-			<line>
-				<reportElement x="0" y="94" width="619" height="2"/>
-			</line>
-			<line>
-				<reportElement x="-1" y="143" width="619" height="2"/>
-			</line>
-			<line>
-				<reportElement x="300" y="96" width="1" height="47"/>
-			</line>
-			<line>
-				<reportElement x="0" y="0" width="1" height="143"/>
-			</line>
-			<line>
-				<reportElement x="618" y="0" width="1" height="145"/>
-			</line>
-			<staticText>
-				<reportElement x="5" y="97" width="116" height="20"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Customer's Seal and Signature]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="539" y="132" width="77" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[Authorised Signatory]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="236" y="145" width="139" height="13"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[This is a Computer Generated Invoice]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="406" y="53" width="58" height="16"/>
+				<reportElement x="435" y="23" width="58" height="16"/>
 				<textElement>
 					<font size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{banker}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="406" y="67" width="100" height="16"/>
+				<reportElement x="435" y="36" width="100" height="16"/>
 				<textElement>
 					<font size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{bank_ac}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="406" y="82" width="100" height="14"/>
+				<reportElement x="435" y="48" width="100" height="14"/>
 				<textElement>
 					<font size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{ifsc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="-2" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{com_pan}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>
