@@ -38,7 +38,7 @@ public class Payment extends javax.swing.JFrame {
     public Payment() {
         initComponents();
         loadCompanyCode();
-        populateSellerCode();
+        //populateSellerCode();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
         jComboBox1.removeAllItems();
@@ -603,7 +603,7 @@ public class Payment extends javax.swing.JFrame {
         String invoiceNo=jComboBox2.getSelectedItem().toString().trim();
         double totPayment=0,invAmt=0;
         String query="SELECT SUM(gross_amt) FROM purchase_master WHERE seller_invoice_no='"+invoiceNo+"'";
-        String query1="SELECT IFNULL(SUM(payment_amt),0) FROM payment WHERE invoice_no='"+invoiceNo+"'";
+        String query1="SELECT IFNULL(SUM(payment_amt),0) FROM payment WHERE invoice_no='"+invoiceNo+"' and delete_flag!='Y' ";
         System.out.println(query);
         System.out.println(query1);
         try{

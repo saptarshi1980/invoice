@@ -78,8 +78,10 @@ public class MainScreenUser extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
         jMenuItem18 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu12 = new javax.swing.JMenu();
         jMenuItem23 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem22 = new javax.swing.JMenuItem();
@@ -335,6 +337,11 @@ public class MainScreenUser extends javax.swing.JFrame {
         jMenu10.setText(resourceMap.getString("jMenu10.text")); // NOI18N
         jMenu10.setFont(resourceMap.getFont("jMenu10.font")); // NOI18N
         jMenu10.setName("jMenu10"); // NOI18N
+        jMenu10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu10ActionPerformed(evt);
+            }
+        });
 
         jMenuItem18.setFont(resourceMap.getFont("jMenuItem18.font")); // NOI18N
         jMenuItem18.setText(resourceMap.getString("jMenuItem18.text")); // NOI18N
@@ -346,6 +353,16 @@ public class MainScreenUser extends javax.swing.JFrame {
             }
         });
         jMenu10.add(jMenuItem18);
+
+        jMenuItem5.setFont(resourceMap.getFont("jMenuItem5.font")); // NOI18N
+        jMenuItem5.setText(resourceMap.getString("jMenuItem5.text")); // NOI18N
+        jMenuItem5.setName("jMenuItem5"); // NOI18N
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu10.add(jMenuItem5);
 
         jMenuBar1.add(jMenu10);
 
@@ -365,6 +382,16 @@ public class MainScreenUser extends javax.swing.JFrame {
             }
         });
         jMenu12.add(jMenuItem23);
+
+        jMenuItem7.setFont(resourceMap.getFont("jMenuItem7.font")); // NOI18N
+        jMenuItem7.setText(resourceMap.getString("jMenuItem7.text")); // NOI18N
+        jMenuItem7.setName("jMenuItem7"); // NOI18N
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu12.add(jMenuItem7);
 
         jMenuBar1.add(jMenu12);
 
@@ -630,6 +657,18 @@ public class MainScreenUser extends javax.swing.JFrame {
         new ItemMovementRegister().setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
+    private void jMenu10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu10ActionPerformed
+      
+    }//GEN-LAST:event_jMenu10ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        new ReceiptEdit().setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+         new PaymentEdit().setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -681,7 +720,9 @@ public class MainScreenUser extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem38;
     private javax.swing.JMenuItem jMenuItem39;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;

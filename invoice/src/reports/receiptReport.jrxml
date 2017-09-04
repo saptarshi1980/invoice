@@ -13,7 +13,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select * from receipt where transaction_date between str_to_date($P{frm_dt},'%d-%m-%Y') and str_to_date($P{to_dt},'%d-%m-%Y') and payment_mode=$P{mode}]]>
+		<![CDATA[select * from receipt where transaction_date between str_to_date($P{frm_dt},'%d-%m-%Y') and str_to_date($P{to_dt},'%d-%m-%Y') and payment_mode=$P{mode} and delete_flag!='Y']]>
 	</queryString>
 	<field name="transaction_date" class="java.sql.Date"/>
 	<field name="client_no" class="java.lang.String"/>
@@ -24,6 +24,7 @@
 	<field name="parent_code" class="java.lang.String"/>
 	<field name="insert_time" class="java.sql.Timestamp"/>
 	<field name="payment_mode" class="java.lang.String"/>
+	<field name="delete_flag" class="java.lang.String"/>
 	<variable name="invoice_amt_1" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{invoice_amt}]]></variableExpression>
 	</variable>
