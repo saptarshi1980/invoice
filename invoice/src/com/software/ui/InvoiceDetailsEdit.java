@@ -347,6 +347,7 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
 
         jButton1.setIcon(resourceMap.getIcon("jButton1.icon")); // NOI18N
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
+        jButton1.setEnabled(false);
         jButton1.setName("jButton1"); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -473,7 +474,8 @@ public class InvoiceDetailsEdit extends javax.swing.JFrame {
         char c = evt.getKeyChar();
 
        if ((c == evt.VK_ENTER)) {
-               jButton1.requestFocus();
+                jButton1.setEnabled(true);
+                jButton1.requestFocus();
              }
     }//GEN-LAST:event_jTextField6KeyTyped
 

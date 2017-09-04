@@ -742,7 +742,7 @@ public class PurchaseMaster extends javax.swing.JFrame {
     private void jTextField9KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField9KeyTyped
         char c = evt.getKeyChar();
         
-        double discPercent=0;
+        double disc=0;
     
     double qty=Double.parseDouble(jTextField3.getText());
     double price=Double.parseDouble(jTextField15.getText());
@@ -752,16 +752,17 @@ public class PurchaseMaster extends javax.swing.JFrame {
             
             
             try{
-        discPercent=Double.parseDouble(jTextField9.getText());
+        disc=Double.parseDouble(jTextField9.getText());
     }catch(NumberFormatException ex){
         ex.printStackTrace();
-        discPercent=0;
+        disc=0;
     }
     double basicPrice=round(qty*price,2);
-    double discAmt=round(basicPrice*discPercent/100,2);
-    double netPrice=basicPrice-discAmt;
-    double taxAmt=round(netPrice*taxPercent/100,2);
-    double gross=round((netPrice+taxAmt),2);
+    //double discAmt=round(basicPrice*discPercent/100,2);
+    //double netPrice=basicPrice-discAmt;
+    double taxAmt=round(basicPrice*taxPercent/100,2);
+    double grossAmt=round((basicPrice+taxAmt),2);
+    double gross=grossAmt-disc;
     DecimalFormat decim = new DecimalFormat("#.00");
     
     jTextField14.setText(String.valueOf(taxAmt));

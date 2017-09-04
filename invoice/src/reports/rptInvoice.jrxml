@@ -10,7 +10,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT a.*,b.*,c.invoice_no,DATE_FORMAT(c.invoice_date,'%d-%m-%Y'),c.delivery_note,c.supplier_ref_no,c.buyer_order_no,DATE_FORMAT(buyer_order_date,'%d-%m-%Y'),c.other_reference,c.despatch_document_no,DATE_FORMAT(c.delivery_note_date,'%d-%m-%Y'),c.despatch_through,c.destination,c.tot_amt,c.tot_amt_word,c.s_gst,c.c_gst,c.tot_tax FROM company_master a,client_master b,bill_master c WHERE TRIM(c.Invoice_no)=$P{invoice_no} AND c.buyer_code=b.client_code AND c.parent_company_code=a.com_id]]>
+		<![CDATA[SELECT a.*,b.*,c.invoice_no,DATE_FORMAT(c.invoice_date,'%d-%m-%Y'),c.delivery_note,c.supplier_ref_no,c.buyer_order_no,ifnull(c.buyer_order_date,'  '),c.other_reference,c.despatch_document_no,ifnull(c.delivery_note_date,'  '),c.despatch_through,c.destination,c.tot_amt,c.tot_amt_word,c.s_gst,c.c_gst,c.tot_tax FROM company_master a,client_master b,bill_master c WHERE TRIM(c.Invoice_no)=$P{invoice_no} AND c.buyer_code=b.client_code AND c.parent_company_code=a.com_id]]>
 	</queryString>
 	<field name="com_id" class="java.lang.String"/>
 	<field name="com_name" class="java.lang.String"/>
@@ -32,15 +32,16 @@
 	<field name="gst_no" class="java.lang.String"/>
 	<field name="uin" class="java.lang.String"/>
 	<field name="reg_date" class="java.sql.Timestamp"/>
+	<field name="state_code" class="java.lang.String"/>
 	<field name="invoice_no" class="java.lang.String"/>
 	<field name="DATE_FORMAT(c.invoice_date,&apos;%d-%m-%Y&apos;)" class="java.lang.String"/>
 	<field name="delivery_note" class="java.lang.String"/>
 	<field name="supplier_ref_no" class="java.lang.String"/>
 	<field name="buyer_order_no" class="java.lang.String"/>
-	<field name="DATE_FORMAT(buyer_order_date,&apos;%d-%m-%Y&apos;)" class="java.lang.String"/>
+	<field name="ifnull(c.buyer_order_date,&apos;  &apos;)" class="java.lang.String"/>
 	<field name="other_reference" class="java.lang.String"/>
 	<field name="despatch_document_no" class="java.lang.String"/>
-	<field name="DATE_FORMAT(c.delivery_note_date,&apos;%d-%m-%Y&apos;)" class="java.lang.String"/>
+	<field name="ifnull(c.delivery_note_date,&apos;  &apos;)" class="java.lang.String"/>
 	<field name="despatch_through" class="java.lang.String"/>
 	<field name="destination" class="java.lang.String"/>
 	<field name="tot_amt" class="java.lang.Double"/>
@@ -145,13 +146,6 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{client_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="52" y="54" width="248" height="15"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{phone}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="4" y="21" width="378" height="20"/>
 				<textElement>
 					<font size="8" isBold="true"/>
@@ -194,20 +188,6 @@
 					<font size="8" isBold="true"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA["Invoice Dt "+$F{DATE_FORMAT(c.invoice_date,'%d-%m-%Y')}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="504" y="108" width="100" height="14"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{DATE_FORMAT(buyer_order_date,'%d-%m-%Y')}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="504" y="135" width="100" height="12"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{DATE_FORMAT(c.delivery_note_date,'%d-%m-%Y')}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="393" y="32" width="100" height="16"/>
@@ -406,6 +386,27 @@
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{GST}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="42" y="54" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="505" y="108" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ifnull(c.buyer_order_date,'  ')}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="507" y="135" width="100" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ifnull(c.delivery_note_date,'  ')}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>

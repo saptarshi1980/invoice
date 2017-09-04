@@ -16,6 +16,10 @@
 	<field name="email" class="java.lang.String"/>
 	<field name="phone" class="java.lang.String"/>
 	<field name="mobile" class="java.lang.String"/>
+	<field name="pan" class="java.lang.String"/>
+	<field name="banker" class="java.lang.String"/>
+	<field name="bank_ac" class="java.lang.String"/>
+	<field name="ifsc" class="java.lang.String"/>
 	<field name="client_code" class="java.lang.String"/>
 	<field name="client_name" class="java.lang.String"/>
 	<field name="address1" class="java.lang.String"/>
@@ -24,6 +28,8 @@
 	<field name="state" class="java.lang.String"/>
 	<field name="gst_no" class="java.lang.String"/>
 	<field name="uin" class="java.lang.String"/>
+	<field name="reg_date" class="java.sql.Timestamp"/>
+	<field name="state_code" class="java.lang.String"/>
 	<field name="parent_company_code" class="java.lang.String"/>
 	<field name="buyer_code" class="java.lang.Object"/>
 	<field name="Invoice_no" class="java.lang.String"/>
@@ -31,10 +37,10 @@
 	<field name="delivery_note" class="java.lang.String"/>
 	<field name="supplier_ref_no" class="java.lang.String"/>
 	<field name="buyer_order_no" class="java.lang.String"/>
-	<field name="buyer_order_date" class="java.sql.Date"/>
+	<field name="buyer_order_date" class="java.lang.String"/>
 	<field name="other_reference" class="java.lang.String"/>
 	<field name="despatch_document_no" class="java.lang.String"/>
-	<field name="delivery_note_date" class="java.sql.Date"/>
+	<field name="delivery_note_date" class="java.lang.String"/>
 	<field name="despatch_through" class="java.lang.String"/>
 	<field name="destination" class="java.lang.String"/>
 	<field name="tot_amt" class="java.lang.Double"/>

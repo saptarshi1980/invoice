@@ -7,12 +7,12 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select hsn_sac,tax_percent_central,tax_percent_state,amount,tax_percent_central,tax_amt_central,tax_percent_state,tax_amt_state from bill_details where invoice_id=$P{invoice_no}]]>
+		<![CDATA[select hsn_sac,tax_percent_state,amount,tax_percent_central,tax_amt_central,tax_amt_state from bill_details where invoice_id=$P{invoice_no}]]>
 	</queryString>
 	<field name="hsn_sac" class="java.lang.String"/>
-	<field name="tax_percent_central" class="java.lang.Double"/>
 	<field name="tax_percent_state" class="java.lang.Double"/>
 	<field name="amount" class="java.lang.Double"/>
+	<field name="tax_percent_central" class="java.lang.Double"/>
 	<field name="tax_amt_central" class="java.lang.Double"/>
 	<field name="tax_amt_state" class="java.lang.Double"/>
 	<variable name="tax_percent_central_1" class="java.lang.Double" resetType="Column" calculation="Sum">

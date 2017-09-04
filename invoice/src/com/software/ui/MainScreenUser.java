@@ -38,7 +38,6 @@ public class MainScreenUser extends javax.swing.JFrame {
         else{
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-        jMenu1.setMnemonic(KeyEvent.VK_O);
         jMenu2.setMnemonic(KeyEvent.VK_R);
         //setExtendedState(MAXIMIZED_BOTH);
         }
@@ -69,7 +68,6 @@ public class MainScreenUser extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -80,12 +78,8 @@ public class MainScreenUser extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
         jMenuItem18 = new javax.swing.JMenuItem();
-        jMenuItem19 = new javax.swing.JMenuItem();
         jMenu12 = new javax.swing.JMenu();
         jMenuItem23 = new javax.swing.JMenuItem();
-        jMenuItem24 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem20 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem22 = new javax.swing.JMenuItem();
@@ -257,17 +251,6 @@ public class MainScreenUser extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem6);
 
-        jMenuItem7.setFont(resourceMap.getFont("jMenuItem7.font")); // NOI18N
-        jMenuItem7.setText(resourceMap.getString("jMenuItem7.text")); // NOI18N
-        jMenuItem7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jMenuItem7.setName("jMenuItem7"); // NOI18N
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem7);
-
         jMenuItem12.setFont(resourceMap.getFont("jMenuItem12.font")); // NOI18N
         jMenuItem12.setText(resourceMap.getString("jMenuItem12.text")); // NOI18N
         jMenuItem12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -364,12 +347,6 @@ public class MainScreenUser extends javax.swing.JFrame {
         });
         jMenu10.add(jMenuItem18);
 
-        jMenuItem19.setFont(resourceMap.getFont("jMenuItem18.font")); // NOI18N
-        jMenuItem19.setText(resourceMap.getString("jMenuItem19.text")); // NOI18N
-        jMenuItem19.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jMenuItem19.setName("jMenuItem19"); // NOI18N
-        jMenu10.add(jMenuItem19);
-
         jMenuBar1.add(jMenu10);
 
         jMenu12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -389,33 +366,7 @@ public class MainScreenUser extends javax.swing.JFrame {
         });
         jMenu12.add(jMenuItem23);
 
-        jMenuItem24.setFont(resourceMap.getFont("jMenuItem24.font")); // NOI18N
-        jMenuItem24.setText(resourceMap.getString("jMenuItem24.text")); // NOI18N
-        jMenuItem24.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jMenuItem24.setName("jMenuItem24"); // NOI18N
-        jMenu12.add(jMenuItem24);
-
         jMenuBar1.add(jMenu12);
-
-        jMenu1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jMenu1.setIcon(resourceMap.getIcon("jMenu1.icon")); // NOI18N
-        jMenu1.setText(resourceMap.getString("jMenu1.text")); // NOI18N
-        jMenu1.setEnabled(false);
-        jMenu1.setFont(resourceMap.getFont("jMenu1.font")); // NOI18N
-        jMenu1.setName("jMenu1"); // NOI18N
-
-        jMenuItem20.setFont(resourceMap.getFont("jMenuItem20.font")); // NOI18N
-        jMenuItem20.setText(resourceMap.getString("jMenuItem20.text")); // NOI18N
-        jMenuItem20.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jMenuItem20.setName("jMenuItem20"); // NOI18N
-        jMenuItem20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem20ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem20);
-
-        jMenuBar1.add(jMenu1);
 
         jMenu2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jMenu2.setIcon(resourceMap.getIcon("jMenu2.icon")); // NOI18N
@@ -611,10 +562,6 @@ public class MainScreenUser extends javax.swing.JFrame {
         new InvoiceDetailsEdit().setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        new ItemMasterEdit().setVisible(true);
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
-
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         new AddItemSegment().setVisible(true);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
@@ -630,10 +577,6 @@ public class MainScreenUser extends javax.swing.JFrame {
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
        new GrnEdit().setVisible(true);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
-
-    private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
-        new CompanyMaster().setVisible(true);
-    }//GEN-LAST:event_jMenuItem20ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         new SellerMasterEdit().setVisible(true);
@@ -701,7 +644,6 @@ public class MainScreenUser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
     private javax.swing.JMenu jMenu12;
@@ -724,12 +666,9 @@ public class MainScreenUser extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem23;
-    private javax.swing.JMenuItem jMenuItem24;
     private javax.swing.JMenuItem jMenuItem29;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem30;
@@ -743,7 +682,6 @@ public class MainScreenUser extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem39;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;

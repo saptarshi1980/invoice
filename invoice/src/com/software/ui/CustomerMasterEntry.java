@@ -581,7 +581,7 @@ public void saveCustomer(){
     String pan=jTextField12.getText().toUpperCase().trim();
     try{
         this.gst=jTextField7.getText().trim().toUpperCase();
-        this.gstState=jTextField7.getText().trim().toUpperCase().substring(0,1);
+        this.gstState=jTextField7.getText().trim().toUpperCase().substring(0,2);
         }catch(NullPointerException ex){
              ex.printStackTrace();
                 

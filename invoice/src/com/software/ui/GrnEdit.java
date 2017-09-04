@@ -138,6 +138,11 @@ public class GrnEdit extends javax.swing.JFrame {
                 jComboBox1ItemStateChanged(evt);
             }
         });
+        jComboBox1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBox1FocusLost(evt);
+            }
+        });
         jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jComboBox1KeyTyped(evt);
@@ -149,6 +154,11 @@ public class GrnEdit extends javax.swing.JFrame {
         jComboBox2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox2ItemStateChanged(evt);
+            }
+        });
+        jComboBox2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBox2FocusLost(evt);
             }
         });
         jComboBox2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -163,6 +173,11 @@ public class GrnEdit extends javax.swing.JFrame {
 
         jComboBox3.setFocusCycleRoot(true);
         jComboBox3.setName("jComboBox3"); // NOI18N
+        jComboBox3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBox3FocusLost(evt);
+            }
+        });
         jComboBox3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jComboBox3KeyTyped(evt);
@@ -223,6 +238,11 @@ public class GrnEdit extends javax.swing.JFrame {
 
         jTextField8.setFocusCycleRoot(true);
         jTextField8.setName("jTextField8"); // NOI18N
+        jTextField8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField8MouseClicked(evt);
+            }
+        });
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField8ActionPerformed(evt);
@@ -539,6 +559,22 @@ public class GrnEdit extends javax.swing.JFrame {
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField8ActionPerformed
+
+    private void jComboBox1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusLost
+        findGrn();
+    }//GEN-LAST:event_jComboBox1FocusLost
+
+    private void jComboBox2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox2FocusLost
+        findDescription();
+    }//GEN-LAST:event_jComboBox2FocusLost
+
+    private void jComboBox3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox3FocusLost
+        itemDescription();
+    }//GEN-LAST:event_jComboBox3FocusLost
+
+    private void jTextField8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField8MouseClicked
+       itemDescription();
+    }//GEN-LAST:event_jTextField8MouseClicked
 
     /**
      * @param args the command line arguments

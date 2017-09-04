@@ -13,11 +13,18 @@ package com.software.ui;
 import com.software.utility.ConnDB;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -79,7 +86,7 @@ public class CustomerMasterEdit extends javax.swing.JFrame {
 
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(invoice.InvoiceApp.class).getContext().getResourceMap(CustomerMasterEdit.class);
         jPanel1.setBackground(resourceMap.getColor("jPanel1.background")); // NOI18N
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setName("jPanel1"); // NOI18N
 
         jLabel1.setFont(resourceMap.getFont("jLabel1.font")); // NOI18N
@@ -89,6 +96,9 @@ public class CustomerMasterEdit extends javax.swing.JFrame {
         jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
         jTextField1.setName("jTextField1"); // NOI18N
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField1KeyTyped(evt);
             }
@@ -499,6 +509,13 @@ public class CustomerMasterEdit extends javax.swing.JFrame {
              }
     }//GEN-LAST:event_jTextField1KeyTyped
 
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_F1){
+          viewReport();
+           
+       }
+    }//GEN-LAST:event_jTextField1KeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -576,7 +593,7 @@ public void fetchConsumer(){
     }
     
       
-    jTextField1.setText(String.format("%04d", counter));
+    //jTextField1.setText(String.format("%04d", counter));
     jTextField2.requestFocus();
 }
 
@@ -601,7 +618,7 @@ public void saveCustomer(){
     String pan=jTextField12.getText().toUpperCase().trim();
     try{
         this.gst=jTextField7.getText().trim().toUpperCase();
-        this.gstState=jTextField7.getText().trim().toUpperCase().substring(0,1);
+        this.gstState=jTextField7.getText().trim().toUpperCase().substring(0,2);
         }catch(NullPointerException ex){
              ex.printStackTrace();
                 
@@ -610,6 +627,7 @@ public void saveCustomer(){
         Connection conn=new ConnDB().make_connection();
         Statement stmt=conn.createStatement();
         String update="update client_master set client_name='"+customerName+"',address1='"+address1+"',address2='"+address2+"',pin='"+pin+"',state='"+state+"',gst_no='"+this.gst+"',uin='"+uin+"',phone='"+phone+"',mobile='"+mobile+"',email='"+email+"',pan='"+pan+"',state_code='"+this.gstState+"' where client_code='"+customerCode+"'";
+        System.out.println(update);
         stmt.executeUpdate(update);
         JOptionPane.showMessageDialog(this, "Customer edited ");
         this.dispose();
@@ -644,14 +662,40 @@ public boolean verifyFields(){
         
         
         
-        if(consumerCode.trim().length()>0 && consumerName.trim().length()>3 && address1.trim().length()>5 && address2.trim().length()>5 && pin.trim().length()>5 && state.trim().length()>0 )
+        if(consumerCode.trim().length()>0 && consumerName.trim().length()>3 && address1.trim().length()>0 && address2.trim().length()>0 && pin.trim().length()>0 && state.trim().length()>0 )
             return true;
         else return false;
         
         
     }
 
+private void viewReport() {
+        
+           String invoiceNo=jTextField1.getText().trim();
+           //String reportSource = "rptInvoice1.jasper";
+            String reportSource = "c://invoice//reports//buyer.jasper";
+            Map<String, Object> params = new HashMap<String, Object>();
+            
+   try
+        {
+           try{
+                
+                Connection conn = new ConnDB().make_connection(); 
+                JasperPrint jasperPrint =
+                JasperFillManager.fillReport(
+                reportSource,params,conn);
+                JasperViewer.viewReport(jasperPrint,false);
+              }catch(JRException ex){
+                     ex.printStackTrace();
+                    }
+        }catch (Exception ex)
+        {
+           ex.printStackTrace();
 
+
+        }
+    }
+        
 
 
     

@@ -25,6 +25,7 @@ import com.software.utility.DateUtil;
 import com.software.utility.SoftUtil;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -34,6 +35,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -50,6 +52,7 @@ public class SellerMasterEdit extends javax.swing.JFrame {
     
     public String gst="   ";
     public String gstState="  ";
+    ArrayList<String>seller=new ArrayList<String>();
     
 
     /** Creates new form SellerMAster */
@@ -58,6 +61,31 @@ public class SellerMasterEdit extends javax.swing.JFrame {
         //populateSellerCode();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        this.seller=loadSeller();
+        jTextField5.addKeyListener(new KeyAdapter() {
+        public void keyTyped(KeyEvent e) {
+          char c = e.getKeyChar();
+          
+          if (!((c >= '0') && (c <= '9') ||
+             (c == KeyEvent.VK_BACK_SPACE) ||
+             (c == KeyEvent.VK_DELETE))) {
+            getToolkit().beep();
+            e.consume();
+          }
+        }
+      });
+        jTextField4.addKeyListener(new KeyAdapter() {
+        public void keyTyped(KeyEvent e) {
+          char c = e.getKeyChar();
+          
+          if (!((c >= '0') && (c <= '9') ||
+             (c == KeyEvent.VK_BACK_SPACE) ||
+             (c == KeyEvent.VK_DELETE))) {
+            getToolkit().beep();
+            e.consume();
+          }
+        }
+      });
     }
 
     /** This method is called from within the constructor to
@@ -83,6 +111,7 @@ public class SellerMasterEdit extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
@@ -101,9 +130,17 @@ public class SellerMasterEdit extends javax.swing.JFrame {
         jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
         jTextField1.setFocusCycleRoot(true);
         jTextField1.setName("jTextField1"); // NOI18N
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField1KeyTyped(evt);
@@ -180,54 +217,62 @@ public class SellerMasterEdit extends javax.swing.JFrame {
         jLabel8.setText(resourceMap.getString("jLabel8.text")); // NOI18N
         jLabel8.setName("jLabel8"); // NOI18N
 
+        jComboBox1.setName("jComboBox1"); // NOI18N
+        jComboBox1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jComboBox1FocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField3)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jTextField2)
+                        .addGap(133, 133, 133))
                     .addComponent(jTextField4)
                     .addComponent(jTextField5)
-                    .addComponent(jTextField6))
+                    .addComponent(jTextField6)
+                    .addComponent(jTextField3)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel8)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3))
+                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -239,7 +284,7 @@ public class SellerMasterEdit extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         jButton1.setFont(resourceMap.getFont("jButton1.font")); // NOI18N
@@ -326,7 +371,12 @@ public class SellerMasterEdit extends javax.swing.JFrame {
          char c = evt.getKeyChar();
 
        if ((c == evt.VK_ENTER)) {
-               jButton1.requestFocus();
+               if(jTextField6.getText().length()>16){
+                        JOptionPane.showMessageDialog(this, "GST Number can not be more than 16 letters! ");
+                    }else{
+           
+                    jButton1.requestFocus();
+                    }
              }
     }//GEN-LAST:event_jTextField6KeyTyped
 
@@ -353,6 +403,40 @@ public class SellerMasterEdit extends javax.swing.JFrame {
              }
     }//GEN-LAST:event_jTextField1KeyTyped
 
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        jComboBox1.removeAllItems();
+        String name=jTextField1.getText().toUpperCase();
+        System.out.println(name);
+        List <String> listClone = new ArrayList<String>(); 
+           for (String string : this.seller) {
+               System.out.println("String-"+string);
+               System.out.println("index of (-"+string.indexOf("("));
+               int index=string.indexOf("(")+1;
+               String search=string.substring(index,index+2);
+               System.out.println("Search-"+search);
+               System.out.println("AL Value-"+search);
+               if(search.startsWith(name)){
+                   listClone.add(string);
+                   System.out.println("yahoo");
+               }
+               System.out.println(string);
+           }
+           
+          
+        for (String string : listClone) {
+               jComboBox1.addItem(string);
+               
+           }
+    }//GEN-LAST:event_jTextField1KeyReleased
+
+    private void jComboBox1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jComboBox1FocusLost
+        fetchSellerInfo();
+    }//GEN-LAST:event_jComboBox1FocusLost
+
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        fetchSellerInfo();
+    }//GEN-LAST:event_jTextField1FocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -366,6 +450,7 @@ public class SellerMasterEdit extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -417,7 +502,7 @@ public class SellerMasterEdit extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please fill up the information proeperly. ");
         }
         else{
-        String sellerCode=jTextField1.getText().trim();
+        String sellerCode=jComboBox1.getSelectedItem().toString().substring(0,jComboBox1.getSelectedItem().toString().indexOf("("));
         String sellerName=jTextField2.getText().trim().toUpperCase();
         String address=jTextField3.getText().trim().toUpperCase();
         String phone=jTextField4.getText().trim().toUpperCase();
@@ -455,7 +540,7 @@ public class SellerMasterEdit extends javax.swing.JFrame {
     
     public boolean verifyFields(){
         
-        String sellerCode=jTextField1.getText().trim();
+        String sellerCode=jComboBox1.getSelectedItem().toString().substring(0,jComboBox1.getSelectedItem().toString().indexOf("("));
         String sellerName=jTextField2.getText().trim().toUpperCase();
         String address=jTextField3.getText().trim().toUpperCase();
         String phone=jTextField4.getText().trim().toUpperCase();
@@ -463,7 +548,7 @@ public class SellerMasterEdit extends javax.swing.JFrame {
         String gst=jTextField6.getText().trim().toUpperCase();
         String gstState=jTextField6.getText().trim().toUpperCase().substring(0,1);
         
-        if(sellerCode.trim().length()>0 && sellerName.trim().length()>3 && address.trim().length()>5 )
+        if(sellerCode.trim().length()>0 && sellerName.trim().length()>1 && address.trim().length()>1 && mobile.trim().length()==10)
             return true;
         else return false;
         
@@ -498,7 +583,8 @@ public class SellerMasterEdit extends javax.swing.JFrame {
     }
 
 public void fetchSellerInfo(){
-    String query="SELECT * FROM seller_master WHERE seller_code='"+jTextField1.getText().trim()+"'";
+    String sellerCode=jComboBox1.getSelectedItem().toString().substring(0,jComboBox1.getSelectedItem().toString().indexOf("("));
+    String query="SELECT * FROM seller_master WHERE seller_code='"+sellerCode+"'";
     Connection conn = new ConnDB().make_connection(); 
     int counter=0;
     try{
@@ -520,5 +606,29 @@ public void fetchSellerInfo(){
         JOptionPane.showMessageDialog(this, "Error loading Code! ");
         ex.printStackTrace();
     }
+}
+
+public ArrayList<String> loadSeller(){
+    
+    String query="SELECT CONCAT(seller_code,'(',seller_name,')') FROM seller_master ORDER BY reg_date desc";
+    ArrayList<String>alParty=new ArrayList<String>();
+    try{
+        Connection conn=new ConnDB().make_connection();
+        Statement stmt=conn.createStatement();
+        ResultSet rs=stmt.executeQuery(query);
+        while(rs.next()){
+            alParty.add(rs.getString(1));
+            System.out.println("insdie al");
+        }
+        
+        
+        
+  }catch(SQLException ex){
+        
+        JOptionPane.showMessageDialog(this, "Error loading Company Code! ");
+        ex.printStackTrace();
+    }
+    
+    return alParty;
 }
 }

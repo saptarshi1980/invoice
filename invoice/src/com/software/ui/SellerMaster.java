@@ -47,6 +47,19 @@ public class SellerMaster extends javax.swing.JFrame {
           }
         }
       });
+        jTextField4.addKeyListener(new KeyAdapter() {
+        public void keyTyped(KeyEvent e) {
+          char c = e.getKeyChar();
+          
+          if (!((c >= '0') && (c <= '9') ||
+             (c == KeyEvent.VK_BACK_SPACE) ||
+             (c == KeyEvent.VK_DELETE))) {
+            getToolkit().beep();
+            e.consume();
+          }
+        }
+      });
+        
     }
 
     /** This method is called from within the constructor to
@@ -378,7 +391,7 @@ public class SellerMaster extends javax.swing.JFrame {
     
     public void sellerDetails(){
         if(!verifyFields()){
-            JOptionPane.showMessageDialog(this, "Please fill up the information proeperly. ");
+            JOptionPane.showMessageDialog(this, "Please fill up the information proeperly.Check Mobile no/GST ");
         }
         else{
         String sellerCode=jTextField1.getText().trim();
@@ -426,7 +439,7 @@ public class SellerMaster extends javax.swing.JFrame {
         String gst=jTextField6.getText().trim().toUpperCase();
         String gstState=jTextField6.getText().trim().toUpperCase().substring(0,1);
         
-        if(sellerCode.trim().length()>0 && sellerName.trim().length()>0 && address.trim().length()>0 && mobile.trim().length()!=10 ){
+        if(sellerCode.trim().length()>0 && sellerName.trim().length()>0 && address.trim().length()>0 && mobile.trim().length()==10 ){
             return true;
         }
             
