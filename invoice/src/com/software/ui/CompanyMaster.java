@@ -13,6 +13,8 @@ package com.software.ui;
 import com.software.utility.ConnDB;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,6 +32,43 @@ public class CompanyMaster extends javax.swing.JFrame {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        jTextField5.addKeyListener(new KeyAdapter() {
+        public void keyTyped(KeyEvent e) {
+          char c = e.getKeyChar();
+          
+          if (!((c >= '0') && (c <= '9') ||
+             (c == KeyEvent.VK_BACK_SPACE) ||
+             (c == KeyEvent.VK_DELETE))) {
+            getToolkit().beep();
+            e.consume();
+          }
+        }
+      });
+        jTextField6.addKeyListener(new KeyAdapter() {
+        public void keyTyped(KeyEvent e) {
+          char c = e.getKeyChar();
+          
+          if (!((c >= '0') && (c <= '9') ||
+             (c == KeyEvent.VK_BACK_SPACE) ||
+             (c == KeyEvent.VK_DELETE))) {
+            getToolkit().beep();
+            e.consume();
+          }
+        }
+      });
+         jTextField10.addKeyListener(new KeyAdapter() {
+        public void keyTyped(KeyEvent e) {
+          char c = e.getKeyChar();
+          
+          if (!((c >= '0') && (c <= '9') ||
+             (c == KeyEvent.VK_BACK_SPACE) ||
+             (c == KeyEvent.VK_DELETE))) {
+            getToolkit().beep();
+            e.consume();
+          }
+        }
+      });
+        
         
     }
 
@@ -555,7 +594,9 @@ public  void populateCompanyCode(){
 }
 
 public void saveCompany(){
-    String companyCode=jTextField1.getText();
+    if (verifyFields()){
+        String companyCode=jTextField1.getText();
+   
     String companyName=jTextField2.getText().trim().toUpperCase();
     String address=jTextField3.getText().toUpperCase().trim();
     String gst=jTextField4.getText().toUpperCase().trim();
@@ -587,7 +628,41 @@ public void saveCompany(){
         ex.printStackTrace();
     }
     
-    
+    }
+    else{
+        JOptionPane.showMessageDialog(this, "Input the fields properly. ");
+        jTextField2.requestFocus();
+    }
     
 }
+
+
+
+public boolean verifyFields(){
+        
+        String sellerCode=jTextField1.getText().trim();
+        String companyName=jTextField2.getText().trim().toUpperCase();
+        
+        String address=jTextField3.getText().trim().toUpperCase();
+        String gst=jTextField4.getText().trim().toUpperCase();
+        String phone=jTextField5.getText().trim().toUpperCase();
+        String mobile=jTextField6.getText().trim().toUpperCase();
+        String email=jTextField7.getText().trim().toUpperCase();
+        String pan=jTextField8.getText().trim().toUpperCase();
+        String banker=jTextField9.getText().trim().toUpperCase();
+        String ac=jTextField10.getText().trim().toUpperCase();
+        String ifsc=jTextField11.getText().trim().toUpperCase();
+        
+        
+        
+        String gstState=jTextField6.getText().trim().toUpperCase().substring(0,2);
+        
+        if(sellerCode.trim().length()>0 && companyName.trim().length()>0 && address.trim().length()>0 && mobile.trim().length()==10 && gst.trim().length()==16 && pan.trim().length()>9 && banker.trim().length()>5 && ac.trim().length()>5 && ifsc.trim().length()>1){
+            return true;
+        }
+            
+        else return false;
+        
+        
+    }
 }

@@ -437,7 +437,7 @@ public class SellerMaster extends javax.swing.JFrame {
         String phone=jTextField4.getText().trim().toUpperCase();
         String mobile=jTextField5.getText().trim().toUpperCase();
         String gst=jTextField6.getText().trim().toUpperCase();
-        String gstState=jTextField6.getText().trim().toUpperCase().substring(0,1);
+        String gstState=jTextField6.getText().trim().toUpperCase().substring(0,2);
         
         if(sellerCode.trim().length()>0 && sellerName.trim().length()>0 && address.trim().length()>0 && mobile.trim().length()==10 ){
             return true;

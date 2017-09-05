@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptInvoice1_subreport1" language="groovy" pageWidth="595" pageHeight="150" columnWidth="583" leftMargin="6" rightMargin="6" topMargin="0" bottomMargin="0" scriptletClass="numbertoword.NumToWord">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="invoice_no" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select hsn_sac,tax_percent_state,amount,tax_percent_central,tax_amt_central,tax_amt_state,tax_amt_central+tax_amt_state as tot_tax_amt from bill_details where invoice_id=$P{invoice_no}]]>
+	</queryString>
+	<field name="hsn_sac" class="java.lang.String"/>
+	<field name="tax_percent_state" class="java.lang.Double"/>
+	<field name="amount" class="java.lang.Double"/>
+	<field name="tax_percent_central" class="java.lang.Double"/>
+	<field name="tax_amt_central" class="java.lang.Double"/>
+	<field name="tax_amt_state" class="java.lang.Double"/>
+	<field name="tot_tax_amt" class="java.lang.Double"/>
+	<variable name="tax_percent_central_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{tax_percent_central}]]></variableExpression>
+	</variable>
+	<variable name="amount_1" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount}]]></variableExpression>
+	</variable>
+	<variable name="tot_tax" class="java.lang.Double">
+		<variableExpression><![CDATA[$F{tax_amt_central}+$F{tax_amt_state}]]></variableExpression>
+	</variable>
+	<variable name="variable1" class="java.lang.String" calculation="Sum">
+		<variableExpression><![CDATA[$F{tot_tax_amt}]]></variableExpression>
+	</variable>
+	<variable name="tot_tax_amt_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{tot_tax_amt}]]></variableExpression>
+	</variable>
+	<variable name="tot_tax_amt_2" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{tot_tax_amt}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="35"/>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField>
+				<reportElement x="38" y="-1" width="110" height="15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{hsn_sac}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="256" y="-1" width="42" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tax_percent_state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="-1" width="52" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tax_amt_central}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="-1" width="47" height="15"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tax_percent_state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="404" y="-1" width="53" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tax_amt_state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="-1" width="88" height="15"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="473" y="-1" width="108" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{tot_tax}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="47">
+			<textField>
+				<reportElement x="141" y="25" width="440" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["INR "+$P{REPORT_SCRIPTLET}.getWord($V{tot_tax_amt_2})]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

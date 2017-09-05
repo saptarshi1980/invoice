@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptTaxSub" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" scriptletClass="numbertoword.NumToWord">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="invoice_no" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select hsn_sac,tax_percent_state,amount,tax_percent_central,tax_amt_central,tax_amt_state,tax_amt_central+tax_amt_state as tot_tax_amt from bill_details where invoice_id=$P{invoice_no}]]>
+	</queryString>
+	<field name="hsn_sac" class="java.lang.String"/>
+	<field name="tax_percent_state" class="java.lang.Double"/>
+	<field name="amount" class="java.lang.Double"/>
+	<field name="tax_percent_central" class="java.lang.Double"/>
+	<field name="tax_amt_central" class="java.lang.Double"/>
+	<field name="tax_amt_state" class="java.lang.Double"/>
+	<field name="tot_tax_amt" class="java.lang.Double"/>
+	<variable name="tot_tax_amt_2" class="java.lang.Double" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{tot_tax_amt}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="115" y="26" width="440" height="15"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["INR "+$P{REPORT_SCRIPTLET}.getWord($V{tot_tax_amt_2})]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

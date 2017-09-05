@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptInvoice" language="groovy" pageWidth="595" pageHeight="842" columnWidth="583" leftMargin="6" rightMargin="6" topMargin="0" bottomMargin="0">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rptInvoice" language="groovy" pageWidth="595" pageHeight="200" columnWidth="583" leftMargin="6" rightMargin="6" topMargin="0" bottomMargin="0">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -76,122 +76,85 @@
 	<variable name="Tax_amt" class="java.lang.String">
 		<variableExpression><![CDATA[$F{tax_amt_central}+$F{tax_amt_state}]]></variableExpression>
 	</variable>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
 	<detail>
-		<band height="20" splitType="Stretch">
+		<band height="13" splitType="Stretch">
 			<textField>
-				<reportElement x="71" y="0" width="171" height="20"/>
+				<reportElement x="70" y="0" width="171" height="12"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{item_description}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{item_description}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="271" y="0" width="43" height="20"/>
+				<reportElement x="267" y="0" width="43" height="12"/>
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{quantity}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="40" y="0" width="21" height="20"/>
+				<reportElement x="40" y="0" width="21" height="12"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="226" y="0" width="70" height="20"/>
+				<reportElement x="225" y="0" width="70" height="12"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{hsn_sac}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{hsn_sac}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="298" y="0" width="45" height="20"/>
+				<reportElement x="286" y="0" width="45" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{rate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="340" y="0" width="17" height="12"/>
 				<textElement textAlignment="Center">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{rate}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{per}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="343" y="0" width="17" height="20"/>
-				<textElement textAlignment="Center">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{per}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="400" y="0" width="33" height="20"/>
+				<reportElement x="399" y="0" width="33" height="12"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{discount}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{discount}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="512" y="0" width="70" height="20"/>
+				<reportElement x="481" y="0" width="70" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="0" width="38" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{bill_value}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="432" y="0" width="33" height="12"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{gst_rate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="361" y="0" width="38" height="20"/>
-				<textElement>
+				<reportElement x="454" y="0" width="41" height="12"/>
+				<textElement textAlignment="Right">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$V{bill_value}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="433" y="0" width="33" height="20"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{gst_rate}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="471" y="0" width="41" height="20"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{Tax_amt}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{Tax_amt}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="142">
-			<textField>
-				<reportElement x="279" y="87" width="19" height="20"/>
-				<textElement textAlignment="Center">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{quantity_1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="496" y="102" width="68" height="16"/>
-				<textElement>
-					<font size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{amount_1}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="172" y="113" width="392" height="20"/>
-				<textElement>
-					<font size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA["INR "+$F{tot_amt_word}+" only"]]></textFieldExpression>
-			</textField>
-		</band>
-	</columnFooter>
-	<pageFooter>
-		<band splitType="Stretch"/>
-	</pageFooter>
-	<lastPageFooter>
-		<band/>
-	</lastPageFooter>
-	<summary>
-		<band splitType="Stretch"/>
-	</summary>
 </jasperReport>
