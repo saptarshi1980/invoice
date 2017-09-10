@@ -272,6 +272,11 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
         hsn.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         hsn.setFocusCycleRoot(true);
         hsn.setName("hsn"); // NOI18N
+        hsn.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                hsnFocusGained(evt);
+            }
+        });
         hsn.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 hsnKeyTyped(evt);
@@ -494,7 +499,8 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
         char c = evt.getKeyChar();
 
        if ((c == evt.VK_ENTER)) {
-               description();
+           hsn.requestFocus();
+           
              }
        
     }//GEN-LAST:event_jTextField2KeyTyped
@@ -631,6 +637,10 @@ public class InvoiceDetailsEntry extends javax.swing.JFrame {
     private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2KeyReleased
+
+    private void hsnFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_hsnFocusGained
+        description();
+    }//GEN-LAST:event_hsnFocusGained
 
     /**
      * @param args the command line arguments

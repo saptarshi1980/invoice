@@ -534,7 +534,7 @@ public class Payment extends javax.swing.JFrame {
         
         String sellerCode=jComboBox1.getSelectedItem().toString().trim().substring(0,jComboBox1.getSelectedItem().toString().trim().indexOf('('));
         
-        String query="SELECT seller_invoice_no FROM purchase_master WHERE seller_code='"+sellerCode+"' ";
+        String query="SELECT distinct(seller_invoice_no) FROM purchase_master WHERE seller_code='"+sellerCode+"' ";
 
         
         try{

@@ -657,7 +657,7 @@ public boolean verifyFields(){
         
         String gstState=jTextField6.getText().trim().toUpperCase().substring(0,2);
         
-        if(sellerCode.trim().length()>0 && companyName.trim().length()>0 && address.trim().length()>0 && mobile.trim().length()==10 && gst.trim().length()==16 && pan.trim().length()>9 && banker.trim().length()>5 && ac.trim().length()>5 && ifsc.trim().length()>1){
+        if(sellerCode.trim().length()>0 && companyName.trim().length()>0 && address.trim().length()>0 && mobile.trim().length()==10 && gst.trim().length()==15 && pan.trim().length()>9 && banker.trim().length()>5 && ac.trim().length()>5 && ifsc.trim().length()>1){
             return true;
         }
             
